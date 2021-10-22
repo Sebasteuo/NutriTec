@@ -1,0 +1,88 @@
+<app-navigation></app-navigation>
+<div class=" d-flex justify-content-center">
+    <aside class="col-lg" style="margin: 5% 5% 5% 5%;">
+        <div class="card">
+            <article class="card-body">
+                <h4 class="card-title mb-4 mt-1">Aprobación de Productos</h4>
+                <hr>
+                <div class="row">
+                    <!-- table -->
+                   
+                    <div class="col-md-8">
+                        <!-- Employee data -->
+                        <div class="card">
+
+                            <div class="card-body">
+                                <div class="table-responsive">
+
+                                    <div class=table-wrapper>
+                                        <table class="table table-hover bike-table">
+                                            <thead>
+                                                <!-- Columnas para los datos mostrados de los clientes-->
+                                                <tr>
+                                                    <th>Código de Barras</th>
+                                                    <th>Descripción</th>
+                                                    <th>Tamaño de Porción(g/ml)</th>
+                                                    <th>Energía(Kcal)</th>
+                                                    <th>Grasa(g)</th>
+                                                    <th>Sodio(mg)</th>
+                                                    <th>Carbohidratos(g)</th>
+                                                    <th>Proteína(g)</th>
+                                                    <th>Vitaminas</th>
+                                                    <th>Calcio(mg)</th>
+                                                    <th>Hierro(mg)</th>
+                                                    
+                                                   
+                                                    <th colspan="2"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let producto of this.productos"> <!-- ngFor repite una sección del código HTML, por cada cliente hace una nueva fila en la tabla-->
+                                                    <td>{{producto.codigoDeBarras}}</td>
+                                                    <td>{{producto.Descripcion}}</td>
+                                                    <td>{{producto.TamañoDePorcion}}</td>
+                                                    <td>{{producto.Energia}}</td>
+                                                    <td>{{producto.Grasa}}</td>
+                                                    <td>{{producto.Sodio}}</td>
+                                                    <td>{{producto.Carbohidratos}}</td>
+                                                    <td>{{producto.Proteina}}</td>
+                                                    <td>{{producto.Vitaminas}}</td>
+                                                    <td>{{producto.Calcio}}</td>
+                                                    <td>{{producto.Hierro}}</td>
+                                                    <td>{{producto.Aprobacion}}</td>
+
+                                                    <td>
+                                                        <button  *ngIf="producto.Aprobacion == 0" class="btn-icon" placement="top" ngbTooltip="Approve"(click)="approve(producto.codigoDeBarras)">
+                                                            <i class="fa fa-check" aria-hidden="true" ></i>
+                                                        </button>
+                                                        <button  *ngIf="producto.Aprobacions != 0" class="btn-icon" placement="top" [disabled]="true">
+                                                            <i class="fa fa-check disab" aria-hidden="true" ></i>
+                                                        </button>
+                                                    </td>
+                                                    <td>
+                                                        <button *ngIf="producto.Aprobacion == 0" class="btn-icon" placement="top" ngbTooltip="Reject"(click)="reject(producto.codigoDeBarras)">
+                                                            <i  class="fa fa-times" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button *ngIf="producto.Aprobacion != 0"  class="btn-icon" placement="top" [disabled]="true">
+                                                            <i  class="fa fa-times disab" aria-hidden="true"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> <!-- card.// -->
+                        <br />
+                        <br />
+                    </div>
+                </div>
+            </article>
+        </div> <!-- card.// -->
+    </aside> <!-- col.// -->
+</div> <!-- row.// -->
+
+<!--container end.//-->

@@ -1,0 +1,19 @@
+<!--/ Nav Star /-->
+<div *ngIf="logged">
+    <div *ngIf="showadmin">
+        <app-nav-admin></app-nav-admin>
+    </div>
+
+    <div *ngIf="showclient">
+        <app-nav-cliente></app-nav-cliente>
+    </div>
+</div>
+
+<div *ngIf="!logged">
+    <!-- Se crea barra de navegación-->
+    <nav class="navbar navbar-expand-lg navbar-dark bike-nav">
+        <a class="navbar-brand">NutriTEC</a>
+    </nav>
+    <div class="line"></div>
+</div>
+<!--/ Nav End /-->
