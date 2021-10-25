@@ -1,1 +1,246 @@
-<p>productos works!</p>
+<div class=" d-flex justify-content-center">
+    <aside class="col-lg" style="margin: 5% 5% 5% 5%;">
+        <div class="card">
+            <article class="card-body">
+                <h4 class="card-title mb-4 mt-1">Administración de Cuentas</h4>
+                <hr>
+                <div class="row">
+                    <!-- table -->
+                    <div class="col-md-4 table-responsive">
+                        <div class="card" style="margin-bottom: 10px;">
+                            <article class="card-body">
+                                <div class="form">
+                                    <form #form autocomplete="off">
+                                        <div class="form-row">
+
+                                           
+                                            <div class="col form-group">
+                                                <label>Código de barras: </label>
+                                            </div> 
+                                            <div class="col form-group">
+                                                <input name="quantity" class="form-control" placeholder="Código de barras" [(ngModel)]="newProducto.codigoDeBarras"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col form-group">
+                                                <label>Descripción: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                <input name="quantity" class="form-control" placeholder="Descripción" [(ngModel)]="newProducto.Descripcion"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col form-group">
+                                                <label>Porción: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                <input name="quantity" class="form-control" placeholder="Porción" [(ngModel)]="newProducto.Porcion"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col form-group">
+                                                <label>Energía: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                <input name="quantity" class="form-control" placeholder="Energía" [(ngModel)]="newProducto.Energia"
+                                                    required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="col form-group">
+                                                <label>Grasa: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                <input name="quantity" class="form-control" placeholder="Grasa" [(ngModel)]="newProducto.Grasa"
+                                                    required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="col form-group">
+                                                <label>Sodio: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                <input name="quantity" class="form-control" placeholder="Sodio" [(ngModel)]="newProducto.Sodio"
+                                                    required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="col form-group">
+                                                <label>Porción: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                <input name="quantity" class="form-control" placeholder="Carbohidratos" [(ngModel)]="newProducto.Carbohidratos"
+                                                    required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="col form-group">
+                                                <label>Proteínas: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                <input name="quantity" class="form-control" placeholder="Proteínas" [(ngModel)]="newProducto.Proteina"
+                                                    required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="col form-group">
+                                                <label>Vitaminas: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                <input name="quantity" class="form-control" placeholder="Vitaminas" [(ngModel)]="newProducto.Vitaminas"
+                                                    required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="col form-group">
+                                                <label>Calcio: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                <input name="quantity" class="form-control" placeholder="Calcio" [(ngModel)]="newProducto.Calcio"
+                                                    required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="col form-group">
+                                                <label>Hierro: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                <input name="quantity" class="form-control" placeholder="Hierro" [(ngModel)]="newProducto.Hierro"
+                                                    required>
+                                            </div>
+                                        </div>
+
+                                        
+
+                                       
+                                        <div class="col form-groupform-group">
+                                            <button class="btn btn-primary btn-block" (click)="add()">Agregar</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </article>
+                        </div>
+
+                    </div>
+                    <div class="col-md-8">
+                        <!-- Employee data -->
+                        <div class="card">
+
+                            <div class="card-body">
+                                <div>
+                                    
+                                    <div class=table-wrapper>
+                                        <table class="table table-hover bike-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Codigo de barras</th>
+                                                    <th>Descripción</th>
+                                                    <th>Porción</th>
+                                                    <th>Energía</th>
+                                                    <th>Grasa</th>
+                                                    <th>Sodio</th>
+                                                    <th>Carbohidratos</th>
+                                                    <th>Proteina</th>
+                                                    <th>Vitaminas</th>
+                                                    <th>Calcio</th>
+                                                    <th>Hierro</th>
+                                                    <th colspan="2"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let product of this.products">
+                            
+                                                    <td *ngIf='editingID != product.codigoDeBarras'>{{product.codigoDeBarras}}</td>
+                                                    <td *ngIf='editingID == product.codigoDeBarras'>{{product.codigoDeBarras}}</td>
+
+                                                    <td *ngIf='editingID != product.codigoDeBarras'>{{product.Descripcion}}</td>
+                                                    <td *ngIf='editingID == product.codigoDeBarras'><input value="{{selectedProduct.Descripcion}}"
+                                                        [(ngModel)]="selectedProduct.Descripcion" class="form-control"></td>
+
+                                                        <td *ngIf='editingID != product.codigoDeBarras'>{{product.Porcion}}</td>
+                                                        <td *ngIf='editingID == product.codigoDeBarras'><input value="{{selectedProduct.Porcion}}"
+                                                            [(ngModel)]="selectedProduct.Porcion" class="form-control"></td>
+
+                                                            <td *ngIf='editingID != product.codigoDeBarras'>{{product.Energia}}</td>
+                                                            <td *ngIf='editingID == product.codigoDeBarras'><input value="{{selectedProduct.Energia}}"
+                                                                [(ngModel)]="selectedProduct.Energia" class="form-control"></td>
+
+
+                                                                <td *ngIf='editingID != product.codigoDeBarras'>{{product.Grasa}}</td>
+                                                    <td *ngIf='editingID == product.codigoDeBarras'><input value="{{selectedProduct.Grasa}}"
+                                                        [(ngModel)]="selectedProduct.Grasa" class="form-control"></td>
+
+
+                                                        <td *ngIf='editingID != product.codigoDeBarras'>{{product.Sodio}}</td>
+                                                    <td *ngIf='editingID == product.codigoDeBarras'><input value="{{selectedProduct.Sodio}}"
+                                                        [(ngModel)]="selectedProduct.Sodio" class="form-control"></td>
+
+                                                        <td *ngIf='editingID != product.codigoDeBarras'>{{product.Carbohidratos}}</td>
+                                                    <td *ngIf='editingID == product.codigoDeBarras'><input value="{{selectedProduct.Carbohidratos}}"
+                                                        [(ngModel)]="selectedProduct.Carbohidratos" class="form-control"></td>
+
+                                                        <td *ngIf='editingID != product.codigoDeBarras'>{{product.Proteina}}</td>
+                                                    <td *ngIf='editingID == product.codigoDeBarras'><input value="{{selectedProduct.Proteina}}"
+                                                        [(ngModel)]="selectedProduct.Proteina" class="form-control"></td>
+
+                                                        <td *ngIf='editingID != product.codigoDeBarras'>{{product.Vitaminas}}</td>
+                                                    <td *ngIf='editingID == product.codigoDeBarras'><input value="{{selectedProduct.Vitaminas}}"
+                                                        [(ngModel)]="selectedProduct.Vitaminas" class="form-control"></td>
+
+                                                        <td *ngIf='editingID != product.codigoDeBarras'>{{product.Calcio}}</td>
+                                                    <td *ngIf='editingID == product.codigoDeBarras'><input value="{{selectedProduct.Calcio}}"
+                                                        [(ngModel)]="selectedProduct.Calcio" class="form-control"></td>
+
+                                                        <td *ngIf='editingID != product.codigoDeBarras'>{{product.Hierro}}</td>
+                                                    <td *ngIf='editingID == product.codigoDeBarras'><input value="{{selectedProduct.Hierro}}"
+                                                        [(ngModel)]="selectedProduct.Hierro" class="form-control"></td>
+                                                    
+                                                  
+                                                   
+
+                                                    <th scope="row">
+                                                        <button *ngIf='editingID != product.codigoDeBarras' (click)="edit(product)" class="btn-icon" placement="top"
+                                                            ngbTooltip="Editar">
+                                                            <i class="fa fa-edit" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button *ngIf='editingID == product.codigoDeBarras' (click)="submit()" class="btn-icon" placement="top"
+                                                            ngbTooltip="Aceptar">
+                                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                                        </button>
+                                                    </th>
+                                                    <th scope="row">
+                                                        <button (click)="delete(product.codigoDeBarras)" class="btn-icon" placement="top"
+                                                            ngbTooltip="Eliminar">
+                                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                                        </button>
+                                                    </th>
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> <!-- card.// -->
+                        <br />
+                        <br />
+                    </div>
+                </div>
+            </article>
+        </div> <!-- card.// -->
+    </aside> <!-- col.// -->
+</div> <!-- row.// -->
+
+<!--container end.//-->

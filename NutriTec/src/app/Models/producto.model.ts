@@ -1,8 +1,8 @@
 export class Producto {
 
-    codigoDeBarras: string =""
+    codigoDeBarras: number =0
     Descripcion: string =""
-    TamañoDePorcion:number = 0
+    Porcion:number = 0
     Energia: number = 0
     Grasa: number = 0
     Sodio: number = 0

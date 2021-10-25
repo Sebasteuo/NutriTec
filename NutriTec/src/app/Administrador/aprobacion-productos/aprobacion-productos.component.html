@@ -1,4 +1,4 @@
-<app-navigation></app-navigation>
+
 <div class=" d-flex justify-content-center">
     <aside class="col-lg" style="margin: 5% 5% 5% 5%;">
         <div class="card">
@@ -8,7 +8,7 @@
                 <div class="row">
                     <!-- table -->
                    
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <!-- Employee data -->
                         <div class="card">
 
@@ -22,7 +22,7 @@
                                                 <tr>
                                                     <th>Código de Barras</th>
                                                     <th>Descripción</th>
-                                                    <th>Tamaño de Porción(g/ml)</th>
+                                                    <th>Porción(g/ml)</th>
                                                     <th>Energía(Kcal)</th>
                                                     <th>Grasa(g)</th>
                                                     <th>Sodio(mg)</th>
@@ -40,7 +40,7 @@
                                                 <tr *ngFor="let producto of this.productos"> <!-- ngFor repite una sección del código HTML, por cada cliente hace una nueva fila en la tabla-->
                                                     <td>{{producto.codigoDeBarras}}</td>
                                                     <td>{{producto.Descripcion}}</td>
-                                                    <td>{{producto.TamañoDePorcion}}</td>
+                                                    <td>{{producto.Porcion}}</td>
                                                     <td>{{producto.Energia}}</td>
                                                     <td>{{producto.Grasa}}</td>
                                                     <td>{{producto.Sodio}}</td>
@@ -49,21 +49,20 @@
                                                     <td>{{producto.Vitaminas}}</td>
                                                     <td>{{producto.Calcio}}</td>
                                                     <td>{{producto.Hierro}}</td>
-                                                    <td>{{producto.Aprobacion}}</td>
 
                                                     <td>
-                                                        <button  *ngIf="producto.Aprobacion == 0" class="btn-icon" placement="top" ngbTooltip="Approve"(click)="approve(producto.codigoDeBarras)">
+                                                        <button  *ngIf="producto.Aprobacion == 2" class="btn-icon" placement="top" ngbTooltip="Aprobar"(click)="approve(producto.codigoDeBarras)">
                                                             <i class="fa fa-check" aria-hidden="true" ></i>
                                                         </button>
-                                                        <button  *ngIf="producto.Aprobacions != 0" class="btn-icon" placement="top" [disabled]="true">
+                                                        <button  *ngIf="producto.Aprobacion != 2" class="btn-icon" placement="top" [disabled]="true">
                                                             <i class="fa fa-check disab" aria-hidden="true" ></i>
                                                         </button>
                                                     </td>
                                                     <td>
-                                                        <button *ngIf="producto.Aprobacion == 0" class="btn-icon" placement="top" ngbTooltip="Reject"(click)="reject(producto.codigoDeBarras)">
+                                                        <button *ngIf="producto.Aprobacion == 2" class="btn-icon" placement="top" ngbTooltip="Rechazar"(click)="reject(producto.codigoDeBarras)">
                                                             <i  class="fa fa-times" aria-hidden="true"></i>
                                                         </button>
-                                                        <button *ngIf="producto.Aprobacion != 0"  class="btn-icon" placement="top" [disabled]="true">
+                                                        <button *ngIf="producto.Aprobacion != 2"  class="btn-icon" placement="top" [disabled]="true">
                                                             <i  class="fa fa-times disab" aria-hidden="true"></i>
                                                         </button>
                                                     </td>
