@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "d/zlrP/iR6p3agaIn0OwCwClXNfmD9xJhqCTFeyBjo0SF9mKVWtmfGlFGkBPzpnxHd9CwkXqiXJYwig12CGYGg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Bojorge\\Documents\\BasesDeDatos\\Proyectos\\NutriTec\\NutriTec\\Server\\API_Relacional\\API_Relacional.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Bojorge\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Bojorge\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Bojorge\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\Bojorge\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\Bojorge\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\Bojorge\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}
