@@ -24,7 +24,8 @@ export class ProductosComponent implements OnInit {
     Vitaminas: 0,
     Calcio: 0,
     Hierro: 0,
-    Aprobacion:0
+    Aprobacion:0,
+    Nombre: ""
   }
   selectedProduct: Producto = {
     codigoDeBarras: 0,
@@ -38,7 +39,8 @@ export class ProductosComponent implements OnInit {
     Vitaminas: 0,
     Calcio: 0,
     Hierro: 0,
-    Aprobacion:0
+    Aprobacion:0,
+    Nombre: ""
   }
 
   products: Producto[]=[]
@@ -57,7 +59,8 @@ export class ProductosComponent implements OnInit {
     Vitaminas: 5,
     Calcio: 3,
     Hierro: 30,
-    Aprobacion:1
+    Aprobacion:1,
+    Nombre: "acas"
     },{
       codigoDeBarras: 3334,
     Descripcion:"jaja",
@@ -70,7 +73,8 @@ export class ProductosComponent implements OnInit {
     Vitaminas: 5,
     Calcio: 3,
     Hierro: 30,
-    Aprobacion:1
+    Aprobacion:1,
+    Nombre: ""
     }]
   }
 
@@ -103,7 +107,8 @@ export class ProductosComponent implements OnInit {
       Vitaminas: 0,
       Calcio: 0,
       Hierro: 0,
-      Aprobacion:0
+      Aprobacion:0,
+      Nombre: ""
     }
   }
 

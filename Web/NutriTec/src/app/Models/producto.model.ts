@@ -1,6 +1,7 @@
 export class Producto {
 
     codigoDeBarras: number =0
+    Nombre: string = ""
     Descripcion: string =""
     Porcion:number = 0
     Energia: number = 0

@@ -25,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavAdminComponent } from './Others/navigation/nav-admin/nav-admin.component';
 import { NavClienteComponent } from './Others/navigation/nav-cliente/nav-cliente.component';
 import { NavNutricionistaComponent } from './Others/navigation/nav-nutricionista/nav-nutricionista.component';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { NavNutricionistaComponent } from './Others/navigation/nav-nutricionista
     HttpClientModule,
     ToastrModule.forRoot(), // ToastrModule added
     FlatpickrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AutocompleteLibModule
 
   ],
   providers: [],

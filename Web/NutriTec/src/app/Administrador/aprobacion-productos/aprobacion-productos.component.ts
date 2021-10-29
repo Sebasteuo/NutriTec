@@ -26,7 +26,8 @@ export class AprobacionProductosComponent implements OnInit {
     Vitaminas: 5,
     Calcio: 3,
     Hierro: 30,
-    Aprobacion:1
+    Aprobacion:1,
+    Nombre: "ssss"
     }]
   }
 

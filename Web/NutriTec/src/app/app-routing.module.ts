@@ -7,6 +7,9 @@ import { RegistroConsumoComponent } from './Cliente/registro-consumo/registro-co
 import { RegistroDeMedidasComponent } from './Cliente/registro-de-medidas/registro-de-medidas.component';
 import { ReporteDeAvanceComponent } from './Cliente/reporte-de-avance/reporte-de-avance.component';
 import { ProductosComponent } from './Compartido/productos/productos.component';
+import { PacientesComponent } from './Nutricionista/pacientes/pacientes.component';
+import { PlanesComponent } from './Nutricionista/planes/planes.component';
+import { PacienteManagementService } from './Services/paciente-management.service';
 
 const routes: Routes = [
 
@@ -17,6 +20,8 @@ const routes: Routes = [
   { path: 'Consumo', component: RegistroConsumoComponent}, // Se hacen navegables y  los componentes
   { path: 'Medidas', component: RegistroDeMedidasComponent}, // Se hacen navegables y  los componentes
   { path: 'Avance', component: ReporteDeAvanceComponent}, // Se hacen navegables y  los componentes
+  { path: 'Pacientes', component: PacientesComponent}, // Se hacen navegables y  los componentes
+  { path: 'Planes', component: PlanesComponent}, // Se hacen navegables y  los componentes
 
 ];
 
