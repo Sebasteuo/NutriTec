@@ -1,1 +1,94 @@
-<p>pacientes works!</p>
+<div class=" d-flex justify-content-center">
+    <aside class="col-lg" style="margin: 5% 5% 5% 5%;">
+        <div class="card">
+            <article class="card-body">
+                <h4 class="card-title mb-4 mt-1">Administración de Pacientes</h4>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                            <label>Nombre del Cliente:</label>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="col form-group">
+                            <div class="ng-autocomplete">
+                                <ng-autocomplete [data]="clientes" [searchKeyword]="keyword" (selected)='selectCliente($event)'
+                                  [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate" placeHolder="Clientes">
+                                </ng-autocomplete>
+                                <ng-template #itemTemplate let-item>
+                                  <a [innerHTML]="item.Nombre + item.Apellido1 + item.Apellido2"></a>
+                                </ng-template>
+                                <ng-template #notFoundTemplate let-notFound>
+                                  <div [innerHTML]="notFound"></div>
+                                </ng-template>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- table -->
+                   
+                    <div class="col-md-12">
+                        <!-- Employee data -->
+                        <div class="card">
+
+                            <div class="card-body">
+                                <div>
+                      
+
+                                    <div class=table-wrapper>
+                                        <table class="table table-hover bike-table">
+                                            <thead>
+                                                <tr>
+                                                    
+                                                    <th>ID</th>
+                                                    <th>Nombre</th>
+                                                    <th>Apellidos</th>
+                                                    <th>Edad</th>
+                                                    <th>País</th>
+                                                    <th>Correo</th>
+                                                    <th>Peso Actual</th>
+                                                    <th>Peso Meta</th>
+                                                    
+                                                 
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                            
+                                                    <td>{{selectedCliente.Id}}</td>
+                                                    <td>{{selectedCliente.Nombre}}</td>
+                                                    <td>{{selectedCliente.Apellido1}} {{selectedCliente.Apellido2}}</td>
+                                                    <td>{{selectedCliente.Edad}}</td>
+                                                    <td>{{selectedCliente.Pais}}</td>
+                                                    <td>{{selectedCliente.Correo}}</td>
+                                                    <td>{{selectedCliente.PesoActual}}</td>
+                                                    <td>{{selectedCliente.Peso}}</td>
+                                                  
+    
+                                                    
+                                                    <th scope="row">
+                                                        <button (click)="add(selectedCliente.Id)" class="btn-icon" placement="top"
+                                                            ngbTooltip="Agregar">
+                                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                                        </button>
+                                                    </th>
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> <!-- card.// -->
+                        <br />
+                        <br />
+                    </div>
+                </div>
+            </article>
+        </div> <!-- card.// -->
+    </aside> <!-- col.// -->
+</div> <!-- row.// -->
+
+<!--container end.//-->

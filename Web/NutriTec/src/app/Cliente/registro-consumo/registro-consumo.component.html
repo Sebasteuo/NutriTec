@@ -55,7 +55,7 @@
                                                       [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate" placeHolder="Productos">
                                                     </ng-autocomplete>
                                                     <ng-template #itemTemplate let-item>
-                                                      <a [innerHTML]="item.name"></a>
+                                                      <a [innerHTML]="item.Nombre"></a>
                                                     </ng-template>
                                                     <ng-template #notFoundTemplate let-notFound>
                                                       <div [innerHTML]="notFound"></div>

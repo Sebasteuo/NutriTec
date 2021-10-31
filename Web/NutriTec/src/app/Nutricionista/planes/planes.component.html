@@ -1,1 +1,461 @@
-<p>planes works!</p>
+<div class=" d-flex justify-content-center">
+    <aside class="col-lg" style="margin: 5% 5% 5% 5%;">
+        <div class="card">
+            <article class="card-body">
+                <h4 class="card-title mb-4 mt-1">Creación de Planes Alimenticios</h4>
+                <hr>
+                <div class="row">
+                    <!-- table -->
+                    <div class="col-md-4 table-responsive">
+                        <div class="card" style="margin-bottom: 10px;">
+                            <article class="card-body">
+                                <div class="form">
+                                    <form #form autocomplete="off">
+                                        <div class="form-row">
+
+
+                                            <div class="col form-group">
+                                                <label>Desayuno: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                <div class="ng-autocomplete">
+                                                    <ng-autocomplete [data]="productos" [searchKeyword]="keyword"
+                                                        (selected)='selectDesayuno($event)'
+                                                        [itemTemplate]="itemTemplate"
+                                                        [notFoundTemplate]="notFoundTemplate" placeHolder="Productos">
+                                                    </ng-autocomplete>
+                                                    <ng-template #itemTemplate let-item>
+                                                        <a [innerHTML]="item.Nombre"></a>
+                                                    </ng-template>
+                                                    <ng-template #notFoundTemplate let-notFound>
+                                                        <div [innerHTML]="notFound"></div>
+                                                    </ng-template>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+
+
+                                            <div class="col form-group">
+                                                <label>Merienda Matutina: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                <div class="ng-autocomplete">
+                                                    <ng-autocomplete [data]="productos" [searchKeyword]="keyword"
+                                                        (selected)='selectMeriendaMatutina($event)'
+                                                        [itemTemplate]="itemTemplate"
+                                                        [notFoundTemplate]="notFoundTemplate" placeHolder="Productos">
+                                                    </ng-autocomplete>
+                                                    <ng-template #itemTemplate let-item>
+                                                        <a [innerHTML]="item.Nombre"></a>
+                                                    </ng-template>
+                                                    <ng-template #notFoundTemplate let-notFound>
+                                                        <div [innerHTML]="notFound"></div>
+                                                    </ng-template>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+
+
+                                            <div class="col form-group">
+                                                <label>Almuerzo: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                <div class="ng-autocomplete">
+                                                    <ng-autocomplete [data]="productos" [searchKeyword]="keyword"
+                                                        (selected)='selectAlmuerzo($event)'
+                                                        [itemTemplate]="itemTemplate"
+                                                        [notFoundTemplate]="notFoundTemplate" placeHolder="Productos">
+                                                    </ng-autocomplete>
+                                                    <ng-template #itemTemplate let-item>
+                                                        <a [innerHTML]="item.Nombre"></a>
+                                                    </ng-template>
+                                                    <ng-template #notFoundTemplate let-notFound>
+                                                        <div [innerHTML]="notFound"></div>
+                                                    </ng-template>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-row">
+
+
+                                            <div class="col form-group">
+                                                <label>Merienda de la Tarde: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                <div class="ng-autocomplete">
+                                                    <ng-autocomplete [data]="productos" [searchKeyword]="keyword"
+                                                        (selected)='selectMeriendaTarde($event)'
+                                                        [itemTemplate]="itemTemplate"
+                                                        [notFoundTemplate]="notFoundTemplate" placeHolder="Productos">
+                                                    </ng-autocomplete>
+                                                    <ng-template #itemTemplate let-item>
+                                                        <a [innerHTML]="item.Nombre"></a>
+                                                    </ng-template>
+                                                    <ng-template #notFoundTemplate let-notFound>
+                                                        <div [innerHTML]="notFound"></div>
+                                                    </ng-template>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+
+
+                                            <div class="col form-group">
+                                                <label>Cena: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                <div class="ng-autocomplete">
+                                                    <ng-autocomplete [data]="productos" [searchKeyword]="keyword"
+                                                        (selected)='selectCena($event)' [itemTemplate]="itemTemplate"
+                                                        [notFoundTemplate]="notFoundTemplate" placeHolder="Productos">
+                                                    </ng-autocomplete>
+                                                    <ng-template #itemTemplate let-item>
+                                                        <a [innerHTML]="item.Nombre"></a>
+                                                    </ng-template>
+                                                    <ng-template #notFoundTemplate let-notFound>
+                                                        <div [innerHTML]="notFound"></div>
+                                                    </ng-template>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+
+
+                                        <div class="col form-groupform-group">
+                                            <button class="btn btn-primary btn-block" (click)="add()">Agregar</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </article>
+                        </div>
+
+                    </div>
+                    <div class="col-md-8">
+                        <!-- Employee data -->
+                        <div class="card">
+
+                            <div class="card-body">
+                                <div>
+
+                                    <div class="row">
+                                        <div class="row">
+                                            <label>Desayuno</label>
+                                        </div>
+                                        <div class="row">
+                                            <div class=table-wrapper>
+
+                                                <table class="table table-hover bike-table">
+                                                    <thead>
+                                                        <!-- Columnas para los datos mostrados de los clientes-->
+                                                        <tr>
+                                                            <th>Código de Barras</th>
+                                                            <th>Descripción</th>
+                                                            <th>Porción(g/ml)</th>
+                                                            <th>Energía(Kcal)</th>
+                                                            <th>Grasa(g)</th>
+                                                            <th>Sodio(mg)</th>
+                                                            <th>Carbohidratos(g)</th>
+                                                            <th>Proteína(g)</th>
+                                                            <th>Vitaminas</th>
+                                                            <th>Calcio(mg)</th>
+                                                            <th>Hierro(mg)</th>
+
+
+                                                            <th colspan="2"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let producto of this.selectedDesayuno">
+                                                            <!-- ngFor repite una sección del código HTML, por cada cliente hace una nueva fila en la tabla-->
+                                                            <td>{{producto.codigoDeBarras}}</td>
+                                                            <td>{{producto.Descripcion}}</td>
+                                                            <td>{{producto.Porcion}}</td>
+                                                            <td>{{producto.Energia}}</td>
+                                                            <td>{{producto.Grasa}}</td>
+                                                            <td>{{producto.Sodio}}</td>
+                                                            <td>{{producto.Carbohidratos}}</td>
+                                                            <td>{{producto.Proteina}}</td>
+                                                            <td>{{producto.Vitaminas}}</td>
+                                                            <td>{{producto.Calcio}}</td>
+                                                            <td>{{producto.Hierro}}</td>
+
+
+                                                            <td>
+                                                                <button class="btn-icon" placement="top"
+                                                                    ngbTooltip="Eliminar"
+                                                                    (click)="deleteDesayuno(producto)">
+                                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                                </button>
+
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="row">
+                                            <label>Merienda Matutina</label>
+                                        </div>
+                                        <div class="row">
+                                            <div class=table-wrapper>
+                                                <table class="table table-hover bike-table">
+                                                    <thead>
+                                                        <!-- Columnas para los datos mostrados de los clientes-->
+                                                        <tr>
+                                                            <th>Código de Barras</th>
+                                                            <th>Descripción</th>
+                                                            <th>Porción(g/ml)</th>
+                                                            <th>Energía(Kcal)</th>
+                                                            <th>Grasa(g)</th>
+                                                            <th>Sodio(mg)</th>
+                                                            <th>Carbohidratos(g)</th>
+                                                            <th>Proteína(g)</th>
+                                                            <th>Vitaminas</th>
+                                                            <th>Calcio(mg)</th>
+                                                            <th>Hierro(mg)</th>
+
+
+                                                            <th colspan="2"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let producto of this.selectedMeriendaMatutina">
+                                                            <!-- ngFor repite una sección del código HTML, por cada cliente hace una nueva fila en la tabla-->
+                                                            <td>{{producto.codigoDeBarras}}</td>
+                                                            <td>{{producto.Descripcion}}</td>
+                                                            <td>{{producto.Porcion}}</td>
+                                                            <td>{{producto.Energia}}</td>
+                                                            <td>{{producto.Grasa}}</td>
+                                                            <td>{{producto.Sodio}}</td>
+                                                            <td>{{producto.Carbohidratos}}</td>
+                                                            <td>{{producto.Proteina}}</td>
+                                                            <td>{{producto.Vitaminas}}</td>
+                                                            <td>{{producto.Calcio}}</td>
+                                                            <td>{{producto.Hierro}}</td>
+
+
+                                                            <td>
+                                                                <button class="btn-icon" placement="top"
+                                                                    ngbTooltip="Eliminar"
+                                                                    (click)="deleteMeriendaMatutina(producto)">
+                                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                                </button>
+
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="row">
+                                            <label>Almuerzo</label>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class=table-wrapper>
+                                                <table class="table table-hover bike-table">
+                                                    <thead>
+                                                        <!-- Columnas para los datos mostrados de los clientes-->
+                                                        <tr>
+                                                            <th>Código de Barras</th>
+                                                            <th>Descripción</th>
+                                                            <th>Porción(g/ml)</th>
+                                                            <th>Energía(Kcal)</th>
+                                                            <th>Grasa(g)</th>
+                                                            <th>Sodio(mg)</th>
+                                                            <th>Carbohidratos(g)</th>
+                                                            <th>Proteína(g)</th>
+                                                            <th>Vitaminas</th>
+                                                            <th>Calcio(mg)</th>
+                                                            <th>Hierro(mg)</th>
+
+
+                                                            <th colspan="2"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let producto of this.selectedAlmuerzo">
+                                                            <!-- ngFor repite una sección del código HTML, por cada cliente hace una nueva fila en la tabla-->
+                                                            <td>{{producto.codigoDeBarras}}</td>
+                                                            <td>{{producto.Descripcion}}</td>
+                                                            <td>{{producto.Porcion}}</td>
+                                                            <td>{{producto.Energia}}</td>
+                                                            <td>{{producto.Grasa}}</td>
+                                                            <td>{{producto.Sodio}}</td>
+                                                            <td>{{producto.Carbohidratos}}</td>
+                                                            <td>{{producto.Proteina}}</td>
+                                                            <td>{{producto.Vitaminas}}</td>
+                                                            <td>{{producto.Calcio}}</td>
+                                                            <td>{{producto.Hierro}}</td>
+
+
+                                                            <td>
+                                                                <button class="btn-icon" placement="top"
+                                                                    ngbTooltip="Eliminar"
+                                                                    (click)="deleteAlmuerzo(producto)">
+                                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                                </button>
+
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="row">
+                                            <label>Merienda de la Tarde</label>
+                                        </div>
+                                        <div class="row">
+                                            <div class=table-wrapper>
+                                                <table class="table table-hover bike-table">
+                                                    <thead>
+                                                        <!-- Columnas para los datos mostrados de los clientes-->
+                                                        <tr>
+                                                            <th>Código de Barras</th>
+                                                            <th>Descripción</th>
+                                                            <th>Porción(g/ml)</th>
+                                                            <th>Energía(Kcal)</th>
+                                                            <th>Grasa(g)</th>
+                                                            <th>Sodio(mg)</th>
+                                                            <th>Carbohidratos(g)</th>
+                                                            <th>Proteína(g)</th>
+                                                            <th>Vitaminas</th>
+                                                            <th>Calcio(mg)</th>
+                                                            <th>Hierro(mg)</th>
+
+
+                                                            <th colspan="2"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let producto of this.selectedMeriendaTarde">
+                                                            <!-- ngFor repite una sección del código HTML, por cada cliente hace una nueva fila en la tabla-->
+                                                            <td>{{producto.codigoDeBarras}}</td>
+                                                            <td>{{producto.Descripcion}}</td>
+                                                            <td>{{producto.Porcion}}</td>
+                                                            <td>{{producto.Energia}}</td>
+                                                            <td>{{producto.Grasa}}</td>
+                                                            <td>{{producto.Sodio}}</td>
+                                                            <td>{{producto.Carbohidratos}}</td>
+                                                            <td>{{producto.Proteina}}</td>
+                                                            <td>{{producto.Vitaminas}}</td>
+                                                            <td>{{producto.Calcio}}</td>
+                                                            <td>{{producto.Hierro}}</td>
+
+
+                                                            <td>
+                                                                <button class="btn-icon" placement="top"
+                                                                    ngbTooltip="Eliminar"
+                                                                    (click)="deleteMeriendaTarde(producto)">
+                                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                                </button>
+
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="row">
+                                            <label>Cena</label>
+                                        </div>
+                                        <div class="row">
+                                            <div class=table-wrapper>
+                                                <table class="table table-hover bike-table">
+                                                    <thead>
+                                                        <!-- Columnas para los datos mostrados de los clientes-->
+                                                        <tr>
+                                                            <th>Código de Barras</th>
+                                                            <th>Descripción</th>
+                                                            <th>Porción(g/ml)</th>
+                                                            <th>Energía(Kcal)</th>
+                                                            <th>Grasa(g)</th>
+                                                            <th>Sodio(mg)</th>
+                                                            <th>Carbohidratos(g)</th>
+                                                            <th>Proteína(g)</th>
+                                                            <th>Vitaminas</th>
+                                                            <th>Calcio(mg)</th>
+                                                            <th>Hierro(mg)</th>
+
+
+                                                            <th colspan="2"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let producto of this.selectedCena">
+                                                            <!-- ngFor repite una sección del código HTML, por cada cliente hace una nueva fila en la tabla-->
+                                                            <td>{{producto.codigoDeBarras}}</td>
+                                                            <td>{{producto.Descripcion}}</td>
+                                                            <td>{{producto.Porcion}}</td>
+                                                            <td>{{producto.Energia}}</td>
+                                                            <td>{{producto.Grasa}}</td>
+                                                            <td>{{producto.Sodio}}</td>
+                                                            <td>{{producto.Carbohidratos}}</td>
+                                                            <td>{{producto.Proteina}}</td>
+                                                            <td>{{producto.Vitaminas}}</td>
+                                                            <td>{{producto.Calcio}}</td>
+                                                            <td>{{producto.Hierro}}</td>
+
+
+                                                            <td>
+                                                                <button class="btn-icon" placement="top"
+                                                                    ngbTooltip="Eliminar"
+                                                                    (click)="deleteCena(producto)">
+                                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                                </button>
+
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Total de Calorías</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>{{caloriasTotales}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> <!-- card.// -->
+                        <br />
+                        <br />
+                    </div>
+                </div>
+            </article>
+        </div> <!-- card.// -->
+    </aside> <!-- col.// -->
+</div> <!-- row.// -->
+
+<!--container end.//-->
