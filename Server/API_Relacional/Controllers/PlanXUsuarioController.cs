@@ -1,22 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
+﻿using API_Relacional.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
-
-
-using System.Configuration;
-using System.Data;
-using Microsoft.IdentityModel.Protocols;
-using Microsoft.Extensions.Configuration;
-using API_Relacional.Models;
 
 namespace API_Relacional.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HablaController : ControllerBase
+    public class PlanXUsuarioController : ControllerBase
     {
         private string cadenaDeConexion = "SQLServerConnection"; //hace referencia a la cadena de conexion en appsettings.json
         private readonly IConfiguration _configuration;
@@ -24,7 +21,7 @@ namespace API_Relacional.Controllers
         Consultas consulta = new Consultas();
 
         //el metodo constructor recibe como parametro una instancia de la interface Iconfiguration que permite la representacion de un conjunto de propiedades clave/valor
-        public HablaController(IConfiguration configuration)
+        public PlanXUsuarioController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
