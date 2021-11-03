@@ -1,0 +1,55 @@
+<article class="card-body">
+    <div class="card">
+        <article class="card-body">
+            <h4 class="card-title mb-4 mt-1">Registro de planes</h4>
+            <hr>
+            <div class="row">
+                <!-- table -->
+               
+                <div class="col-md-8">
+                    <!-- Employee data -->
+                    <div class="card">
+
+                        <div class="card-body">
+                            <div>
+
+
+                                <div class=table-wrapper>
+                                    <table class="table table-hover bike-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Paciente</th>
+                                                
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let paciente of this.pacientes">
+
+                                                <td>
+                                                    {{paciente.Nombre}} {{paciente.Apellido1}} {{paciente.Apellido2}}</td>
+
+                                                <th scope="row">
+                                                    <button (click)="view(paciente)"
+                                                        class="btn-icon" placement="top"
+                                                        ngbTooltip="Ver">
+                                                        <i class="fa fa-trash"
+                                                            aria-hidden="true"></i>
+                                                    </button>
+                                                </th>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> <!-- card.// -->
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </article>
+    </div> <!-- card.// -->
+</article>

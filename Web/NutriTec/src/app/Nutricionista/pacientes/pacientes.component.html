@@ -4,88 +4,353 @@
             <article class="card-body">
                 <h4 class="card-title mb-4 mt-1">Administración de Pacientes</h4>
                 <hr>
-                <div class="row">
-                    <div class="col-md-3">
-                            <label>Nombre del Cliente:</label>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="col form-group">
-                            <div class="ng-autocomplete">
-                                <ng-autocomplete [data]="clientes" [searchKeyword]="keyword" (selected)='selectCliente($event)'
-                                  [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate" placeHolder="Clientes">
-                                </ng-autocomplete>
-                                <ng-template #itemTemplate let-item>
-                                  <a [innerHTML]="item.Nombre + item.Apellido1 + item.Apellido2"></a>
-                                </ng-template>
-                                <ng-template #notFoundTemplate let-notFound>
-                                  <div [innerHTML]="notFound"></div>
-                                </ng-template>
-                              </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <!-- table -->
-                   
-                    <div class="col-md-12">
-                        <!-- Employee data -->
-                        <div class="card">
-
-                            <div class="card-body">
-                                <div>
-                      
-
-                                    <div class=table-wrapper>
-                                        <table class="table table-hover bike-table">
-                                            <thead>
-                                                <tr>
-                                                    
-                                                    <th>ID</th>
-                                                    <th>Nombre</th>
-                                                    <th>Apellidos</th>
-                                                    <th>Edad</th>
-                                                    <th>País</th>
-                                                    <th>Correo</th>
-                                                    <th>Peso Actual</th>
-                                                    <th>Peso Meta</th>
-                                                    
-                                                 
-                                                    
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                            
-                                                    <td>{{selectedCliente.Id}}</td>
-                                                    <td>{{selectedCliente.Nombre}}</td>
-                                                    <td>{{selectedCliente.Apellido1}} {{selectedCliente.Apellido2}}</td>
-                                                    <td>{{selectedCliente.Edad}}</td>
-                                                    <td>{{selectedCliente.Pais}}</td>
-                                                    <td>{{selectedCliente.Correo}}</td>
-                                                    <td>{{selectedCliente.PesoActual}}</td>
-                                                    <td>{{selectedCliente.Peso}}</td>
-                                                  
-    
-                                                    
-                                                    <th scope="row">
-                                                        <button (click)="add(selectedCliente.Id)" class="btn-icon" placement="top"
-                                                            ngbTooltip="Agregar">
-                                                            <i class="fa fa-plus" aria-hidden="true"></i>
-                                                        </button>
-                                                    </th>
-                                                </tr>
-                                            </tbody>
-
-                                        </table>
+                <div class="d-flex">
+                    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+                        <li ngbNavItem="top">
+                            <a ngbNavLink>Agregar Paciente</a>
+                            <ng-template ngbNavContent>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Nombre del Cliente:</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="col form-group">
+                                            <div class="ng-autocomplete">
+                                                <ng-autocomplete [data]="clientes" [searchKeyword]="keyword"
+                                                    (selected)='selectCliente($event)' [itemTemplate]="itemTemplate"
+                                                    [notFoundTemplate]="notFoundTemplate" placeHolder="Clientes">
+                                                </ng-autocomplete>
+                                                <ng-template #itemTemplate let-item>
+                                                    <a [innerHTML]="item.Nombre + item.Apellido1 + item.Apellido2"></a>
+                                                </ng-template>
+                                                <ng-template #notFoundTemplate let-notFound>
+                                                    <div [innerHTML]="notFound"></div>
+                                                </ng-template>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="row">
+                                    <!-- table -->
 
-                        </div> <!-- card.// -->
-                        <br />
-                        <br />
-                    </div>
+                                    <div class="col-md-12">
+                                        <!-- Employee data -->
+                                        <div class="card">
+
+                                            <div class="card-body">
+                                                <div>
+
+
+                                                    <div class=table-wrapper>
+                                                        <table class="table table-hover bike-table">
+                                                            <thead>
+                                                                <tr>
+
+                                                                    <th>ID</th>
+                                                                    <th>Nombre</th>
+                                                                    <th>Apellidos</th>
+                                                                    <th>Edad</th>
+                                                                    <th>País</th>
+                                                                    <th>Correo</th>
+                                                                    <th>Peso Actual</th>
+                                                                    <th>Peso Meta</th>
+
+
+
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+
+                                                                    <td>{{selectedCliente.Id}}</td>
+                                                                    <td>{{selectedCliente.Nombre}}</td>
+                                                                    <td>{{selectedCliente.Apellido1}}
+                                                                        {{selectedCliente.Apellido2}}</td>
+                                                                    <td>{{selectedCliente.Edad}}</td>
+                                                                    <td>{{selectedCliente.Pais}}</td>
+                                                                    <td>{{selectedCliente.Correo}}</td>
+                                                                    <td>{{selectedCliente.PesoActual}}</td>
+                                                                    <td>{{selectedCliente.Peso}}</td>
+
+
+
+                                                                    <th scope="row">
+                                                                        <button (click)="add(selectedCliente.Id)"
+                                                                            class="btn-icon" placement="top"
+                                                                            ngbTooltip="Agregar">
+                                                                            <i class="fa fa-plus"
+                                                                                aria-hidden="true"></i>
+                                                                        </button>
+                                                                    </th>
+                                                                </tr>
+                                                            </tbody>
+
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div> <!-- card.// -->
+                                        <br />
+                                        <br />
+                                    </div>
+                                </div>
+
+                            </ng-template>
+                        </li>
+                        <li ngbNavItem="middle">
+                            <a ngbNavLink>Asignar Planes</a>
+                            <ng-template ngbNavContent>
+                                <article class="card-body">
+                                    <div class="card">
+                                        <article class="card-body">
+                                            <h4 class="card-title mb-4 mt-1">Registro de planes</h4>
+                                            <hr>
+                                            <div class="row">
+                                                <!-- table -->
+                                                <div class="col-md-4 table-responsive">
+                                                    <div class="card" style="margin-bottom: 10px;">
+                                                        <article class="card-body">
+                                                            <div class="form">
+                                                                <form #form autocomplete="off">
+                                                                    <div class="form-row">
+
+
+                                                                        <div class="col form-group">
+                                                                            <label>Cliente: </label>
+                                                                        </div>
+                                                                        <div class="col form-group">
+                                                                            <div class="ng-autocomplete">
+                                                                                <ng-autocomplete [data]="pacientes"
+                                                                                    [searchKeyword]="keyword"
+                                                                                    (selected)='selectPaciente($event)'
+                                                                                    [itemTemplate]="itemTemplate"
+                                                                                    [notFoundTemplate]="notFoundTemplate"
+                                                                                    placeHolder="Productos">
+                                                                                </ng-autocomplete>
+                                                                                <ng-template #itemTemplate let-item>
+                                                                                    <a [innerHTML]="item.Nombre + item.Apellido1 + item.Apellido2"></a>
+                                                                                </ng-template>
+                                                                                <ng-template #notFoundTemplate
+                                                                                    let-notFound>
+                                                                                    <div [innerHTML]="notFound"></div>
+                                                                                </ng-template>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-row">
+
+
+                                                                        <div class="col form-group">
+                                                                            <label>Planes: </label>
+                                                                        </div>
+                                                                        <div class="col form-group">
+                                                                            <div class="ng-autocomplete">
+                                                                                <ng-autocomplete [data]="planes"
+                                                                                    [searchKeyword]="keyword"
+                                                                                    (selected)='selectPlan($event)'
+                                                                                    [itemTemplate]="itemTemplate"
+                                                                                    [notFoundTemplate]="notFoundTemplate"
+                                                                                    placeHolder="planes">
+                                                                                </ng-autocomplete>
+                                                                                <ng-template #itemTemplate let-item>
+                                                                                    <a [innerHTML]="item.nombre"></a>
+                                                                                </ng-template>
+                                                                                <ng-template #notFoundTemplate
+                                                                                    let-notFound>
+                                                                                    <div [innerHTML]="notFound"></div>
+                                                                                </ng-template>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-row">
+                                                                        <div class="col form-group">
+                                                                            <label>Fecha de Inicio: </label>
+                                                                        </div>
+                                                                        <div class="col form-group">
+                                                                            <input class="form-control" type="text"
+                                                                                mwlFlatpickr
+                                                                                [(ngModel)]="newPlanAsignado.fechaInicio"
+                                                                                (ngModelChange)="refresh.next()"
+                                                                                [altInput]="true"
+                                                                                [convertModelValue]="true"
+                                                                                dateFormat="Y-m-dTH:i"
+                                                                                altFormat="F j, Y H:i"
+                                                                                placeholder="Fecha"
+                                                                                [ngModelOptions]="{standalone: true}" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-row">
+                                                                        <div class="col form-group">
+                                                                            <label>Fecha Final: </label>
+                                                                        </div>
+                                                                        <div class="col form-group">
+                                                                            <input class="form-control" type="text"
+                                                                                mwlFlatpickr
+                                                                                [(ngModel)]="newPlanAsignado.fechaFinal"
+                                                                                (ngModelChange)="refresh.next()"
+                                                                                [altInput]="true"
+                                                                                [convertModelValue]="true"
+                                                                                dateFormat="Y-m-dTH:i"
+                                                                                altFormat="F j, Y H:i"
+                                                                                placeholder="Fecha"
+                                                                                [ngModelOptions]="{standalone: true}" />
+                                                                        </div>
+                                                                    </div>
+
+
+
+                                                                    <div class="col form-groupform-group">
+                                                                        <button class="btn btn-primary btn-block"
+                                                                            (click)="addPlan()">Agregar</button>
+                                                                    </div>
+
+                                                                </form>
+                                                            </div>
+                                                        </article>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <!-- Employee data -->
+                                                    <div class="card">
+
+                                                        <div class="card-body">
+                                                            <div>
+
+
+                                                                <div class=table-wrapper>
+                                                                    <table class="table table-hover bike-table">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Paciente</th>
+                                                                                <th>Plan</th>
+                                                                                <th>Fecha</th>
+
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr *ngFor="let plan of this.planesAsignados">
+
+                                                                                <td *ngIf='editingID != plan.idPlan'>
+                                                                                    {{plan.idPaciente}}</td>
+                                                                                <td *ngIf='editingID == plan.idPlan'>
+                                                                                    {{plan.idPaciente}}</td>
+
+                                                                                <td *ngIf='editingID != plan.idPlan'>
+                                                                                    {{plan.idPlan}}</td>
+                                                                                <td *ngIf='editingID == plan.idPlan'>
+                                                                                    <input
+                                                                                        value="{{selectedPlanAsignado.idPlan}}"
+                                                                                        [(ngModel)]="selectedPlanAsignado.idPlan"
+                                                                                        class="form-control">
+                                                                                </td>
+
+                                                                              
+
+
+                                                                                <td *ngIf='editingID != plan.idPlan'>
+                                                                                    {{plan.fechaInicio}}</td>
+                                                                                <td *ngIf='editingID == plan.idPlan'>
+                                                                                    <input class="form-control"
+                                                                                        type="text" mwlFlatpickr
+                                                                                        [(ngModel)]="selectedPlanAsignado.fechaInicio"
+                                                                                        (ngModelChange)="refresh.next()"
+                                                                                        [altInput]="true"
+                                                                                        [convertModelValue]="true"
+                                                                                        dateFormat="Y-m-dTH:i"
+                                                                                        altFormat="F j, Y H:i"
+                                                                                        placeholder="Fecha de Inicio"
+                                                                                        [enableTime]="true"
+                                                                                        [ngModelOptions]="{standalone: true}" />
+                                                                                </td>
+
+
+
+
+                                                                                <td *ngIf='editingID != plan.idPlan'>
+                                                                                    {{plan.fechaFinal}}</td>
+                                                                                <td *ngIf='editingID == plan.idPlan'>
+                                                                                    <input class="form-control"
+                                                                                        type="text" mwlFlatpickr
+                                                                                        [(ngModel)]="selectedPlanAsignado.fechaFinal"
+                                                                                        (ngModelChange)="refresh.next()"
+                                                                                        [altInput]="true"
+                                                                                        [convertModelValue]="true"
+                                                                                        dateFormat="Y-m-dTH:i"
+                                                                                        altFormat="F j, Y H:i"
+                                                                                        placeholder="Fecha Final"
+                                                                                        [enableTime]="true"
+                                                                                        [ngModelOptions]="{standalone: true}" />
+                                                                                </td>
+
+
+
+
+
+
+                                                                                <th scope="row">
+                                                                                    <button
+                                                                                        *ngIf='editingID != plan.idPlan'
+                                                                                        (click)="edit(plan)"
+                                                                                        class="btn-icon" placement="top"
+                                                                                        ngbTooltip="Editar">
+                                                                                        <i class="fa fa-edit"
+                                                                                            aria-hidden="true"></i>
+                                                                                    </button>
+                                                                                    <button
+                                                                                        *ngIf='editingID == plan.idPlan'
+                                                                                        (click)="submit()"
+                                                                                        class="btn-icon" placement="top"
+                                                                                        ngbTooltip="Aceptar">
+                                                                                        <i class="fa fa-check"
+                                                                                            aria-hidden="true"></i>
+                                                                                    </button>
+                                                                                </th>
+                                                                                <th scope="row">
+                                                                                    <button (click)="delete(plan)"
+                                                                                        class="btn-icon" placement="top"
+                                                                                        ngbTooltip="Eliminar">
+                                                                                        <i class="fa fa-trash"
+                                                                                            aria-hidden="true"></i>
+                                                                                    </button>
+                                                                                </th>
+                                                                            </tr>
+                                                                        </tbody>
+
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div> <!-- card.// -->
+                                                    <br />
+                                                    <br />
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div> <!-- card.// -->
+                                </article>
+                            </ng-template>
+                        </li>
+
+                        <li ngbNavItem="middle">
+                            <a ngbNavLink>Seguimiento de Pacientes</a>
+                            <ng-template ngbNavContent>
+                               <app-seguimiento-paciente>
+
+                               </app-seguimiento-paciente>
+                            </ng-template>
+                        </li>
+
+                    </ul>
+
+                    <div [ngbNavOutlet]="nav" class="ml-4"></div>
                 </div>
+
             </article>
         </div> <!-- card.// -->
     </aside> <!-- col.// -->

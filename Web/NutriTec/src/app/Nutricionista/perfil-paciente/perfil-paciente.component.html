@@ -1,0 +1,65 @@
+<div class=" d-flex justify-content-center">
+    <aside class="col-lg" style="margin: 5% 5% 5% 5%;">
+        <div class="card">
+            <article class="card-body">
+                <h4 class="card-title mb-4 mt-1">Registro de Consumo</h4>
+                <hr>
+                <div class="row">
+
+                    <div class="col-md-8">
+                        <!-- Employee data -->
+                        <div class="card">
+
+                            <div class="card-body">
+                                <div>
+
+
+                                    <div class=table-wrapper>
+                                        <table class="table table-hover bike-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Tiempo de Comida</th>
+                                                    <th>Platillo</th>
+                                                    <th>Fecha</th>
+
+
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let consumo of this.consumos">
+
+                                                    <td *ngIf='editingID != consumo.id'>{{consumo.id}}</td>
+
+
+                                                    <td *ngIf='editingID != consumo.id'>{{consumo.tiempo}}</td>
+
+
+                                                    <td *ngIf='editingID != consumo.id'>{{consumo.platillo}}</td>
+
+
+
+                                                    <td *ngIf='editingID != consumo.id'>{{consumo.fecha}}</td>
+
+
+
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> <!-- card.// -->
+                        <br />
+                        <br />
+                    </div>
+                </div>
+            </article>
+        </div> <!-- card.// -->
+    </aside> <!-- col.// -->
+</div> <!-- row.// -->
+
+<!--container end.//-->

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Cliente } from 'src/app/Models/cliente.model';
+import { PlanAsignado } from 'src/app/Models/plan-asignado.model';
+import { Plan } from 'src/app/Models/plan.model';
 import { ClienteManagementService } from 'src/app/Services/cliente-management.service';
 
 @Component({
@@ -11,6 +14,24 @@ export class PacientesComponent implements OnInit {
 
     keyword = "Nombre"
     clientes: Cliente[]=[]
+    pacientes: Cliente[]=[]
+    planes: Plan[]=[]
+    active = 1
+    editingID: number = 0
+    refresh: Subject<any> = new Subject();
+    selectedPlanAsignado: PlanAsignado={
+      idPaciente: 0,
+      idPlan: 0,
+      fechaInicio: new Date(),
+      fechaFinal: new Date()
+    }
+    planesAsignados: PlanAsignado[]=[]
+    newPlanAsignado: PlanAsignado={
+      idPaciente: 0,
+      idPlan: 0,
+      fechaInicio: new Date(),
+      fechaFinal: new Date()
+    }
     selectedCliente: Cliente={
       Nombre: "",
       Apellido1: "",
@@ -123,6 +144,31 @@ export class PacientesComponent implements OnInit {
   }
 
   add(id:number){
+
+  }
+
+  addPlan(){
+    
+  }
+
+  selectPaciente(paciente: Cliente){
+    this.newPlanAsignado.idPaciente= paciente.Id
+  }
+
+  selectPlan(plan: Plan){
+    this.newPlanAsignado.idPlan= plan.id
+  }
+
+  edit(plan: PlanAsignado){
+    this.selectedPlanAsignado=plan
+    this.editingID=plan.idPlan
+  }
+
+  submit(){
+
+  }
+
+  delete(PlanAsignado: PlanAsignado){
 
   }
 

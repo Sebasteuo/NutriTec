@@ -26,6 +26,8 @@ import { NavAdminComponent } from './Others/navigation/nav-admin/nav-admin.compo
 import { NavClienteComponent } from './Others/navigation/nav-cliente/nav-cliente.component';
 import { NavNutricionistaComponent } from './Others/navigation/nav-nutricionista/nav-nutricionista.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { SeguimientoPacienteComponent } from './Nutricionista/seguimiento-paciente/seguimiento-paciente.component';
+import { PerfilPacienteComponent } from './Nutricionista/perfil-paciente/perfil-paciente.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
     RegistroClienteComponent,
     RegistroNutricionistaComponent,
     RegistroComponent,
-    ProductosComponent
+    ProductosComponent,
+    SeguimientoPacienteComponent,
+    PerfilPacienteComponent
   ],
   imports: [
     BrowserModule,

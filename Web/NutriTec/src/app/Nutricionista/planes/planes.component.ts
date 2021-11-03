@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Plan } from 'src/app/Models/plan.model';
 import { Producto } from 'src/app/Models/producto.model';
 import { ProductManagementService } from 'src/app/Services/product-management.service';
 
@@ -16,6 +17,16 @@ export class PlanesComponent implements OnInit {
   selectedAlmuerzo: Producto[]=[]
   selectedCena: Producto[]=[]
   keyword="Nombre"
+  newPlan: Plan= {
+    id: 0,
+    idNutricionista: 0,
+    desayuno: [],
+    meriendaMatutina: [],
+    almuerzo: [],
+    meriendaTarde: [],
+    cena: [],
+    nombre: ""
+  }
   caloriasTotales: number = 0
   constructor(private productoService: ProductManagementService) { }
 
