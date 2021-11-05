@@ -58,7 +58,7 @@ namespace API_Relacional.Controllers
 
         // POST api/<HablaController>
         [HttpPost]
-        public JsonResult Post(X x)
+        public JsonResult Post(Puede_Tener x)
         {
             string query = @"
                 insert into x(id, texto)
@@ -91,7 +91,7 @@ namespace API_Relacional.Controllers
 
         // PUT api/<HablaController>/5
         [HttpPut("{id}")]
-        public JsonResult Put(X x)
+        public JsonResult Put(Puede_Tener x)
         {
             string query = @"
                 UPDATE x

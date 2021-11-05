@@ -8,6 +8,6 @@ namespace API_Relacional.Models
     public class ProductoXReceta
     {
         public int idreceta { get; set; }
-        public int codigobarras { get; set; }
+        public int codigodbarras { get; set; }
     }
 }

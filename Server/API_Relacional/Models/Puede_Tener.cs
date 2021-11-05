@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace API_Relacional.Models
 {
-    public class X
+    public class Puede_Tener
     {
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Key]
-        public int id { get; set; }
-        public string texto { get; set; }
+        public int codigonutricionista { get; set; }
+        public int cedula { get; set; }
+        public int chatid { get; set; }
     }
 }

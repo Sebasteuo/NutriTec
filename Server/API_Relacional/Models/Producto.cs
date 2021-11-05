@@ -9,7 +9,8 @@ namespace API_Relacional.Models
     public class Producto
     {
         [Key]
-        public int codigobarras { get; set; }
+        public int codigodbarras { get; set; }
+        public string nombre { get; set; }
         public string descripcion { get; set; }
         public string porcion { get; set; }
         public string energia { get; set; }
@@ -17,7 +18,6 @@ namespace API_Relacional.Models
         public string sodio { get; set; }
         public string carbohidratos { get; set; }
         public string proteina { get; set; }
-        public string vitaminas { get; set; }
         public string hierro { get; set; }
         public string calcio { get; set; }
         public Boolean aprobado { get; set; }

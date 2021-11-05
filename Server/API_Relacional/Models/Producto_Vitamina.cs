@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace API_Relacional.Models
 {
-    public class UsuarioXNutricionista
+    public class Producto_Vitamina
     {
-        public int codigonutricionista { get; set; }
-        public int cedula { get; set; }
+        public int codigodbarras { get; set; }
+        public string vitaminas { get; set; }
     }
 }
