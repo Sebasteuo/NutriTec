@@ -13,7 +13,7 @@ namespace API_Relacional.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PlanXNutricionistaController : ControllerBase
+    public class Producto_VitaminaController : ControllerBase
     {
         private string cadenaDeConexion = "SQLServerConnection"; //hace referencia a la cadena de conexion en appsettings.json
         private readonly IConfiguration _configuration;
@@ -21,7 +21,7 @@ namespace API_Relacional.Controllers
         Consultas consulta = new Consultas();
 
         //el metodo constructor recibe como parametro una instancia de la interface Iconfiguration que permite la representacion de un conjunto de propiedades clave/valor
-        public PlanXNutricionistaController(IConfiguration configuration)
+        public Producto_VitaminaController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
