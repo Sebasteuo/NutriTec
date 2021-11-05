@@ -31,10 +31,10 @@ namespace API_Relacional.Controllers
         public JsonResult Get()
         {
             string query = @"
-                SELECT * 
-                FROM x
+                SELECT cedula, zona, medida, fecharegistro 
+                FROM registramedidas
                 ";
-
+ 
             return consulta.get(query, _configuration, cadenaDeConexion);
 
         }
@@ -44,9 +44,9 @@ namespace API_Relacional.Controllers
         public JsonResult Get(int id)
         {
             string query = @"
-                SELECT * 
-                FROM x
-                WHERE id=" + id +
+                SELECT cedula, zona, medida, fecharegistro 
+                FROM registramedidas
+                WHERE cedula=" + id +
                 "";
 
             return consulta.get(query, _configuration, cadenaDeConexion);
@@ -55,11 +55,11 @@ namespace API_Relacional.Controllers
 
         // POST api/<HablaController>
         [HttpPost]
-        public JsonResult Post(Puede_Tener x)
+        public JsonResult Post(RegistraMedidas x)
         {
             string query = @"
-                insert into x(id, texto)
-                values (@id, @texto)";
+                insert into registramedidas(cedula, zona, medida, fecharegistro)
+                values (@cedula, @zona, @medida, @fecharegistro)";
 
             string sqlDataSource = _configuration.GetConnectionString(cadenaDeConexion);//La fuente de los datos se obtiene de la cadena de conexion
             SqlDataReader reader;
@@ -72,11 +72,17 @@ namespace API_Relacional.Controllers
                 {
 
                     //Se agregan los valores y el tipo de dato respectivo
-                    cmd.Parameters.Add("@id", SqlDbType.Int);
-                    cmd.Parameters["@id"].Value = x.id;
+                    cmd.Parameters.Add("@cedula", SqlDbType.Int);
+                    cmd.Parameters["@cedula"].Value = x.cedula;
 
-                    cmd.Parameters.Add("@texto", SqlDbType.NVarChar);
-                    cmd.Parameters["@texto"].Value = x.texto;
+                    cmd.Parameters.Add("@zona", SqlDbType.NVarChar);
+                    cmd.Parameters["@zona"].Value = x.zona;
+
+                    cmd.Parameters.Add("@medida", SqlDbType.NVarChar);
+                    cmd.Parameters["@medida"].Value = x.medida;
+
+                    cmd.Parameters.Add("@fecharegistro", SqlDbType.NVarChar);
+                    cmd.Parameters["@fecharegistro"].Value = x.fecharegistro;
 
                     reader = cmd.ExecuteReader();//El lector ejecuta el comando
                     reader.Close(); //Se cierra  el lector
@@ -88,13 +94,15 @@ namespace API_Relacional.Controllers
 
         // PUT api/<HablaController>/5
         [HttpPut("{id}")]
-        public JsonResult Put(Puede_Tener x)
+        public JsonResult Put(RegistraMedidas x)
         {
             string query = @"
                 UPDATE x
-                SET id = @id,
-                texto = @texto
-                WHERE id = @id";
+                SET cedula = @cedula, 
+                    zona = @zona, 
+                    medida = @medida, 
+                    fecharegistro = @fecharegistro
+                WHERE cedula = @cedula";
 
             string sqlDataSource = _configuration.GetConnectionString(cadenaDeConexion);//La fuente de los datos se obtiene de la cadena de conexion
             SqlDataReader reader;
@@ -106,11 +114,17 @@ namespace API_Relacional.Controllers
                 using (SqlCommand cmd = new SqlCommand(query, connection))//El comando a ejecutar se hace con un query y la conexion
                 {
                     //Se agregan los valores y el tipo de dato respectivo
-                    cmd.Parameters.Add("@id", SqlDbType.Int);
-                    cmd.Parameters["@id"].Value = x.id;
+                    cmd.Parameters.Add("@cedula", SqlDbType.Int);
+                    cmd.Parameters["@cedula"].Value = x.cedula;
 
-                    cmd.Parameters.Add("@texto", SqlDbType.NVarChar);
-                    cmd.Parameters["@texto"].Value = x.texto;
+                    cmd.Parameters.Add("@zona", SqlDbType.NVarChar);
+                    cmd.Parameters["@zona"].Value = x.zona;
+
+                    cmd.Parameters.Add("@medida", SqlDbType.NVarChar);
+                    cmd.Parameters["@medida"].Value = x.medida;
+
+                    cmd.Parameters.Add("@fecharegistro", SqlDbType.NVarChar);
+                    cmd.Parameters["@fecharegistro"].Value = x.fecharegistro;
 
                     reader = cmd.ExecuteReader();
                     reader.Close(); //Se cierra  el lector
@@ -125,8 +139,8 @@ namespace API_Relacional.Controllers
         public JsonResult Delete(int id)
         {
             string query = @"
-                delete from x
-                where id =" + id;
+                delete from registramedidas
+                where cedula =" + id;
 
             return consulta.delete(query, _configuration, cadenaDeConexion);
         }

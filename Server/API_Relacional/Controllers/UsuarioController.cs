@@ -31,8 +31,8 @@ namespace API_Relacional.Controllers
         public JsonResult Get()
         {
             string query = @"
-                SELECT * 
-                FROM x
+                SELECT cedula, nombre1, nombre2, apellido1, apellido2, fechanacimiento, peso, altura, pais, correo, password, porcentajemusculo, porcentajegrasa 
+                FROM usuario
                 ";
 
             return consulta.get(query, _configuration, cadenaDeConexion);
@@ -44,9 +44,9 @@ namespace API_Relacional.Controllers
         public JsonResult Get(int id)
         {
             string query = @"
-                SELECT * 
-                FROM x
-                WHERE id=" + id +
+                SELECT cedula, nombre1, nombre2, apellido1, apellido2, fechanacimiento, peso, altura, pais, correo, password, porcentajemusculo, porcentajegrasa 
+                FROM usuario
+                WHERE cedula=" + id +
                 "";
 
             return consulta.get(query, _configuration, cadenaDeConexion);
@@ -55,11 +55,11 @@ namespace API_Relacional.Controllers
 
         // POST api/<HablaController>
         [HttpPost]
-        public JsonResult Post(Puede_Tener x)
+        public JsonResult Post(Usuario x)
         {
             string query = @"
-                insert into x(id, texto)
-                values (@id, @texto)";
+                insert into usuario(cedula, nombre1, nombre2, apellido1, apellido2, fechanacimiento, peso, altura, pais, correo, password, porcentajemusculo, porcentajegrasa)
+                values (@cedula, @nombre1, @nombre2, @apellido1, @apellido2, @fechanacimiento, @peso, @altura, @pais, @correo, @password, @porcentajemusculo, @porcentajegrasa)";
 
             string sqlDataSource = _configuration.GetConnectionString(cadenaDeConexion);//La fuente de los datos se obtiene de la cadena de conexion
             SqlDataReader reader;
@@ -72,11 +72,44 @@ namespace API_Relacional.Controllers
                 {
 
                     //Se agregan los valores y el tipo de dato respectivo
-                    cmd.Parameters.Add("@id", SqlDbType.Int);
-                    cmd.Parameters["@id"].Value = x.id;
+                    cmd.Parameters.Add("@cedula", SqlDbType.Int);
+                    cmd.Parameters["@cedula"].Value = x.cedula;
 
-                    cmd.Parameters.Add("@texto", SqlDbType.NVarChar);
-                    cmd.Parameters["@texto"].Value = x.texto;
+                    cmd.Parameters.Add("@nombre1", SqlDbType.NVarChar);
+                    cmd.Parameters["@nombre1"].Value = x.nombre1;
+
+                    cmd.Parameters.Add("@nombre2", SqlDbType.NVarChar);
+                    cmd.Parameters["@nombre2"].Value = x.nombre2;
+
+                    cmd.Parameters.Add("@apellido1", SqlDbType.NVarChar);
+                    cmd.Parameters["@apellido1"].Value = x.apellido1;
+
+                    cmd.Parameters.Add("@apellido2", SqlDbType.NVarChar);
+                    cmd.Parameters["@apellido2"].Value = x.apellido2;
+
+                    cmd.Parameters.Add("@fechanacimiento", SqlDbType.NVarChar);
+                    cmd.Parameters["@fechanacimiento"].Value = x.fechanacimiento;
+
+                    cmd.Parameters.Add("@peso", SqlDbType.NVarChar);
+                    cmd.Parameters["@peso"].Value = x.peso;
+
+                    cmd.Parameters.Add("@altura", SqlDbType.NVarChar);
+                    cmd.Parameters["@altura"].Value = x.altura;
+
+                    cmd.Parameters.Add("@pais", SqlDbType.NVarChar);
+                    cmd.Parameters["@pais"].Value = x.pais;
+
+                    cmd.Parameters.Add("@correo", SqlDbType.NVarChar);
+                    cmd.Parameters["@correo"].Value = x.correo;
+
+                    cmd.Parameters.Add("@password", SqlDbType.NVarChar);
+                    cmd.Parameters["@password"].Value = x.password;
+
+                    cmd.Parameters.Add("@porcentajemusculo", SqlDbType.NVarChar);
+                    cmd.Parameters["@porcentajemusculo"].Value = x.porcentajemusculo;
+
+                    cmd.Parameters.Add("@porcentajegrasa", SqlDbType.NVarChar);
+                    cmd.Parameters["@porcentajegrasa"].Value = x.porcentajegrasa;
 
                     reader = cmd.ExecuteReader();//El lector ejecuta el comando
                     reader.Close(); //Se cierra  el lector
@@ -88,13 +121,24 @@ namespace API_Relacional.Controllers
 
         // PUT api/<HablaController>/5
         [HttpPut("{id}")]
-        public JsonResult Put(Puede_Tener x)
+        public JsonResult Put(Usuario x)
         {
             string query = @"
-                UPDATE x
-                SET id = @id,
-                texto = @texto
-                WHERE id = @id";
+                UPDATE usuario
+                SET cedula = @cedula, 
+                    nombre1 = @nombre1, 
+                    nombre2 = @nombre2, 
+                    apellido1 = @apellido1, 
+                    apellido2 = @apellido2, 
+                    fechanacimiento = @fechanacimiento, 
+                    peso = @peso, 
+                    altura = @altura, 
+                    pais = @pais, 
+                    correo = @correo, 
+                    password = @password, 
+                    porcentajemusculo = @porcentajemusculo, 
+                    porcentajegrasa = @porcentajegrasa
+                WHERE cedula = @cedula";
 
             string sqlDataSource = _configuration.GetConnectionString(cadenaDeConexion);//La fuente de los datos se obtiene de la cadena de conexion
             SqlDataReader reader;
@@ -106,11 +150,44 @@ namespace API_Relacional.Controllers
                 using (SqlCommand cmd = new SqlCommand(query, connection))//El comando a ejecutar se hace con un query y la conexion
                 {
                     //Se agregan los valores y el tipo de dato respectivo
-                    cmd.Parameters.Add("@id", SqlDbType.Int);
-                    cmd.Parameters["@id"].Value = x.id;
+                    cmd.Parameters.Add("@cedula", SqlDbType.Int);
+                    cmd.Parameters["@cedula"].Value = x.cedula;
 
-                    cmd.Parameters.Add("@texto", SqlDbType.NVarChar);
-                    cmd.Parameters["@texto"].Value = x.texto;
+                    cmd.Parameters.Add("@nombre1", SqlDbType.NVarChar);
+                    cmd.Parameters["@nombre1"].Value = x.nombre1;
+
+                    cmd.Parameters.Add("@nombre2", SqlDbType.NVarChar);
+                    cmd.Parameters["@nombre2"].Value = x.nombre2;
+
+                    cmd.Parameters.Add("@apellido1", SqlDbType.NVarChar);
+                    cmd.Parameters["@apellido1"].Value = x.apellido1;
+
+                    cmd.Parameters.Add("@apellido2", SqlDbType.NVarChar);
+                    cmd.Parameters["@apellido2"].Value = x.apellido2;
+
+                    cmd.Parameters.Add("@fechanacimiento", SqlDbType.NVarChar);
+                    cmd.Parameters["@fechanacimiento"].Value = x.fechanacimiento;
+
+                    cmd.Parameters.Add("@peso", SqlDbType.NVarChar);
+                    cmd.Parameters["@peso"].Value = x.peso;
+
+                    cmd.Parameters.Add("@altura", SqlDbType.NVarChar);
+                    cmd.Parameters["@altura"].Value = x.altura;
+
+                    cmd.Parameters.Add("@pais", SqlDbType.NVarChar);
+                    cmd.Parameters["@pais"].Value = x.pais;
+
+                    cmd.Parameters.Add("@correo", SqlDbType.NVarChar);
+                    cmd.Parameters["@correo"].Value = x.correo;
+
+                    cmd.Parameters.Add("@password", SqlDbType.NVarChar);
+                    cmd.Parameters["@password"].Value = x.password;
+
+                    cmd.Parameters.Add("@porcentajemusculo", SqlDbType.NVarChar);
+                    cmd.Parameters["@porcentajemusculo"].Value = x.porcentajemusculo;
+
+                    cmd.Parameters.Add("@porcentajegrasa", SqlDbType.NVarChar);
+                    cmd.Parameters["@porcentajegrasa"].Value = x.porcentajegrasa;
 
                     reader = cmd.ExecuteReader();
                     reader.Close(); //Se cierra  el lector
@@ -125,8 +202,8 @@ namespace API_Relacional.Controllers
         public JsonResult Delete(int id)
         {
             string query = @"
-                delete from x
-                where id =" + id;
+                delete from usuario
+                where cedula =" + id;
 
             return consulta.delete(query, _configuration, cadenaDeConexion);
         }

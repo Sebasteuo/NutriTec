@@ -20,6 +20,6 @@ namespace API_Relacional.Models
         public string proteina { get; set; }
         public string hierro { get; set; }
         public string calcio { get; set; }
-        public Boolean aprobado { get; set; }
+        public int aprobado { get; set; }
     }
 }

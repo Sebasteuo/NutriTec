@@ -31,10 +31,10 @@ namespace API_Relacional.Controllers
         public JsonResult Get()
         {
             string query = @"
-                SELECT * 
-                FROM x
+                SELECT idplan, nombre 
+                FROM plandcomida
                 ";
-
+            
             return consulta.get(query, _configuration, cadenaDeConexion);
 
         }
@@ -44,9 +44,9 @@ namespace API_Relacional.Controllers
         public JsonResult Get(int id)
         {
             string query = @"
-                SELECT * 
-                FROM x
-                WHERE id=" + id +
+                SELECT idplan, nombre 
+                FROM plandcomida
+                WHERE idplan=" + id +
                 "";
 
             return consulta.get(query, _configuration, cadenaDeConexion);
@@ -55,11 +55,11 @@ namespace API_Relacional.Controllers
 
         // POST api/<HablaController>
         [HttpPost]
-        public JsonResult Post(Puede_Tener x)
+        public JsonResult Post(PlanDComida x)
         {
             string query = @"
-                insert into x(id, texto)
-                values (@id, @texto)";
+                insert into plandcomida(idplan, nombre)
+                values (@idplan, @nombre)";
 
             string sqlDataSource = _configuration.GetConnectionString(cadenaDeConexion);//La fuente de los datos se obtiene de la cadena de conexion
             SqlDataReader reader;
@@ -72,11 +72,11 @@ namespace API_Relacional.Controllers
                 {
 
                     //Se agregan los valores y el tipo de dato respectivo
-                    cmd.Parameters.Add("@id", SqlDbType.Int);
-                    cmd.Parameters["@id"].Value = x.id;
+                    cmd.Parameters.Add("@idplan", SqlDbType.Int);
+                    cmd.Parameters["@idplan"].Value = x.idplan;
 
-                    cmd.Parameters.Add("@texto", SqlDbType.NVarChar);
-                    cmd.Parameters["@texto"].Value = x.texto;
+                    cmd.Parameters.Add("@nombre", SqlDbType.NVarChar);
+                    cmd.Parameters["@nombre"].Value = x.nombre;
 
                     reader = cmd.ExecuteReader();//El lector ejecuta el comando
                     reader.Close(); //Se cierra  el lector
@@ -88,13 +88,13 @@ namespace API_Relacional.Controllers
 
         // PUT api/<HablaController>/5
         [HttpPut("{id}")]
-        public JsonResult Put(Puede_Tener x)
+        public JsonResult Put(PlanDComida x)
         {
             string query = @"
-                UPDATE x
-                SET id = @id,
-                texto = @texto
-                WHERE id = @id";
+                UPDATE plandcomida
+                SET idplan = @idplan,
+                nombre = @nombre
+                WHERE idplan = @idplan";
 
             string sqlDataSource = _configuration.GetConnectionString(cadenaDeConexion);//La fuente de los datos se obtiene de la cadena de conexion
             SqlDataReader reader;
@@ -106,11 +106,11 @@ namespace API_Relacional.Controllers
                 using (SqlCommand cmd = new SqlCommand(query, connection))//El comando a ejecutar se hace con un query y la conexion
                 {
                     //Se agregan los valores y el tipo de dato respectivo
-                    cmd.Parameters.Add("@id", SqlDbType.Int);
-                    cmd.Parameters["@id"].Value = x.id;
+                    cmd.Parameters.Add("@idplan", SqlDbType.Int);
+                    cmd.Parameters["@idplan"].Value = x.idplan;
 
-                    cmd.Parameters.Add("@texto", SqlDbType.NVarChar);
-                    cmd.Parameters["@texto"].Value = x.texto;
+                    cmd.Parameters.Add("@nombre", SqlDbType.NVarChar);
+                    cmd.Parameters["@nombre"].Value = x.nombre;
 
                     reader = cmd.ExecuteReader();
                     reader.Close(); //Se cierra  el lector
@@ -125,8 +125,8 @@ namespace API_Relacional.Controllers
         public JsonResult Delete(int id)
         {
             string query = @"
-                delete from x
-                where id =" + id;
+                delete from plandcomida
+                where idplan =" + id;
 
             return consulta.delete(query, _configuration, cadenaDeConexion);
         }

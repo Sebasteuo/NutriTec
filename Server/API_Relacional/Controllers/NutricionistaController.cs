@@ -36,12 +36,11 @@ namespace API_Relacional.Controllers
         public JsonResult Get()
         {
             string query = @"
-                SELECT * 
-                FROM x
+                SELECT codigonutricionista, cedula, nombre1, nombre2, apellido1, apellido2, direccion, foto, fechanacimiento, peso, altura, numerotarjetacredito, tipocobro, correo, password 
+                FROM nutricionista
                 ";
 
             return consulta.get(query, _configuration, cadenaDeConexion);
-            
         }
 
         // GET api/<HablaController>/5
@@ -49,9 +48,9 @@ namespace API_Relacional.Controllers
         public JsonResult Get(int id)
         {
             string query = @"
-                SELECT * 
-                FROM x
-                WHERE id=" + id +
+                SELECT codigonutricionista, cedula, nombre1, nombre2, apellido1, apellido2, direccion, foto, fechanacimiento, peso, altura, numerotarjetacredito, tipocobro, correo, password  
+                FROM nutricionista
+                WHERE codigonutricionista=" + id +
                 "";
 
             return consulta.get(query, _configuration, cadenaDeConexion);
@@ -60,11 +59,11 @@ namespace API_Relacional.Controllers
 
         // POST api/<HablaController>
         [HttpPost]
-        public JsonResult Post(Puede_Tener x)
+        public JsonResult Post(Nutricionista x)
         {
             string query = @"
-                insert into x(id, texto)
-                values (@id, @texto)";
+                insert into nutricionista(codigonutricionista, cedula, nombre1, nombre2, apellido1, apellido2, direccion, foto, fechanacimiento, peso, altura, numerotarjetacredito, tipocobro, correo, password )
+                values (@codigonutricionista, @cedula, @nombre1, @nombre2, @apellido1, @apellido2, @direccion, @foto, @fechanacimiento, @peso, @altura, @numerotarjetacredito, @tipocobro, @correo, @password )";
             
             string sqlDataSource = _configuration.GetConnectionString(cadenaDeConexion);//La fuente de los datos se obtiene de la cadena de conexion
             SqlDataReader reader;
@@ -77,11 +76,50 @@ namespace API_Relacional.Controllers
                 {
 
                     //Se agregan los valores y el tipo de dato respectivo
-                    cmd.Parameters.Add("@id", SqlDbType.Int);
-                    cmd.Parameters["@id"].Value = x.id;
+                    cmd.Parameters.Add("@codigonutricionista", SqlDbType.Int);
+                    cmd.Parameters["@codigonutricionista"].Value = x.codigonutricionista;
 
-                    cmd.Parameters.Add("@texto", SqlDbType.NVarChar);
-                    cmd.Parameters["@texto"].Value = x.texto;
+                    cmd.Parameters.Add("@cedula", SqlDbType.NVarChar);
+                    cmd.Parameters["@cedula"].Value = x.cedula;
+
+                    cmd.Parameters.Add("@nombre1", SqlDbType.NVarChar);
+                    cmd.Parameters["@nombre1"].Value = x.nombre1;
+
+                    cmd.Parameters.Add("@nombre2", SqlDbType.NVarChar);
+                    cmd.Parameters["@nombre2"].Value = x.nombre2;
+
+                    cmd.Parameters.Add("@apellido1", SqlDbType.NVarChar);
+                    cmd.Parameters["@apellido1"].Value = x.apellido1;
+
+                    cmd.Parameters.Add("@apellido2", SqlDbType.NVarChar);
+                    cmd.Parameters["@apellido2"].Value = x.apellido2;
+
+                    cmd.Parameters.Add("@direccion", SqlDbType.NVarChar);
+                    cmd.Parameters["@direccion"].Value = x.direccion;
+
+                    cmd.Parameters.Add("@foto", SqlDbType.NVarChar);
+                    cmd.Parameters["@foto"].Value = x.foto;
+
+                    cmd.Parameters.Add("@fechanacimiento", SqlDbType.NVarChar);
+                    cmd.Parameters["@fechanacimiento"].Value = x.fechanacimiento;
+
+                    cmd.Parameters.Add("@peso", SqlDbType.NVarChar);
+                    cmd.Parameters["@peso"].Value = x.peso;
+
+                    cmd.Parameters.Add("@altura", SqlDbType.NVarChar);
+                    cmd.Parameters["@altura"].Value = x.altura;
+
+                    cmd.Parameters.Add("@numerotarjetacredito", SqlDbType.NVarChar);
+                    cmd.Parameters["@numetotarjetacredito"].Value = x.numerotarjetacredito;
+
+                    cmd.Parameters.Add("@tipocobro", SqlDbType.NVarChar);
+                    cmd.Parameters["@tipocobro"].Value = x.tipocobro;
+
+                    cmd.Parameters.Add("@correo", SqlDbType.NVarChar);
+                    cmd.Parameters["@correo"].Value = x.correo;
+
+                    cmd.Parameters.Add("@password", SqlDbType.NVarChar);
+                    cmd.Parameters["@password"].Value = x.password;
 
                     reader = cmd.ExecuteReader();//El lector ejecuta el comando
                     reader.Close(); //Se cierra  el lector
@@ -93,13 +131,26 @@ namespace API_Relacional.Controllers
 
         // PUT api/<HablaController>/5
         [HttpPut("{id}")]
-        public JsonResult Put(Puede_Tener x)
+        public JsonResult Put(Nutricionista x)
         {
             string query = @"
-                UPDATE x
-                SET id = @id,
-                texto = @texto
-                WHERE id = @id";
+                UPDATE nutricionista
+                SET codigonutricionista = @codigonutricionista, 
+                    cedula = @cedula, 
+                    nombre1 = @nombre1, 
+                    nombre2 = @nombre2, 
+                    apellido1 = @apellido1, 
+                    apellido2 = @apellido2, 
+                    direccion = @direccion, 
+                    foto = @foto, 
+                    fechanacimiento = @fechanacimiento, 
+                    peso = @peso, 
+                    altura = @altura, 
+                    numerotarjetacredito = @numerotarjetacredito, 
+                    tipocobro = @tipocobro, 
+                    correo = @correo, 
+                    password = @password
+                WHERE codigonutricionista = @codigonutricionista";
             
             string sqlDataSource = _configuration.GetConnectionString(cadenaDeConexion);//La fuente de los datos se obtiene de la cadena de conexion
             SqlDataReader reader;
@@ -111,11 +162,50 @@ namespace API_Relacional.Controllers
                 using (SqlCommand cmd = new SqlCommand(query, connection))//El comando a ejecutar se hace con un query y la conexion
                 {
                     //Se agregan los valores y el tipo de dato respectivo
-                    cmd.Parameters.Add("@id", SqlDbType.Int);
-                    cmd.Parameters["@id"].Value = x.id;
+                    cmd.Parameters.Add("@codigonutricionista", SqlDbType.Int);
+                    cmd.Parameters["@codigonutricionista"].Value = x.codigonutricionista;
 
-                    cmd.Parameters.Add("@texto", SqlDbType.NVarChar);
-                    cmd.Parameters["@texto"].Value = x.texto;
+                    cmd.Parameters.Add("@cedula", SqlDbType.NVarChar);
+                    cmd.Parameters["@cedula"].Value = x.cedula;
+
+                    cmd.Parameters.Add("@nombre1", SqlDbType.NVarChar);
+                    cmd.Parameters["@nombre1"].Value = x.nombre1;
+
+                    cmd.Parameters.Add("@nombre2", SqlDbType.NVarChar);
+                    cmd.Parameters["@nombre2"].Value = x.nombre2;
+
+                    cmd.Parameters.Add("@apellido1", SqlDbType.NVarChar);
+                    cmd.Parameters["@apellido1"].Value = x.apellido1;
+
+                    cmd.Parameters.Add("@apellido2", SqlDbType.NVarChar);
+                    cmd.Parameters["@apellido2"].Value = x.apellido2;
+
+                    cmd.Parameters.Add("@direccion", SqlDbType.NVarChar);
+                    cmd.Parameters["@direccion"].Value = x.direccion;
+
+                    cmd.Parameters.Add("@foto", SqlDbType.NVarChar);
+                    cmd.Parameters["@foto"].Value = x.foto;
+
+                    cmd.Parameters.Add("@fechanacimiento", SqlDbType.NVarChar);
+                    cmd.Parameters["@fechanacimiento"].Value = x.fechanacimiento;
+
+                    cmd.Parameters.Add("@peso", SqlDbType.NVarChar);
+                    cmd.Parameters["@peso"].Value = x.peso;
+
+                    cmd.Parameters.Add("@altura", SqlDbType.NVarChar);
+                    cmd.Parameters["@altura"].Value = x.altura;
+
+                    cmd.Parameters.Add("@numerotarjetacredito", SqlDbType.NVarChar);
+                    cmd.Parameters["@numetotarjetacredito"].Value = x.numerotarjetacredito;
+
+                    cmd.Parameters.Add("@tipocobro", SqlDbType.NVarChar);
+                    cmd.Parameters["@tipocobro"].Value = x.tipocobro;
+
+                    cmd.Parameters.Add("@correo", SqlDbType.NVarChar);
+                    cmd.Parameters["@correo"].Value = x.correo;
+
+                    cmd.Parameters.Add("@password", SqlDbType.NVarChar);
+                    cmd.Parameters["@password"].Value = x.password;
 
                     reader = cmd.ExecuteReader();
                     reader.Close(); //Se cierra  el lector
@@ -130,8 +220,8 @@ namespace API_Relacional.Controllers
         public JsonResult Delete(int id)
         {
             string query = @"
-                delete from x
-                where id =" + id;
+                delete from nutricionista
+                where codigonutricionista =" + id;
 
             return consulta.delete(query, _configuration, cadenaDeConexion); 
         }

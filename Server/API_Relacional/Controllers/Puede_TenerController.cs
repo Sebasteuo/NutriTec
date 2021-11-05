@@ -34,8 +34,8 @@ namespace API_Relacional.Controllers
         public JsonResult Get()
         {
             string query = @"
-                SELECT * 
-                FROM x
+                SELECT codigonutricionista, cedula, chatid 
+                FROM puede_tener
                 ";
 
             return consulta.get(query, _configuration, cadenaDeConexion);
@@ -47,9 +47,9 @@ namespace API_Relacional.Controllers
         public JsonResult Get(int id)
         {
             string query = @"
-                SELECT * 
-                FROM x
-                WHERE id=" + id +
+                SELECT codigonutricionista, cedula, chatid
+                FROM puede_tener
+                WHERE cedula=" + id +
                 "";
 
             return consulta.get(query, _configuration, cadenaDeConexion);
@@ -61,8 +61,8 @@ namespace API_Relacional.Controllers
         public JsonResult Post(Puede_Tener x)
         {
             string query = @"
-                insert into x(id, texto)
-                values (@id, @texto)";
+                insert into puede_tener(codigonutricionista, cedula, chatid)
+                values (@codigonutricionista, @cedula, @chatid)";
 
             string sqlDataSource = _configuration.GetConnectionString(cadenaDeConexion);//La fuente de los datos se obtiene de la cadena de conexion
             SqlDataReader reader;
@@ -75,11 +75,14 @@ namespace API_Relacional.Controllers
                 {
 
                     //Se agregan los valores y el tipo de dato respectivo
-                    cmd.Parameters.Add("@id", SqlDbType.Int);
-                    cmd.Parameters["@id"].Value = x.id;
+                    cmd.Parameters.Add("@codigonutricionista", SqlDbType.Int);
+                    cmd.Parameters["@codigonutricionista"].Value = x.codigonutricionista;
 
-                    cmd.Parameters.Add("@texto", SqlDbType.NVarChar);
-                    cmd.Parameters["@texto"].Value = x.texto;
+                    cmd.Parameters.Add("@cedula", SqlDbType.NVarChar);
+                    cmd.Parameters["@cedula"].Value = x.cedula;
+
+                    cmd.Parameters.Add("@chatid", SqlDbType.NVarChar);
+                    cmd.Parameters["@chatid"].Value = x.chatid;
 
                     reader = cmd.ExecuteReader();//El lector ejecuta el comando
                     reader.Close(); //Se cierra  el lector
@@ -94,9 +97,10 @@ namespace API_Relacional.Controllers
         public JsonResult Put(Puede_Tener x)
         {
             string query = @"
-                UPDATE x
-                SET id = @id,
-                texto = @texto
+                UPDATE puede_tener
+                SET codigonutricionista = @codigonutricionista, 
+                    cedula = @cedula, 
+                    chatid = @chatid
                 WHERE id = @id";
 
             string sqlDataSource = _configuration.GetConnectionString(cadenaDeConexion);//La fuente de los datos se obtiene de la cadena de conexion
@@ -109,11 +113,14 @@ namespace API_Relacional.Controllers
                 using (SqlCommand cmd = new SqlCommand(query, connection))//El comando a ejecutar se hace con un query y la conexion
                 {
                     //Se agregan los valores y el tipo de dato respectivo
-                    cmd.Parameters.Add("@id", SqlDbType.Int);
-                    cmd.Parameters["@id"].Value = x.id;
+                    cmd.Parameters.Add("@codigonutricionista", SqlDbType.Int);
+                    cmd.Parameters["@codigonutricionista"].Value = x.codigonutricionista;
 
-                    cmd.Parameters.Add("@texto", SqlDbType.NVarChar);
-                    cmd.Parameters["@texto"].Value = x.texto;
+                    cmd.Parameters.Add("@cedula", SqlDbType.NVarChar);
+                    cmd.Parameters["@cedula"].Value = x.cedula;
+
+                    cmd.Parameters.Add("@chatid", SqlDbType.NVarChar);
+                    cmd.Parameters["@chatid"].Value = x.chatid;
 
                     reader = cmd.ExecuteReader();
                     reader.Close(); //Se cierra  el lector
@@ -128,8 +135,8 @@ namespace API_Relacional.Controllers
         public JsonResult Delete(int id)
         {
             string query = @"
-                delete from x
-                where id =" + id;
+                delete from puede_tener
+                where cedula =" + id;
 
             return consulta.delete(query, _configuration, cadenaDeConexion);
         }

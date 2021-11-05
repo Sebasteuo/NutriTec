@@ -31,12 +31,11 @@ namespace API_Relacional.Controllers
         public JsonResult Get()
         {
             string query = @"
-                SELECT * 
-                FROM x
+                SELECT codigodbarras, nombre, descripcion, porcion, energia, grasa, sodio, carbohidratos, proteina, hierro, calcio, aprobado 
+                FROM producto
                 ";
 
             return consulta.get(query, _configuration, cadenaDeConexion);
-
         }
 
         // GET api/<HablaController>/5
@@ -44,9 +43,9 @@ namespace API_Relacional.Controllers
         public JsonResult Get(int id)
         {
             string query = @"
-                SELECT * 
-                FROM x
-                WHERE id=" + id +
+                SELECT codigodbarras, nombre, descripcion, porcion, energia, grasa, sodio, carbohidratos, proteina, hierro, calcio, aprobado 
+                FROM producto
+                WHERE codigodbarras=" + id +
                 "";
 
             return consulta.get(query, _configuration, cadenaDeConexion);
@@ -55,11 +54,11 @@ namespace API_Relacional.Controllers
 
         // POST api/<HablaController>
         [HttpPost]
-        public JsonResult Post(Puede_Tener x)
+        public JsonResult Post(Producto x)
         {
             string query = @"
-                insert into x(id, texto)
-                values (@id, @texto)";
+                insert into producto(codigodbarras, nombre, descripcion, porcion, energia, grasa, sodio, carbohidratos, proteina, hierro, calcio, aprobado)
+                values (@codigodbarras, @nombre, @descripcion, @porcion, @energia, @grasa, @sodio, @carbohidratos, @proteina, @hierro, @calcio, @aprobado)";
 
             string sqlDataSource = _configuration.GetConnectionString(cadenaDeConexion);//La fuente de los datos se obtiene de la cadena de conexion
             SqlDataReader reader;
@@ -72,11 +71,41 @@ namespace API_Relacional.Controllers
                 {
 
                     //Se agregan los valores y el tipo de dato respectivo
-                    cmd.Parameters.Add("@id", SqlDbType.Int);
-                    cmd.Parameters["@id"].Value = x.id;
+                    cmd.Parameters.Add("@codigodbarras", SqlDbType.Int);
+                    cmd.Parameters["@codigodbarras"].Value = x.codigodbarras;
 
-                    cmd.Parameters.Add("@texto", SqlDbType.NVarChar);
-                    cmd.Parameters["@texto"].Value = x.texto;
+                    cmd.Parameters.Add("@nombre", SqlDbType.NVarChar);
+                    cmd.Parameters["@nombre"].Value = x.nombre;
+
+                    cmd.Parameters.Add("@descripcion", SqlDbType.NVarChar);
+                    cmd.Parameters["@descripcion"].Value = x.descripcion;
+
+                    cmd.Parameters.Add("@porcion", SqlDbType.NVarChar);
+                    cmd.Parameters["@porcion"].Value = x.porcion;
+
+                    cmd.Parameters.Add("@energia", SqlDbType.NVarChar);
+                    cmd.Parameters["@energia"].Value = x.energia;
+
+                    cmd.Parameters.Add("@grasa", SqlDbType.NVarChar);
+                    cmd.Parameters["@grasa"].Value = x.grasa;
+
+                    cmd.Parameters.Add("@sodio", SqlDbType.NVarChar);
+                    cmd.Parameters["@sodio"].Value = x.sodio;
+
+                    cmd.Parameters.Add("@carbohidratos", SqlDbType.NVarChar);
+                    cmd.Parameters["@carbohidratos"].Value = x.carbohidratos;
+
+                    cmd.Parameters.Add("@proteina", SqlDbType.NVarChar);
+                    cmd.Parameters["@proteina"].Value = x.proteina;
+
+                    cmd.Parameters.Add("@hierro", SqlDbType.NVarChar);
+                    cmd.Parameters["@hierro"].Value = x.hierro;
+
+                    cmd.Parameters.Add("@calcio", SqlDbType.NVarChar);
+                    cmd.Parameters["@calcio"].Value = x.calcio;
+
+                    cmd.Parameters.Add("@aprobado", SqlDbType.NVarChar);
+                    cmd.Parameters["@aprobado"].Value = x.aprobado;
 
                     reader = cmd.ExecuteReader();//El lector ejecuta el comando
                     reader.Close(); //Se cierra  el lector
@@ -88,13 +117,24 @@ namespace API_Relacional.Controllers
 
         // PUT api/<HablaController>/5
         [HttpPut("{id}")]
-        public JsonResult Put(Puede_Tener x)
+        public JsonResult Put(Producto x)
         {
             string query = @"
-                UPDATE x
-                SET id = @id,
-                texto = @texto
-                WHERE id = @id";
+                UPDATE producto
+                SET codigodbarras = @codigodbarras, 
+                    nombre = @nombre, 
+                    descripcion = @descripcion, 
+                    porcion = @porcion, 
+                    energia = @energia, 
+                    grasa = @grasa, 
+                    sodio = @sodio, 
+                    carbohidratos = @carbohidratos, 
+                    proteina = @proteina, 
+                    hierro = @hierro, 
+                    calcio = @calcio, 
+                    aprobado = @aprobado
+
+                WHERE codigodbarras = @codigodbarras";
 
             string sqlDataSource = _configuration.GetConnectionString(cadenaDeConexion);//La fuente de los datos se obtiene de la cadena de conexion
             SqlDataReader reader;
@@ -106,11 +146,41 @@ namespace API_Relacional.Controllers
                 using (SqlCommand cmd = new SqlCommand(query, connection))//El comando a ejecutar se hace con un query y la conexion
                 {
                     //Se agregan los valores y el tipo de dato respectivo
-                    cmd.Parameters.Add("@id", SqlDbType.Int);
-                    cmd.Parameters["@id"].Value = x.id;
+                    cmd.Parameters.Add("@codigodbarras", SqlDbType.Int);
+                    cmd.Parameters["@codigodbarras"].Value = x.codigodbarras;
 
-                    cmd.Parameters.Add("@texto", SqlDbType.NVarChar);
-                    cmd.Parameters["@texto"].Value = x.texto;
+                    cmd.Parameters.Add("@nombre", SqlDbType.NVarChar);
+                    cmd.Parameters["@nombre"].Value = x.nombre;
+
+                    cmd.Parameters.Add("@descripcion", SqlDbType.NVarChar);
+                    cmd.Parameters["@descripcion"].Value = x.descripcion;
+
+                    cmd.Parameters.Add("@porcion", SqlDbType.NVarChar);
+                    cmd.Parameters["@porcion"].Value = x.porcion;
+
+                    cmd.Parameters.Add("@energia", SqlDbType.NVarChar);
+                    cmd.Parameters["@energia"].Value = x.energia;
+
+                    cmd.Parameters.Add("@grasa", SqlDbType.NVarChar);
+                    cmd.Parameters["@grasa"].Value = x.grasa;
+
+                    cmd.Parameters.Add("@sodio", SqlDbType.NVarChar);
+                    cmd.Parameters["@sodio"].Value = x.sodio;
+
+                    cmd.Parameters.Add("@carbohidratos", SqlDbType.NVarChar);
+                    cmd.Parameters["@carbohidratos"].Value = x.carbohidratos;
+
+                    cmd.Parameters.Add("@proteina", SqlDbType.NVarChar);
+                    cmd.Parameters["@proteina"].Value = x.proteina;
+
+                    cmd.Parameters.Add("@hierro", SqlDbType.NVarChar);
+                    cmd.Parameters["@hierro"].Value = x.hierro;
+
+                    cmd.Parameters.Add("@calcio", SqlDbType.NVarChar);
+                    cmd.Parameters["@calcio"].Value = x.calcio;
+
+                    cmd.Parameters.Add("@aprobado", SqlDbType.NVarChar);
+                    cmd.Parameters["@aprobado"].Value = x.aprobado;
 
                     reader = cmd.ExecuteReader();
                     reader.Close(); //Se cierra  el lector
@@ -125,8 +195,8 @@ namespace API_Relacional.Controllers
         public JsonResult Delete(int id)
         {
             string query = @"
-                delete from x
-                where id =" + id;
+                delete from producto
+                where codigodbarras =" + id;
 
             return consulta.delete(query, _configuration, cadenaDeConexion);
         }
