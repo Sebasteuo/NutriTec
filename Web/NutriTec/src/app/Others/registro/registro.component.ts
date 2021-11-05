@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as Crypto from "crypto-js"
+import { AuthenticationManagementService } from 'src/app/Services/authentication-management.service';
 
 @Component({
   selector: 'app-registro',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistroComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authenticationService: AuthenticationManagementService) { }
+  active = 1
 
   ngOnInit(): void {
   }
+  onSubmit(user: string, password: string, id: string) {
+    var pass = (CryptoJS.MD5(password) as unknown) as string;
+    this.authenticationService.Register(id as unknown as number,
+       "Cliente", user, CryptoJS.enc.Base64.stringify(Crypto.SHA256(pass)));
+  }
+
 
 }

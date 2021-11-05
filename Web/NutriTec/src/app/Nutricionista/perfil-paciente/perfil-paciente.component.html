@@ -2,59 +2,109 @@
     <aside class="col-lg" style="margin: 5% 5% 5% 5%;">
         <div class="card">
             <article class="card-body">
-                <h4 class="card-title mb-4 mt-1">Registro de Consumo</h4>
+                <h4 class="card-title mb-4 mt-1">Seguimiento de cliente</h4>
                 <hr>
                 <div class="row">
-
-                    <div class="col-md-8">
-                        <!-- Employee data -->
+                    <div class="col-md-4">
                         <div class="card">
-
                             <div class="card-body">
-                                <div>
+                                <div class="form">
+                                    <form #form autocomplete="off">
+                                        <div class="logo">
+                                            <img class="center" style="height: 150px;" src="../../../assets/img/user.png"/>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col form-group">
+                                                <label>Nombre: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                {{cliente.Nombre}} {{cliente.Apellido1}} {{cliente.Apellido2}}
+                                            </div>
+                                        </div>
 
+                                        <div class="form-row">
+                                            <div class="col form-group">
+                                                <label>Fecha de nacimiento: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                {{cliente.FechaDeNacimiento}}
+                                            </div>
+                                        </div>
 
-                                    <div class=table-wrapper>
-                                        <table class="table table-hover bike-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Tiempo de Comida</th>
-                                                    <th>Platillo</th>
-                                                    <th>Fecha</th>
+                                        <div class="form-row">
+                                            <div class="col form-group">
+                                                <label>Peso actual: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                {{cliente.PesoActual}} Kg
+                                            </div>
+                                        </div>
 
+                                        <div class="form-row">
+                                            <div class="col form-group">
+                                                <label>Peso meta: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                {{cliente.Peso}} Kg
+                                            </div>
+                                        </div>
 
+                                        <div class="form-row">
+                                            <div class="col form-group">
+                                                <label>IMC: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                {{cliente.IMC}}
+                                            </div>
+                                        </div>
 
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr *ngFor="let consumo of this.consumos">
-
-                                                    <td *ngIf='editingID != consumo.id'>{{consumo.id}}</td>
-
-
-                                                    <td *ngIf='editingID != consumo.id'>{{consumo.tiempo}}</td>
-
-
-                                                    <td *ngIf='editingID != consumo.id'>{{consumo.platillo}}</td>
-
-
-
-                                                    <td *ngIf='editingID != consumo.id'>{{consumo.fecha}}</td>
-
-
-
-                                                </tr>
-                                            </tbody>
-
-                                        </table>
-                                    </div>
+                                        <div class="form-row">
+                                            <div class="col form-group">
+                                                <label>Consumo calorias: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                {{cliente.ConsumoCalorias}} Kcal
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <!-- Employee data -->
+                        <div class="">
+                            <div class="table-responsive">
+                                <div class=table-wrapper>
+                                    <table class="table table-hover bike-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Tiempo de Comida</th>
+                                                <th>Platillo</th>
+                                                <th>Fecha</th>
+                                                <th>Comentario</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let consumo of this.consumos">
+                                                <td *ngIf='editingID != consumo.id'>{{consumo.tiempo}}</td>
+                                                <td *ngIf='editingID != consumo.id'>{{consumo.platillo}}</td>
+                                                <td *ngIf='editingID != consumo.id'>{{consumo.fecha}}</td>
+                                                <td><textarea name="Text1" cols="30" rows="4" [(ngModel)]="comentario"></textarea></td>
+                                                <td>
+                                                    <button (click)="addComment()" class="btn-icon" placement="top"
+                                                        ngbTooltip="Agregar">
+                                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
 
-                        </div> <!-- card.// -->
-                        <br />
-                        <br />
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </article>

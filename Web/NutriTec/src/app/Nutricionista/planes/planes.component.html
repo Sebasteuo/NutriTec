@@ -6,14 +6,21 @@
                 <hr>
                 <div class="row">
                     <!-- table -->
-                    <div class="col-md-4 table-responsive">
+                    <div class="col-md-4">
                         <div class="card" style="margin-bottom: 10px;">
                             <article class="card-body">
                                 <div class="form">
                                     <form #form autocomplete="off">
                                         <div class="form-row">
-
-
+                                            <div class="col form-group">
+                                                <label>Nombre del plan: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                <input name="quantity" class="form-control" placeholder="Nombre"
+                                                    [(ngModel)]="newPlan.nombre" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
                                             <div class="col form-group">
                                                 <label>Desayuno: </label>
                                             </div>
@@ -35,8 +42,6 @@
                                         </div>
 
                                         <div class="form-row">
-
-
                                             <div class="col form-group">
                                                 <label>Merienda Matutina: </label>
                                             </div>
@@ -58,8 +63,6 @@
                                         </div>
 
                                         <div class="form-row">
-
-
                                             <div class="col form-group">
                                                 <label>Almuerzo: </label>
                                             </div>
@@ -82,8 +85,6 @@
 
 
                                         <div class="form-row">
-
-
                                             <div class="col form-group">
                                                 <label>Merienda de la Tarde: </label>
                                             </div>
@@ -105,8 +106,6 @@
                                         </div>
 
                                         <div class="form-row">
-
-
                                             <div class="col form-group">
                                                 <label>Cena: </label>
                                             </div>
@@ -126,23 +125,6 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-row">
-                                            <div class="col form-group">
-                                                <label>Nombre: </label>
-                                            </div>
-                                            <div class="col form-group">
-                                                <input name="quantity" class="form-control" placeholder="Músculo" [(ngModel)]="newPlan.nombre"
-                                                    required>
-                                            </div>
-                                        </div>
-
-
-
-
-
-
-
-
                                         <div class="col form-groupform-group">
                                             <button class="btn btn-primary btn-block" (click)="add()">Agregar</button>
                                         </div>
@@ -154,19 +136,15 @@
 
                     </div>
                     <div class="col-md-8">
-                        <!-- Employee data -->
-                        <div class="card">
-
-                            <div class="card-body">
-                                <div>
-
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
                                     <div class="row">
-                                        <div class="row">
-                                            <label>Desayuno</label>
-                                        </div>
-                                        <div class="row">
+                                        <label><b>Desayuno</b></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="table-responsive">
                                             <div class=table-wrapper>
-
                                                 <table class="table table-hover bike-table">
                                                     <thead>
                                                         <!-- Columnas para los datos mostrados de los clientes-->
@@ -218,11 +196,13 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col">
                                     <div class="row">
-                                        <div class="row">
-                                            <label>Merienda Matutina</label>
-                                        </div>
-                                        <div class="row">
+                                        <label><b>Merienda Matutina</b></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="table-responsive">
                                             <div class=table-wrapper>
                                                 <table class="table table-hover bike-table">
                                                     <thead>
@@ -275,12 +255,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col">
                                     <div class="row">
-                                        <div class="row">
-                                            <label>Almuerzo</label>
-                                        </div>
+                                        <label><b>Almuerzo</b></label>
+                                    </div>
 
-                                        <div class="row">
+                                    <div class="row">
+                                        <div class="table-responsive">
                                             <div class=table-wrapper>
                                                 <table class="table table-hover bike-table">
                                                     <thead>
@@ -333,11 +315,13 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col">
                                     <div class="row">
-                                        <div class="row">
-                                            <label>Merienda de la Tarde</label>
-                                        </div>
-                                        <div class="row">
+                                        <label><b>Merienda de la Tarde</b></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="table-responsive">
                                             <div class=table-wrapper>
                                                 <table class="table table-hover bike-table">
                                                     <thead>
@@ -390,11 +374,13 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col">
                                     <div class="row">
-                                        <div class="row">
-                                            <label>Cena</label>
-                                        </div>
-                                        <div class="row">
+                                        <label><b>Cena</b></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="table-responsive">
                                             <div class=table-wrapper>
                                                 <table class="table table-hover bike-table">
                                                     <thead>
@@ -447,12 +433,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <label>Total de Calorías</label>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label>{{caloriasTotales}}</label>
+                                </div>
+                                <div class="col">
+                                    <div class="card-body">
+                                        <div class="row"> 
+                                            <div class="col-md-3">
+                                                <label><b>Total de Calorías</b></label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>{{caloriasTotales}}</label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

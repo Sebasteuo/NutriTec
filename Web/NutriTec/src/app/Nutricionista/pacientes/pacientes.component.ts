@@ -4,6 +4,7 @@ import { Cliente } from 'src/app/Models/cliente.model';
 import { PlanAsignado } from 'src/app/Models/plan-asignado.model';
 import { Plan } from 'src/app/Models/plan.model';
 import { ClienteManagementService } from 'src/app/Services/cliente-management.service';
+import { PacienteManagementService } from 'src/app/Services/paciente-management.service';
 
 @Component({
   selector: 'app-pacientes',
@@ -52,7 +53,7 @@ export class PacientesComponent implements OnInit {
       Contrasenna:  "",
       Id: 0
     }
-  constructor(private clienteService: ClienteManagementService) { }
+  constructor(private clienteService: ClienteManagementService, private pacienteService: PacienteManagementService) { }
 
   ngOnInit(): void {
     this.clienteService.getClientes().then(res=>{this.clientes= res})
@@ -148,7 +149,7 @@ export class PacientesComponent implements OnInit {
   }
 
   addPlan(){
-    
+    this.pacienteService.asignPlan(1,2)
   }
 
   selectPaciente(paciente: Cliente){

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import * as Crypto from "crypto-js"
+import { Credenciales } from 'src/app/Models/credenciales.model';
+import { AuthenticationManagementService } from 'src/app/Services/authentication-management.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  password: string = ""
+  newCredenciales: Credenciales = { user: "", password: "", tipo: "", cedula: 0 }
+
+  constructor(private authenticationService: AuthenticationManagementService) { }
 
   ngOnInit(): void {
   }
 
+  submit() {
+    var pass = (CryptoJS.MD5(this.password as unknown as string) as unknown) as string;
+    this.newCredenciales.password = CryptoJS.enc.Base64.stringify(Crypto.SHA256(pass))
+    this.authenticationService.login(this.newCredenciales);
+  }
+
 }
+

@@ -8,7 +8,10 @@ import { RegistroDeMedidasComponent } from './Cliente/registro-de-medidas/regist
 import { ReporteDeAvanceComponent } from './Cliente/reporte-de-avance/reporte-de-avance.component';
 import { ProductosComponent } from './Compartido/productos/productos.component';
 import { PacientesComponent } from './Nutricionista/pacientes/pacientes.component';
+import { PerfilPacienteComponent } from './Nutricionista/perfil-paciente/perfil-paciente.component';
 import { PlanesComponent } from './Nutricionista/planes/planes.component';
+import { LoginComponent } from './Others/login/login.component';
+import { RegistroComponent } from './Others/registro/registro.component';
 import { PacienteManagementService } from './Services/paciente-management.service';
 
 const routes: Routes = [
@@ -22,7 +25,9 @@ const routes: Routes = [
   { path: 'Avance', component: ReporteDeAvanceComponent}, // Se hacen navegables y  los componentes
   { path: 'Pacientes', component: PacientesComponent}, // Se hacen navegables y  los componentes
   { path: 'Planes', component: PlanesComponent}, // Se hacen navegables y  los componentes
-
+  { path: 'Paciente/:id', component: PerfilPacienteComponent},
+  { path: 'Registro', component: RegistroComponent},
+  { path: 'Login', component: LoginComponent},
 ];
 
 @NgModule({

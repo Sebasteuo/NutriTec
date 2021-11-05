@@ -1,1 +1,35 @@
-<p>registro works!</p>
+
+
+    <div class=" d-flex justify-content-center">
+        <aside class="col-sm-4" style="margin-top: 10%; ">
+            <div class="card">
+                <article class="card-body">
+                    <h4 class="card-title text-center mb-4 mt-1">Registro</h4>
+                    <hr>
+                    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+                        <li ngbNavItem="Cliente">
+                            <a ngbNavLink>Cliente</a>
+                            <ng-template ngbNavContent>
+                                <app-registro-cliente>
+
+                                </app-registro-cliente>
+                            </ng-template>
+                        </li>
+
+                        <li ngbNavItem="Nutricionista">
+                            <a ngbNavLink>Nutricionista</a>
+                            <ng-template ngbNavContent>
+                                <app-registro-nutricionista>
+                                    
+                                </app-registro-nutricionista>
+                            </ng-template>
+                        </li>
+                    </ul>
+                    <div [ngbNavOutlet]="nav" class="ml-4"></div>
+                </article>
+            </div> <!-- card.// -->
+
+        </aside> <!-- col.// -->
+    </div> <!-- row.// -->
+
+

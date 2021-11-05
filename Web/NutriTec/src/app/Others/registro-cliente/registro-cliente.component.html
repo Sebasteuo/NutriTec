@@ -1,1 +1,79 @@
-<p>registro-cliente works!</p>
+<form #form autocomplete="off">
+    <div class="form-group">
+        <label>Cédula</label>
+        <input name="quantity" [(ngModel)]="newCliente.Id" class="form-control" placeholder="Cédula" required>
+    </div> <!-- form-group// -->
+    <div class="form-group">
+        <label>Nombre</label>
+        <input name="quantity" [(ngModel)]="newCliente.Nombre" class="form-control" placeholder="Usuario" type="Nombre" required>
+
+    </div> <!-- form-group// -->
+    <div class="form-group">
+        <label>Primer Apellido</label>
+        <input type="password" name="quantity" [(ngModel)]="newCliente.Apellido1" class="form-control" placeholder="Primer Apellido" required>
+
+    </div> <!-- form-group// -->
+
+    <div class="form-group">
+        <label>Segundo Apellido</label>
+        <input name="quantity" [(ngModel)]="newCliente.Apellido2" class="form-control" placeholder="Segundo Apellido" required>
+    </div> <!-- form-group// -->
+    <div class="form-group">
+        <label>Fecha de Nacimiento</label>
+        <input name="quantity" [(ngModel)]="newCliente.FechaDeNacimiento" class="form-control" placeholder="Fecha de Nacimiento" required>
+    </div> <!-- form-group// -->
+    <div class="form-group">
+        <label>Peso</label>
+        <input name="quantity" [(ngModel)]="newCliente.Peso" class="form-control" placeholder="Peso" required>
+    </div> <!-- form-group// -->
+    <div class="form-group">
+        <label>IMC</label>
+        <input name="quantity" [(ngModel)]="newCliente.IMC" class="form-control" placeholder="IMC" required>
+    </div> <!-- form-group// -->
+    <div class="form-group">
+        <label>País</label>
+        <input name="quantity" [(ngModel)]="newCliente.Peso" class="form-control" placeholder="País" required>
+    </div> <!-- form-group// -->
+    <div class="form-group">
+        <label>Peso Actual</label>
+        <input name="quantity" [(ngModel)]="newCliente.PesoActual" class="form-control" placeholder="Peso Actual" required>
+    </div> <!-- form-group// -->
+    <div class="form-group">
+        <label>Cintura</label>
+        <input name="quantity" [(ngModel)]="newCliente.Cintura" class="form-control" placeholder="Cintura" required>
+    </div> <!-- form-group// -->
+    <div class="form-group">
+        <label>Cuello</label>
+        <input name="quantity" [(ngModel)]="newCliente.Cuello" class="form-control" placeholder="Cuello" required>
+    </div> <!-- form-group// -->
+    <div class="form-group">
+        <label>Caderas</label>
+        <input name="quantity" [(ngModel)]="newCliente.Caderas" class="form-control" placeholder="Caderas" required>
+    </div> <!-- form-group// -->
+    <div class="form-group">
+        <label>Músculo</label>
+        <input name="quantity" [(ngModel)]="newCliente.Musculo" class="form-control" placeholder="Músculo" required>
+    </div> <!-- form-group// -->
+    <div class="form-group">
+        <label>Grasa</label>
+        <input name="quantity" [(ngModel)]="newCliente.Grasa" class="form-control" placeholder="Grasa" required>
+    </div> <!-- form-group// -->
+    <div class="form-group">
+        <label>Consumo de Calorías</label>
+        <input name="quantity" [(ngModel)]="newCliente.ConsumoCalorias" class="form-control" placeholder="Consumo de Calorías" required>
+    </div> <!-- form-group// -->
+    <div class="form-group">
+        <label>Correo</label>
+        <input name="quantity" [(ngModel)]="newCliente.Correo" class="form-control" placeholder="Correo" required>
+    </div> <!-- form-group// -->
+    <div class="form-group">
+        <label>Contraseña</label>
+        <input name="quantity" [(ngModel)]="newCliente.Contrasenna" class="form-control" placeholder="Contraseña" required>
+    </div> <!-- form-group// -->
+
+    <div class="form-group">
+        <button (click)="onSubmit()" class="btn btn-primary btn-block" [disabled]="form.invalid"> Registrarse </button>
+    </div> <!-- form-group// -->
+    <p class="text-center"><a routerLink="/Login" class="btn">¿Ya tiene una cuenta?</a>
+    </p>
+</form>

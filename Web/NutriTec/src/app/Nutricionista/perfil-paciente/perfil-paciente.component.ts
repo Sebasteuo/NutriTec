@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
+import { Cliente } from 'src/app/Models/cliente.model';
 import { Consumo } from 'src/app/Models/consumo.model';
 import { Producto } from 'src/app/Models/producto.model';
 import { ConsumoService } from 'src/app/Services/consumo.service';
@@ -12,59 +14,105 @@ import { ProductManagementService } from 'src/app/Services/product-management.se
 })
 export class PerfilPacienteComponent implements OnInit {
 
-  constructor(private consumoService: ConsumoService, private productService: ProductManagementService) { }
+  constructor(private consumoService: ConsumoService, private productService: ProductManagementService, private route: ActivatedRoute,) { }
 
   tiempos: string[] = ["Desayuno", "Almuerzo", "Cena", "Merienda"]
   consumos: Consumo[] = []
   editingID: number = 0
   selectedTiempo: string = "Desayuno"
-  keyword= "Nombre"
-  productos: Producto[]=[]
+  keyword = "Nombre"
+  productos: Producto[] = []
+  id: number = 0
+  cliente: Cliente = {
+    Nombre: "",
+    Apellido1: "",
+    Apellido2: "",
+    Edad: 0,
+    FechaDeNacimiento: new Date(),
+    Peso: 0,
+    IMC: 0,
+    Pais: "",
+    PesoActual: 0,
+    Cintura: 0,
+    Cuello: 0,
+    Caderas: 0,
+    Musculo: 0,
+    Grasa: 0,
+    ConsumoCalorias: 0,
+    Correo: "",
+    Contrasenna: "",
+    Id: 0
+  }
+  comentario : string = ""
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.params.id;
     this.consumoService.getconsumos().then(res => { this.consumos = res })
     this.consumos = [{
-      id:44444,
-    fecha: new Date(),
-    tiempo: "Desayuno",
-    platillo: "Gallo Pinto"
+      id: 44444,
+      fecha: new Date(),
+      tiempo: "Desayuno",
+      platillo: "Gallo Pinto"
 
-    },{
-      id:666666,
-    fecha: new Date(),
-    tiempo: "Merienda",
-    platillo: "Yogurt"
+    }, {
+      id: 666666,
+      fecha: new Date(),
+      tiempo: "Merienda",
+      platillo: "Yogurt"
     }],
-    this.productService.getProductos().then(res=>{this.productos = res})
-    this.productos =[{
+      this.productService.getProductos().then(res => { this.productos = res })
+    this.productos = [{
       codigoDeBarras: 4444,
-    Descripcion:"jaja",
-    Porcion:3,
-    Energia:4,
-    Grasa: 6,
-    Sodio: 9,
-    Carbohidratos:1,
-    Proteina:4,
-    Vitaminas: 5,
-    Calcio: 3,
-    Hierro: 30,
-    Aprobacion:1,
-    Nombre: "acas"
-    },{
+      Descripcion: "jaja",
+      Porcion: 3,
+      Energia: 4,
+      Grasa: 6,
+      Sodio: 9,
+      Carbohidratos: 1,
+      Proteina: 4,
+      Vitaminas: 5,
+      Calcio: 3,
+      Hierro: 30,
+      Aprobacion: 1,
+      Nombre: "acas"
+    }, {
       codigoDeBarras: 3334,
-    Descripcion:"jaja",
-    Porcion:3,
-    Energia:4,
-    Grasa: 6,
-    Sodio: 9,
-    Carbohidratos:1,
-    Proteina:4,
-    Vitaminas: 5,
-    Calcio: 3,
-    Hierro: 30,
-    Aprobacion:1,
-    Nombre: "hhhh"
+      Descripcion: "jaja",
+      Porcion: 3,
+      Energia: 4,
+      Grasa: 6,
+      Sodio: 9,
+      Carbohidratos: 1,
+      Proteina: 4,
+      Vitaminas: 5,
+      Calcio: 3,
+      Hierro: 30,
+      Aprobacion: 1,
+      Nombre: "hhhh"
     }]
+    this.cliente = {
+      Nombre: "fewfew",
+      Apellido1: "fwef",
+      Apellido2: "ewfwef",
+      Edad: 3,
+      FechaDeNacimiento: new Date(),
+      Peso: 2,
+      IMC: 1,
+      Pais: "adsdds",
+      PesoActual: 8,
+      Cintura: 7,
+      Cuello: 6,
+      Caderas: 4,
+      Musculo: 4,
+      Grasa: 3,
+      ConsumoCalorias: 7,
+      Correo: "dgdg",
+      Contrasenna: "dgdfg",
+      Id: 13412412
+    }
+  }
 
+  addComment(){
+    
   }
 }
