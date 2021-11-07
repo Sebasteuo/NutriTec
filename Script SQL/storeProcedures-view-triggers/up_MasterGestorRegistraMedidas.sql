@@ -24,7 +24,7 @@ CREATE PROCEDURE up_MasterGestorRegistraMedidas(
     @Cedula INT,
     @Zona VARCHAR(50),
     @Medida NUMERIC(5,2),
-    @FechaRegistro TIMESTAMP,
+    @FechaRegistro DATETIME,
     @StatementType NVARCHAR(50) = '')
 AS
   BEGIN

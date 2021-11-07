@@ -22,7 +22,7 @@
 
 CREATE PROCEDURE up_MasterGestorProducto (     
     @CodigoDBarras INT ,
-    @Nombre VARCHAR(50) NOT NULL,
+    @Nombre VARCHAR(50),
     @Descripcion TEXT,
     @Porcion INT,
     @Energia INT,
