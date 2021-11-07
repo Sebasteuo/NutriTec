@@ -13,74 +13,46 @@ export class ProductosComponent implements OnInit {
 
   }
 
-  newProducto: Producto = {  codigoDeBarras: 0,
-    Descripcion:"",
-    Porcion:0,
-    Energia:0,
-    Grasa: 0,
-    Sodio: 0,
-    Carbohidratos:0,
-    Proteina:0,
-    Vitaminas: 0,
-    Calcio: 0,
-    Hierro: 0,
-    Aprobacion:0,
-    Nombre: ""
+  newProducto: Producto = {  codigodbarras: 0,
+    descripcion:"",
+    porcion:0,
+    energia:0,
+    grasa: 0,
+    sodio: 0,
+    carbohidratos:0,
+    proteina:0,
+    vitaminas: 0,
+    calcio: 0,
+    hierro: 0,
+    aprobado:0,
+    nombre: ""
   }
   selectedProduct: Producto = {
-    codigoDeBarras: 0,
-    Descripcion:"",
-    Porcion:0,
-    Energia:0,
-    Grasa: 0,
-    Sodio: 0,
-    Carbohidratos:0,
-    Proteina:0,
-    Vitaminas: 0,
-    Calcio: 0,
-    Hierro: 0,
-    Aprobacion:0,
-    Nombre: ""
+    codigodbarras: 0,
+    descripcion:"",
+    porcion:0,
+    energia:0,
+    grasa: 0,
+    sodio: 0,
+    carbohidratos:0,
+    proteina:0,
+    vitaminas: 0,
+    calcio: 0,
+    hierro: 0,
+    aprobado:0,
+    nombre: ""
   }
 
   products: Producto[]=[]
   editingID: number = 0
   ngOnInit(): void {
     this.productService.getProductos().then(res=>this.products=res)
-    this.products =[{
-      codigoDeBarras: 4444,
-    Descripcion:"jaja",
-    Porcion:3,
-    Energia:4,
-    Grasa: 6,
-    Sodio: 9,
-    Carbohidratos:1,
-    Proteina:4,
-    Vitaminas: 5,
-    Calcio: 3,
-    Hierro: 30,
-    Aprobacion:1,
-    Nombre: "acas"
-    },{
-      codigoDeBarras: 3334,
-    Descripcion:"jaja",
-    Porcion:3,
-    Energia:4,
-    Grasa: 6,
-    Sodio: 9,
-    Carbohidratos:1,
-    Proteina:4,
-    Vitaminas: 5,
-    Calcio: 3,
-    Hierro: 30,
-    Aprobacion:1,
-    Nombre: ""
-    }]
+    
   }
 
   edit(producto: Producto){
     this.selectedProduct = producto
-    this.editingID = producto.codigoDeBarras
+    this.editingID = producto.codigodbarras
   }
 
   submit(){
@@ -88,27 +60,27 @@ export class ProductosComponent implements OnInit {
     this.productService.editProducto(this.selectedProduct).then(res=>{this.products=res})
   }
 
-  delete(codigoDeBarras:number){
-    this.productService.deleteProducto(codigoDeBarras).then(res=>{this.products=res})
+  delete(codigodbarras:number){
+    this.productService.deleteProducto(codigodbarras).then(res=>{this.products=res})
   }
 
 
   add(){
     this.productService.addProducto(this.newProducto).then(res=>{this.products=res})
     this.selectedProduct = {
-      codigoDeBarras: 0,
-      Descripcion:"",
-      Porcion:0,
-      Energia:0,
-      Grasa: 0,
-      Sodio: 0,
-      Carbohidratos:0,
-      Proteina:0,
-      Vitaminas: 0,
-      Calcio: 0,
-      Hierro: 0,
-      Aprobacion:0,
-      Nombre: ""
+      codigodbarras: 0,
+      descripcion:"",
+      porcion:0,
+      energia:0,
+      grasa: 0,
+      sodio: 0,
+      carbohidratos:0,
+      proteina:0,
+      vitaminas: 0,
+      calcio: 0,
+      hierro: 0,
+      aprobado:0,
+      nombre: ""
     }
   }
 

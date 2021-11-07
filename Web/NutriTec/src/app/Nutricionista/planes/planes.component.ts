@@ -33,76 +33,48 @@ export class PlanesComponent implements OnInit {
 
   ngOnInit(): void {
     this.productoService.getProductos().then(res=>{this.productos=res})
-    this.productos =[{
-      codigoDeBarras: 4444,
-    Descripcion:"jaja",
-    Porcion:3,
-    Energia:4,
-    Grasa: 6,
-    Sodio: 9,
-    Carbohidratos:1,
-    Proteina:4,
-    Vitaminas: 5,
-    Calcio: 3,
-    Hierro: 30,
-    Aprobacion:1,
-    Nombre: "acas"
-    },{
-      codigoDeBarras: 3334,
-    Descripcion:"jaja",
-    Porcion:3,
-    Energia:4,
-    Grasa: 6,
-    Sodio: 9,
-    Carbohidratos:1,
-    Proteina:4,
-    Vitaminas: 5,
-    Calcio: 3,
-    Hierro: 30,
-    Aprobacion:1,
-    Nombre: "hhhh"
-    }]
+    
   }
 
   selectDesayuno(producto: Producto){
     this.selectedDesayuno.push(producto) 
-    this.caloriasTotales=this.caloriasTotales + producto.Energia
+    this.caloriasTotales=this.caloriasTotales + producto.energia
   }
   selectMeriendaMatutina(producto: Producto){
     this.selectedMeriendaMatutina.push(producto) 
-    this.caloriasTotales=this.caloriasTotales + producto.Energia
+    this.caloriasTotales=this.caloriasTotales + producto.energia
   }
   selectMeriendaTarde(producto: Producto){
     this.selectedMeriendaTarde.push(producto) 
-    this.caloriasTotales=this.caloriasTotales + producto.Energia
+    this.caloriasTotales=this.caloriasTotales + producto.energia
   }
   selectAlmuerzo(producto: Producto){
     this.selectedAlmuerzo.push(producto) 
-    this.caloriasTotales=this.caloriasTotales + producto.Energia
+    this.caloriasTotales=this.caloriasTotales + producto.energia
   }
   selectCena(producto: Producto){
     this.selectedCena.push(producto) 
-    this.caloriasTotales=this.caloriasTotales + producto.Energia
+    this.caloriasTotales=this.caloriasTotales + producto.energia
   }
   deleteDesayuno(producto:Producto){
-    this.selectedDesayuno=this.selectedDesayuno.filter(item=>item.codigoDeBarras= producto.codigoDeBarras)
-    this.caloriasTotales=this.caloriasTotales - producto.Energia
+    this.selectedDesayuno=this.selectedDesayuno.filter(item=>item.codigodbarras= producto.codigodbarras)
+    this.caloriasTotales=this.caloriasTotales - producto.energia
   }
   deleteMeriendaMatutina(producto:Producto){
-    this.selectedMeriendaMatutina=this.selectedMeriendaMatutina.filter(item=>item.codigoDeBarras= producto.codigoDeBarras)
-    this.caloriasTotales=this.caloriasTotales - producto.Energia
+    this.selectedMeriendaMatutina=this.selectedMeriendaMatutina.filter(item=>item.codigodbarras= producto.codigodbarras)
+    this.caloriasTotales=this.caloriasTotales - producto.energia
   }
   deleteMeriendaTarde(producto:Producto){
-    this.selectedMeriendaTarde=this.selectedMeriendaTarde.filter(item=>item.codigoDeBarras= producto.codigoDeBarras)
-    this.caloriasTotales=this.caloriasTotales - producto.Energia
+    this.selectedMeriendaTarde=this.selectedMeriendaTarde.filter(item=>item.codigodbarras= producto.codigodbarras)
+    this.caloriasTotales=this.caloriasTotales - producto.energia
   }
   deleteAlmuerzo(producto:Producto){
-    this.selectedAlmuerzo=this.selectedAlmuerzo.filter(item=>item.codigoDeBarras= producto.codigoDeBarras)
-    this.caloriasTotales=this.caloriasTotales - producto.Energia
+    this.selectedAlmuerzo=this.selectedAlmuerzo.filter(item=>item.codigodbarras= producto.codigodbarras)
+    this.caloriasTotales=this.caloriasTotales - producto.energia
   }
   deleteCena(producto:Producto){
-    this.selectedCena=this.selectedCena.filter(item=>item.codigoDeBarras= producto.codigoDeBarras)
-    this.caloriasTotales=this.caloriasTotales - producto.Energia
+    this.selectedCena=this.selectedCena.filter(item=>item.codigodbarras= producto.codigodbarras)
+    this.caloriasTotales=this.caloriasTotales - producto.energia
   }
   add(){
 

@@ -61,35 +61,7 @@ export class PerfilPacienteComponent implements OnInit {
       platillo: "Yogurt"
     }],
       this.productService.getProductos().then(res => { this.productos = res })
-    this.productos = [{
-      codigoDeBarras: 4444,
-      Descripcion: "jaja",
-      Porcion: 3,
-      Energia: 4,
-      Grasa: 6,
-      Sodio: 9,
-      Carbohidratos: 1,
-      Proteina: 4,
-      Vitaminas: 5,
-      Calcio: 3,
-      Hierro: 30,
-      Aprobacion: 1,
-      Nombre: "acas"
-    }, {
-      codigoDeBarras: 3334,
-      Descripcion: "jaja",
-      Porcion: 3,
-      Energia: 4,
-      Grasa: 6,
-      Sodio: 9,
-      Carbohidratos: 1,
-      Proteina: 4,
-      Vitaminas: 5,
-      Calcio: 3,
-      Hierro: 30,
-      Aprobacion: 1,
-      Nombre: "hhhh"
-    }]
+    
     this.cliente = {
       Nombre: "fewfew",
       Apellido1: "fwef",
