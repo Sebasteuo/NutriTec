@@ -1,21 +1,23 @@
 export class Cliente {
-    Nombre: string = ""
-    Apellido1:  string = ""
-    Apellido2: string = ""
-    Edad: number = 0
-    FechaDeNacimiento: Date = new Date()
-    Peso: number = 0
-    IMC: number = 0
-    Pais:  string = ""
-    PesoActual: number = 0
-    Cintura: number = 0
-    Cuello: number = 0
-    Caderas: number = 0
-    Musculo: number = 0
-    Grasa: number = 0
-    ConsumoCalorias: number = 0
-    Correo:  string = ""
-    Contrasenna:  string = ""
-    Id: number = 0
+    nombre1: string = ""
+    nombre2: string = ""
+    apellido1:  string = ""
+    apellido2: string = ""
+    Edad: number = 0//Falta en el API
+    fechanacimiento: Date = new Date()
+    peso: number = 0
+    IMC: number = 0//Falta en el API
+    pais:  string = ""
+    altura: number = 0
+    PesoActual: number = 0//Falta en el API
+    Cintura: number = 0//Falta en el API
+    Cuello: number = 0//Falta en el API
+    Caderas: number = 0//Falta en el API
+    porcentajemusculo: number = 0
+    porcentajegrasa: number = 0
+    ConsumoCalorias: number = 0 //Falta en el API
+    correo:  string = ""
+    password:  string = ""
+    cedula: number = 0
 
 }

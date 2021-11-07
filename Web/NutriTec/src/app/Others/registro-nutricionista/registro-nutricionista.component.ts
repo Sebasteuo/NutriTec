@@ -13,30 +13,31 @@ export class RegistroNutricionistaComponent implements OnInit {
   constructor(private authenticationService: AuthenticationManagementService) { }
   active = 1
   newNutricionista: Nutricionista={
-    Nombre: "",
-    Apellido1:  "",
-    Apellido2: "",
-    Edad:  0,
-    CodigoNutricionista: 0,
-    FechaDeNacimiento: new Date(),
-    IMC:  0,
-    Peso:  0,
-    Direccion:  "",
-    Foto:  "",
-    NumeroTarjetaCredito:  0,
-    TipoDeCobro:  0,
-    Pais:  "",
-    Correo:   "",
-    Contrasenna:   "",
-    Id:  0
+    nombre1:  "",
+    nombre2:  "",
+    apellido1:  "",
+    apellido2:  "",
+    Edad:  0,//Falta en el API
+    codigonutricionista:  0,
+    fechanacimiento:  new Date(),
+    IMC: 0, //Falta en el API
+    peso:  0,
+    direccion:  "",
+    foto: "",
+    numerotarjetacredito:  0 ,
+    tipocobro: 0,
+    Pais:  "", //Falta en el API
+    correo:   "",
+    password:   "",
+    cedula:  0
   }
 
   
   ngOnInit(): void {
   }
   onSubmit() {
-    var pass = (CryptoJS.MD5(this.newNutricionista.Contrasenna) as unknown) as string;
-    this.authenticationService.Register(this.newNutricionista.Id as unknown as number,
-       "Cliente", this.newNutricionista.Correo, CryptoJS.enc.Base64.stringify(Crypto.SHA256(pass)));
+    var pass = (CryptoJS.MD5(this.newNutricionista.password) as unknown) as string;
+    this.authenticationService.Register(this.newNutricionista.cedula as unknown as number,
+       "Cliente", this.newNutricionista.correo, CryptoJS.enc.Base64.stringify(Crypto.SHA256(pass)));
   }
 }

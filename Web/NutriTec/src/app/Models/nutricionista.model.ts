@@ -1,18 +1,19 @@
 export class Nutricionista {
-    Nombre: string = ""
-    Apellido1:  string = ""
-    Apellido2: string = ""
-    Edad: number = 0
-    CodigoNutricionista: number = 0
-    FechaDeNacimiento: Date = new Date()
-    IMC: number = 0
-    Peso: number = 0
-    Direccion: string = ""
-    Foto: string = ""
-    NumeroTarjetaCredito: number = 0
-    TipoDeCobro: number = 0
-    Pais:  string = ""
-    Correo:  string = ""
-    Contrasenna:  string = ""
-    Id: number = 0
+    nombre1: string = ""
+    nombre2: string = ""
+    apellido1:  string = ""
+    apellido2: string = ""
+    Edad: number = 0//Falta en el API
+    codigonutricionista: number = 0
+    fechanacimiento: Date = new Date()
+    IMC: number = 0 //Falta en el API
+    peso: number = 0
+    direccion: string = ""
+    foto: string = ""
+    numerotarjetacredito: number = 0 
+    tipocobro: number = 0
+    Pais:  string = "" //Falta en el API
+    correo:  string = ""
+    password:  string = ""
+    cedula: number = 0
 }

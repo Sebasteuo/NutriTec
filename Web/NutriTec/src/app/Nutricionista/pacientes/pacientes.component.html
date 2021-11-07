@@ -27,7 +27,7 @@
                                                             </ng-autocomplete>
                                                             <ng-template #itemTemplate let-item>
                                                                 <a
-                                                                    [innerHTML]="item.Nombre + item.Apellido1 + item.Apellido2"></a>
+                                                                    [innerHTML]="item.nombre1 + item.nombre2 + item.apellido1 + item.apellido2"></a>
                                                             </ng-template>
                                                             <ng-template #notFoundTemplate let-notFound>
                                                                 <div [innerHTML]="notFound"></div>
@@ -58,19 +58,20 @@
                                                                     </thead>
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td>{{selectedCliente.Id}}</td>
-                                                                            <td>{{selectedCliente.Nombre}}</td>
-                                                                            <td>{{selectedCliente.Apellido1}}
-                                                                                {{selectedCliente.Apellido2}}</td>
+                                                                            <td>{{selectedCliente.cedula}}</td>
+                                                                            <td>{{selectedCliente.nombre1}}</td>
+                                                                            <td>{{selectedCliente.nombre2}}</td>
+                                                                            <td>{{selectedCliente.apellido1}}
+                                                                                {{selectedCliente.apellido2}}</td>
                                                                             <td>{{selectedCliente.Edad}}</td>
-                                                                            <td>{{selectedCliente.Pais}}</td>
-                                                                            <td>{{selectedCliente.Correo}}</td>
+                                                                            <td>{{selectedCliente.pais}}</td>
+                                                                            <td>{{selectedCliente.correo}}</td>
                                                                             <td>{{selectedCliente.PesoActual}}</td>
-                                                                            <td>{{selectedCliente.Peso}}</td>
+                                                                            <td>{{selectedCliente.peso}}</td>
 
                                                                             <th scope="row">
                                                                                 <button
-                                                                                    (click)="add(selectedCliente.Id)"
+                                                                                    (click)="add(selectedCliente.cedula)"
                                                                                     class="btn-icon" placement="top"
                                                                                     ngbTooltip="Agregar">
                                                                                     <i class="fa fa-plus"
@@ -114,7 +115,7 @@
                                                                                 </ng-autocomplete>
                                                                                 <ng-template #itemTemplate let-item>
                                                                                     <a
-                                                                                        [innerHTML]="item.Nombre + item.Apellido1 + item.Apellido2"></a>
+                                                                                        [innerHTML]="item.nombre1 +item.nombre2 + item.apellido1 + item.apellido2"></a>
                                                                                 </ng-template>
                                                                                 <ng-template #notFoundTemplate
                                                                                     let-notFound>

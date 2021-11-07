@@ -14,90 +14,77 @@ export class SeguimientoPacienteComponent implements OnInit {
   pacientes: Cliente[]=[]
   ngOnInit(): void {
     this.pacientes=[{
-      Nombre: "fewfew",
-      Apellido1: "fwef",
-      Apellido2: "ewfwef",
-      Edad: 3,
-      FechaDeNacimiento: new Date(),
-      Peso: 2,
-      IMC: 1,
-      Pais:   "adsdds",
-      PesoActual: 8,
-      Cintura:  7,
-      Cuello:  6,
-      Caderas:  4,
-      Musculo:  4,
-      Grasa:  3,
-      ConsumoCalorias:  7,
-      Correo:   "dgdg",
-      Contrasenna:  "dgdfg",
-      Id: 13412412
+      nombre1:  "sdcsdc",
+      nombre2:  "dsc",
+      apellido1:  "sdcd",
+      apellido2: "sdcsc",
+      Edad:  5,//Falta en el API
+      fechanacimiento:new Date(),
+      peso:  5,
+      IMC:  5,//Falta en el API
+      pais:   "sdcdsc",
+      altura: 5,
+      PesoActual:  5,//Falta en el API
+      Cintura:  5,//Falta en el API
+      Cuello:  5,//Falta en el API
+      Caderas:  5,//Falta en el API
+      porcentajemusculo:  5,
+      porcentajegrasa:  5,
+      ConsumoCalorias:  5, //Falta en el API
+      correo:   "scsdc",
+      password:   "dscdc",
+      cedula:  4
     },
     {
-      Nombre: "fewfew",
-      Apellido1: "fwef",
-      Apellido2: "ewfwef",
-      Edad: 3,
-      FechaDeNacimiento: new Date(),
-      Peso: 2,
-      IMC: 1,
-      Pais:   "adsdds",
-      PesoActual: 8,
-      Cintura:  7,
-      Cuello:  6,
-      Caderas:  4,
-      Musculo:  4,
-      Grasa:  3,
-      ConsumoCalorias:  7,
-      Correo:   "dgdg",
-      Contrasenna:  "dgdfg",
-      Id: 98765
+      nombre1:  "scsdc",
+      nombre2:  "sdcdsc",
+      apellido1:  "sdcsdc",
+      apellido2: "dscdsc",
+      Edad:  3,//Falta en el API
+      fechanacimiento:new Date(),
+      peso:  3,
+      IMC:  3,//Falta en el API
+      pais:   "asdas",
+      altura: 3,
+      PesoActual:  3,//Falta en el API
+      Cintura:  3,//Falta en el API
+      Cuello:  3,//Falta en el API
+      Caderas:  3,//Falta en el API
+      porcentajemusculo:  3,
+      porcentajegrasa:  3,
+      ConsumoCalorias:  3, //Falta en el API
+      correo:   "adasd",
+      password:   "asdasd",
+      cedula:  4,
+      
     },
     {
-      Nombre: "fewfew",
-      Apellido1: "fwef",
-      Apellido2: "ewfwef",
-      Edad: 3,
-      FechaDeNacimiento: new Date(),
-      Peso: 2,
-      IMC: 1,
-      Pais:   "adsdds",
-      PesoActual: 8,
-      Cintura:  7,
-      Cuello:  6,
-      Caderas:  4,
-      Musculo:  4,
-      Grasa:  3,
-      ConsumoCalorias:  7,
-      Correo:   "dgdg",
-      Contrasenna:  "dgdfg",
-      Id: 2222222222
-    },
-    {
-      Nombre: "fewfew",
-      Apellido1: "fwef",
-      Apellido2: "ewfwef",
-      Edad: 3,
-      FechaDeNacimiento: new Date(),
-      Peso: 2,
-      IMC: 1,
-      Pais:   "adsdds",
-      PesoActual: 8,
-      Cintura:  7,
-      Cuello:  6,
-      Caderas:  4,
-      Musculo:  4,
-      Grasa:  3,
-      ConsumoCalorias:  7,
-      Correo:   "dgdg",
-      Contrasenna:  "dgdfg",
-      Id: 6666666666
+      nombre1:  "asd",
+      nombre2:  "asd",
+      apellido1:  "asd",
+      apellido2: "asd",
+      Edad: 55,//Falta en el API
+      fechanacimiento:new Date(),
+      peso:  44,
+      IMC: 555,//Falta en el API
+      pais:   "sdcsd",
+      altura: 777,
+      PesoActual:  7,//Falta en el API
+      Cintura:  66,//Falta en el API
+      Cuello:  5,//Falta en el API
+      Caderas:  56,//Falta en el API
+      porcentajemusculo:  56,
+      porcentajegrasa:  56,
+      ConsumoCalorias:  56, //Falta en el API
+      correo:   "ddf",
+      password:   "dfvdf",
+      cedula:  77
     }]
   }
 
 
   view(paciente: Cliente){
-    this.router.navigate(['/Paciente/' + paciente.Id])
+    this.router.navigate(['/Paciente/' + paciente.cedula])
   }
 
 }

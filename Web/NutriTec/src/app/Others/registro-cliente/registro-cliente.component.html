@@ -1,30 +1,36 @@
 <form #form autocomplete="off">
     <div class="form-group">
         <label>Cédula</label>
-        <input name="quantity" [(ngModel)]="newCliente.Id" class="form-control" placeholder="Cédula" required>
+        <input name="quantity" [(ngModel)]="newCliente.cedula" class="form-control" placeholder="Cédula" required>
     </div> <!-- form-group// -->
     <div class="form-group">
-        <label>Nombre</label>
-        <input name="quantity" [(ngModel)]="newCliente.Nombre" class="form-control" placeholder="Usuario" type="Nombre" required>
+        <label>Primer Nombre</label>
+        <input name="quantity" [(ngModel)]="newCliente.nombre1" class="form-control" placeholder="Usuario" type="Nombre" required>
+
+    </div> <!-- form-group// -->
+
+    <div class="form-group">
+        <label>Segundo Nombre</label>
+        <input name="quantity" [(ngModel)]="newCliente.nombre2" class="form-control" placeholder="Usuario" type="Nombre" required>
 
     </div> <!-- form-group// -->
     <div class="form-group">
         <label>Primer Apellido</label>
-        <input type="password" name="quantity" [(ngModel)]="newCliente.Apellido1" class="form-control" placeholder="Primer Apellido" required>
+        <input type="password" name="quantity" [(ngModel)]="newCliente.apellido1" class="form-control" placeholder="Primer Apellido" required>
 
     </div> <!-- form-group// -->
 
     <div class="form-group">
         <label>Segundo Apellido</label>
-        <input name="quantity" [(ngModel)]="newCliente.Apellido2" class="form-control" placeholder="Segundo Apellido" required>
+        <input name="quantity" [(ngModel)]="newCliente.apellido2" class="form-control" placeholder="Segundo Apellido" required>
     </div> <!-- form-group// -->
     <div class="form-group">
         <label>Fecha de Nacimiento</label>
-        <input name="quantity" [(ngModel)]="newCliente.FechaDeNacimiento" class="form-control" placeholder="Fecha de Nacimiento" required>
+        <input name="quantity" [(ngModel)]="newCliente.fechanacimiento" class="form-control" placeholder="Fecha de Nacimiento" required>
     </div> <!-- form-group// -->
     <div class="form-group">
         <label>Peso</label>
-        <input name="quantity" [(ngModel)]="newCliente.Peso" class="form-control" placeholder="Peso" required>
+        <input name="quantity" [(ngModel)]="newCliente.peso" class="form-control" placeholder="Peso" required>
     </div> <!-- form-group// -->
     <div class="form-group">
         <label>IMC</label>
@@ -32,7 +38,7 @@
     </div> <!-- form-group// -->
     <div class="form-group">
         <label>País</label>
-        <input name="quantity" [(ngModel)]="newCliente.Peso" class="form-control" placeholder="País" required>
+        <input name="quantity" [(ngModel)]="newCliente.pais" class="form-control" placeholder="País" required>
     </div> <!-- form-group// -->
     <div class="form-group">
         <label>Peso Actual</label>
@@ -52,11 +58,11 @@
     </div> <!-- form-group// -->
     <div class="form-group">
         <label>Músculo</label>
-        <input name="quantity" [(ngModel)]="newCliente.Musculo" class="form-control" placeholder="Músculo" required>
+        <input name="quantity" [(ngModel)]="newCliente.porcentajemusculo" class="form-control" placeholder="Músculo" required>
     </div> <!-- form-group// -->
     <div class="form-group">
         <label>Grasa</label>
-        <input name="quantity" [(ngModel)]="newCliente.Grasa" class="form-control" placeholder="Grasa" required>
+        <input name="quantity" [(ngModel)]="newCliente.porcentajegrasa" class="form-control" placeholder="Grasa" required>
     </div> <!-- form-group// -->
     <div class="form-group">
         <label>Consumo de Calorías</label>
@@ -64,11 +70,11 @@
     </div> <!-- form-group// -->
     <div class="form-group">
         <label>Correo</label>
-        <input name="quantity" [(ngModel)]="newCliente.Correo" class="form-control" placeholder="Correo" required>
+        <input name="quantity" [(ngModel)]="newCliente.correo" class="form-control" placeholder="Correo" required>
     </div> <!-- form-group// -->
     <div class="form-group">
         <label>Contraseña</label>
-        <input name="quantity" [(ngModel)]="newCliente.Contrasenna" class="form-control" placeholder="Contraseña" required>
+        <input name="quantity" [(ngModel)]="newCliente.password" class="form-control" placeholder="Contraseña" required>
     </div> <!-- form-group// -->
 
     <div class="form-group">

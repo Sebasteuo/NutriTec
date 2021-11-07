@@ -14,43 +14,46 @@ export class AuthenticationManagementService {
 
   newUser: Credenciales = { user: "", password: "", tipo: "", cedula: 0 }
   newNutricionista: Nutricionista = {
-    Nombre: "",
-    Apellido1:  "",
-    Apellido2: "",
-    Edad:  0,
-    CodigoNutricionista: 0,
-    FechaDeNacimiento: new Date(),
-    IMC:  0,
-    Peso:  0,
-    Direccion:  "",
-    Foto:  "",
-    NumeroTarjetaCredito:  0,
-    TipoDeCobro:  0,
-    Pais:  "",
-    Correo:   "",
-    Contrasenna:   "",
-    Id:  0
+    nombre1:  "",
+    nombre2:  "",
+    apellido1:  "",
+    apellido2:  "",
+    Edad:  0,//Falta en el API
+    codigonutricionista:  0,
+    fechanacimiento:  new Date(),
+    IMC: 0, //Falta en el API
+    peso:  0,
+    direccion:  "",
+    foto: "",
+    numerotarjetacredito:  0 ,
+    tipocobro: 0,
+    Pais:  "", //Falta en el API
+    correo:   "",
+    password:   "",
+    cedula:  0
 
   }
   newCliente:Cliente ={
-    Nombre: "",
-    Apellido1: "",
-    Apellido2: "",
-    Edad: 0,
-    FechaDeNacimiento: new Date(),
-    Peso: 0,
-    IMC: 0,
-    Pais: "",
-    PesoActual: 0,
-    Cintura: 0,
-    Cuello: 0,
-    Caderas: 0,
-    Musculo: 0,
-    Grasa: 0,
-    ConsumoCalorias: 0,
-    Correo: "",
-    Contrasenna: "",
-    Id: 0
+    nombre1:  "",
+    nombre2:  "",
+    apellido1:  "",
+    apellido2: "",
+    Edad:  0,//Falta en el API
+    fechanacimiento:new Date(),
+    peso:  0,
+    IMC:  0,//Falta en el API
+    pais:   "",
+    altura: 0,
+    PesoActual:  0,//Falta en el API
+    Cintura:  0,//Falta en el API
+    Cuello:  0,//Falta en el API
+    Caderas:  0,//Falta en el API
+    porcentajemusculo:  0,
+    porcentajegrasa:  0,
+    ConsumoCalorias:  0, //Falta en el API
+    correo:   "",
+    password:   "",
+    cedula:  0
   }
 
   constructor(private router: Router, public toastr: ToastrService, public http: HttpClient) { }

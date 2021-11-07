@@ -24,24 +24,26 @@ export class PerfilPacienteComponent implements OnInit {
   productos: Producto[] = []
   id: number = 0
   cliente: Cliente = {
-    Nombre: "",
-    Apellido1: "",
-    Apellido2: "",
-    Edad: 0,
-    FechaDeNacimiento: new Date(),
-    Peso: 0,
-    IMC: 0,
-    Pais: "",
-    PesoActual: 0,
-    Cintura: 0,
-    Cuello: 0,
-    Caderas: 0,
-    Musculo: 0,
-    Grasa: 0,
-    ConsumoCalorias: 0,
-    Correo: "",
-    Contrasenna: "",
-    Id: 0
+    nombre1:  "",
+    nombre2:  "",
+    apellido1:  "",
+    apellido2: "",
+    Edad:  0,//Falta en el API
+    fechanacimiento:new Date(),
+    peso:  0,
+    IMC:  0,//Falta en el API
+    pais:   "",
+    altura: 0,
+    PesoActual:  0,//Falta en el API
+    Cintura:  0,//Falta en el API
+    Cuello:  0,//Falta en el API
+    Caderas:  0,//Falta en el API
+    porcentajemusculo:  0,
+    porcentajegrasa:  0,
+    ConsumoCalorias:  0, //Falta en el API
+    correo:   "",
+    password:   "",
+    cedula:  0
   }
   comentario : string = ""
 
@@ -63,24 +65,26 @@ export class PerfilPacienteComponent implements OnInit {
       this.productService.getProductos().then(res => { this.productos = res })
     
     this.cliente = {
-      Nombre: "fewfew",
-      Apellido1: "fwef",
-      Apellido2: "ewfwef",
-      Edad: 3,
-      FechaDeNacimiento: new Date(),
-      Peso: 2,
-      IMC: 1,
-      Pais: "adsdds",
-      PesoActual: 8,
-      Cintura: 7,
-      Cuello: 6,
-      Caderas: 4,
-      Musculo: 4,
-      Grasa: 3,
-      ConsumoCalorias: 7,
-      Correo: "dgdg",
-      Contrasenna: "dgdfg",
-      Id: 13412412
+      nombre1:  "sdffd",
+    nombre2:  "sdfd",
+    apellido1:  "sdfsd",
+    apellido2: "sdfdsf",
+    Edad:  5,//Falta en el API
+    fechanacimiento:new Date(),
+    peso:  6,
+    IMC:  7,//Falta en el API
+    pais:   "sdfsfd",
+    altura: 6,
+    PesoActual:  6,//Falta en el API
+    Cintura:  66,//Falta en el API
+    Cuello:  4,//Falta en el API
+    Caderas:  44,//Falta en el API
+    porcentajemusculo:  2,
+    porcentajegrasa:  22,
+    ConsumoCalorias: 8, //Falta en el API
+    correo:   "dbdf",
+    password:   "fdd",
+    cedula:  99
     }
   }
 
