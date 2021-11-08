@@ -13,7 +13,7 @@ namespace API_Relacional.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductoXPlanController : ControllerBase
+    public class TiempoComidaController : ControllerBase
     {
         private string cadenaDeConexion = "SQLServerConnection"; //hace referencia a la cadena de conexion en appsettings.json
         private readonly IConfiguration _configuration;
@@ -21,7 +21,7 @@ namespace API_Relacional.Controllers
         Consultas consulta = new Consultas();
 
         //el metodo constructor recibe como parametro una instancia de la interface Iconfiguration que permite la representacion de un conjunto de propiedades clave/valor
-        public ProductoXPlanController(IConfiguration configuration)
+        public TiempoComidaController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -31,8 +31,8 @@ namespace API_Relacional.Controllers
         public JsonResult Get()
         {
             string query = @"
-                SELECT idplan, codigodbarras, tiempocomida 
-                FROM productoxplan
+                SELECT id, nombre 
+                FROM tiempocomida
                 ";
 
             return consulta.get(query, _configuration, cadenaDeConexion);
@@ -44,9 +44,9 @@ namespace API_Relacional.Controllers
         public JsonResult Get(int id)
         {
             string query = @"
-                SELECT idplan, codigodbarras, tiempocomida 
-                FROM productoxplan
-                WHERE idplan=" + id +
+                SELECT id, nombre 
+                FROM tiempocomida
+                WHERE id=" + id +
                 "";
 
             return consulta.get(query, _configuration, cadenaDeConexion);
@@ -55,11 +55,11 @@ namespace API_Relacional.Controllers
 
         // POST api/<HablaController>
         [HttpPost]
-        public JsonResult Post(ProductoXPlan x)
+        public JsonResult Post(TiempoComida x)
         {
             string query = @"
-                insert into productoxplan(idplan, codigodbarras, tiempocomida)
-                values (@idplan, @codigodbarras, @tiempocomida)";
+                insert into tiempocomida(id, nombre)
+                values (@id, @nombre)";
 
             string sqlDataSource = _configuration.GetConnectionString(cadenaDeConexion);//La fuente de los datos se obtiene de la cadena de conexion
             SqlDataReader reader;
@@ -72,14 +72,11 @@ namespace API_Relacional.Controllers
                 {
 
                     //Se agregan los valores y el tipo de dato respectivo
-                    cmd.Parameters.Add("@idplan", SqlDbType.Int);
-                    cmd.Parameters["@idplan"].Value = x.idplan;
+                    cmd.Parameters.Add("@id", SqlDbType.Int);
+                    cmd.Parameters["@id"].Value = x.id;
 
-                    cmd.Parameters.Add("@codigodbarras", SqlDbType.NVarChar);
-                    cmd.Parameters["@codigodbarras"].Value = x.codigodbarras;
-
-                    cmd.Parameters.Add("@tiempocomida", SqlDbType.NVarChar);
-                    cmd.Parameters["@tiempocomida"].Value = x.tiempocomida;
+                    cmd.Parameters.Add("@nombre", SqlDbType.NVarChar);
+                    cmd.Parameters["@nombre"].Value = x.nombre;
 
                     reader = cmd.ExecuteReader();//El lector ejecuta el comando
                     reader.Close(); //Se cierra  el lector
@@ -91,14 +88,13 @@ namespace API_Relacional.Controllers
 
         // PUT api/<HablaController>/5
         [HttpPut("{id}")]
-        public JsonResult Put(ProductoXPlan x)
+        public JsonResult Put(TiempoComida x)
         {
             string query = @"
-                UPDATE productoxplan
-                SET idplan = @idplan,
-                codigodbarras = @codigodbarras, 
-                tiempocomida = @tiempocomida
-                WHERE idplan = @idplan";
+                UPDATE tiempocomida
+                SET id = @id,
+                nombre = @nombre
+                WHERE id = @id";
 
             string sqlDataSource = _configuration.GetConnectionString(cadenaDeConexion);//La fuente de los datos se obtiene de la cadena de conexion
             SqlDataReader reader;
@@ -110,14 +106,11 @@ namespace API_Relacional.Controllers
                 using (SqlCommand cmd = new SqlCommand(query, connection))//El comando a ejecutar se hace con un query y la conexion
                 {
                     //Se agregan los valores y el tipo de dato respectivo
-                    cmd.Parameters.Add("@idplan", SqlDbType.Int);
-                    cmd.Parameters["@idplan"].Value = x.idplan;
+                    cmd.Parameters.Add("@id", SqlDbType.Int);
+                    cmd.Parameters["@id"].Value = x.id;
 
-                    cmd.Parameters.Add("@codigodbarras", SqlDbType.NVarChar);
-                    cmd.Parameters["@codigodbarras"].Value = x.codigodbarras;
-
-                    cmd.Parameters.Add("@tiempocomida", SqlDbType.NVarChar);
-                    cmd.Parameters["@tiempocomida"].Value = x.tiempocomida;
+                    cmd.Parameters.Add("@nombre", SqlDbType.NVarChar);
+                    cmd.Parameters["@nombre"].Value = x.nombre;
 
                     reader = cmd.ExecuteReader();
                     reader.Close(); //Se cierra  el lector
@@ -132,8 +125,8 @@ namespace API_Relacional.Controllers
         public JsonResult Delete(int id)
         {
             string query = @"
-                delete from productoxplan
-                where idplan =" + id;
+                delete from tiempocomida
+                where id =" + id;
 
             return consulta.delete(query, _configuration, cadenaDeConexion);
         }

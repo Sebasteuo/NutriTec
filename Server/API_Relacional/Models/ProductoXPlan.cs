@@ -9,5 +9,6 @@ namespace API_Relacional.Models
     {
         public int idplan { get; set; }
         public int codigodbarras { get; set; }
+        public int tiempocomida { get; set; }
     }
 }
