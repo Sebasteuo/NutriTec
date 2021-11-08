@@ -48,9 +48,9 @@ AS
       IF @StatementType = 'Update'
         BEGIN
             UPDATE Dbo.TIEMPODCOMIDA
-            SET CodigoDBarras =@CodigoDBarras,
+            SET 
                 @IdTiempo =@IdTiempo,
-                @Nombre=Nombre,
+                @Nombre=Nombre
             WHERE  IdTiempo=@IdTiempo 
         END
       ELSE IF @StatementType = 'Delete'

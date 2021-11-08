@@ -51,7 +51,7 @@ AS
             UPDATE Dbo.PRODUCTOXPLAN
             SET CodigoDBarras =@CodigoDBarras,
                 @IDPlan =@IDPlan,
-                @IdTiempo=IdTiempo,
+                @IdTiempo=IdTiempo
             WHERE  IDPlan=@IDPlan AND CodigoDBarras=@CodigoDBarras
         END
       ELSE IF @StatementType = 'Delete'
