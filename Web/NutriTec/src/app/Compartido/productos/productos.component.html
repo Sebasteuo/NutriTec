@@ -24,6 +24,16 @@
                                         </div>
                                         <div class="form-row">
                                             <div class="col form-group">
+                                                <label>Nombre: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                <input name="quantity" class="form-control" placeholder="Nombre" [(ngModel)]="newProducto.nombre"
+                                                    required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="col form-group">
                                                 <label>Descripción: </label>
                                             </div>
                                             <div class="col form-group">
@@ -145,16 +155,18 @@
                                             <thead>
                                                 <tr>
                                                     <th>Codigo de barras</th>
+                                                    <th>Nombre</th>
                                                     <th>Descripción</th>
                                                     <th>Porción</th>
                                                     <th>Energía</th>
-                                                    <th>grasa</th>
-                                                    <th>sodio</th>
-                                                    <th>carbohidratos</th>
-                                                    <th>proteina</th>
-                                                    <th>vitaminas</th>
-                                                    <th>calcio</th>
-                                                    <th>hierro</th>
+                                                    <th>Grasa</th>
+                                                    <th>Sodio</th>
+                                                    <th>Carbohidratos</th>
+                                                    <th>Proteina</th>
+                                                    <th>Vitaminas</th>
+                                                    <th>Calcio</th>
+                                                    <th>Hierro</th>
+                                                    
                                                     <th colspan="2"></th>
                                                 </tr>
                                             </thead>
@@ -163,6 +175,10 @@
                             
                                                     <td *ngIf='editingID != product.codigodbarras'>{{product.codigodbarras}}</td>
                                                     <td *ngIf='editingID == product.codigodbarras'>{{product.codigodbarras}}</td>
+
+                                                    <td *ngIf='editingID != product.codigodbarras'>{{product.nombre}}</td>
+                                                    <td *ngIf='editingID == product.codigodbarras'><input value="{{selectedProduct.nombre}}"
+                                                        [(ngModel)]="selectedProduct.nombre" class="form-control"></td>
 
                                                     <td *ngIf='editingID != product.codigodbarras'>{{product.descripcion}}</td>
                                                     <td *ngIf='editingID == product.codigodbarras'><input value="{{selectedProduct.descripcion}}"
@@ -205,7 +221,7 @@
                                                         <td *ngIf='editingID != product.codigodbarras'>{{product.hierro}}</td>
                                                     <td *ngIf='editingID == product.codigodbarras'><input value="{{selectedProduct.hierro}}"
                                                         [(ngModel)]="selectedProduct.hierro" class="form-control"></td>
-                                                    
+                                                       
                                                   
                                                    
 

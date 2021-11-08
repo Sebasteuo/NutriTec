@@ -47,14 +47,21 @@ export class ClienteManagementService {
   Clientes: Cliente []=[]
   async getClientes(){  //Función que obtiene clientes
 
-    await this.http.get(environment.api+"/Cliente").toPromise().then(res=>{
-      this.Clientes=res as Cliente[]
-
+    await this.http.get(environment.api+"/Usuario").toPromise().then(res=>{
+      this.Clientes=JSON.parse(res as string) as Cliente[]
+      this.Clientes.forEach(cliente=>{
+        cliente.Edad= this.calcAge(cliente.fechanacimiento)
+        console.log(cliente.Edad)
+      })
     
     })
     
     return this.Clientes
     
+  }
+   calcAge(dateString:Date) {
+    var birthday = +new Date(dateString);
+    return ~~((Date.now() - birthday) / (31557600000));
   }
 
   async addCliente(Cliente : Cliente){

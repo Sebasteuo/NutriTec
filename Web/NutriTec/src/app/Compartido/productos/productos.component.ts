@@ -67,7 +67,7 @@ export class ProductosComponent implements OnInit {
 
   add(){
     this.productService.addProducto(this.newProducto).then(res=>{this.products=res})
-    this.selectedProduct = {
+    this.newProducto = {
       codigodbarras: 0,
       descripcion:"",
       porcion:0,

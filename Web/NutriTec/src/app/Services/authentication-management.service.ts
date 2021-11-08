@@ -109,17 +109,31 @@ export class AuthenticationManagementService {
 
 
   //Envía los datos al API para registrar un cliente 
-  async Register(id: number, tipo: string, user: string, password: string) {
-    if (tipo && user && password && id) {
-      /*this.newCliente.usuario = user
-      this.newCliente.contrasenna = password
-      this.newCliente.cedulacliente = id
-      await this.http.put(environment.api + "/cliente/UpdateCredenciales", this.newCliente).toPromise().then(res => {
+  async RegisterCliente(data: Cliente) {
+    if (data.correo && data.password && data.cedula) {
+      
+      await this.http.post(environment.api + "/Usuario", data).toPromise().then(res => {
         this.toastr.success("Registrado exitosamente", "Exito")
         this.router.navigate(["/Login"])
       }, error => {
         this.toastr.error("No se pudo registrar", "Error")
-      })*/
+      })
+    }
+
+
+    else {
+      this.toastr.error("Debe llenar todos los campos", "Error")
+    }
+  }
+  async RegisterNutricionista(data: Nutricionista) {
+    if (data.correo && data.password && data.cedula) {
+      
+      await this.http.post(environment.api + "/Nutricionista", data).toPromise().then(res => {
+        this.toastr.success("Registrado exitosamente", "Exito")
+        this.router.navigate(["/Login"])
+      }, error => {
+        this.toastr.error("No se pudo registrar", "Error")
+      })
     }
 
 

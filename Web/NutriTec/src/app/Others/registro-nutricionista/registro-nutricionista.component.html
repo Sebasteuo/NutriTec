@@ -18,7 +18,7 @@
     </div> <!-- form-group// -->
     <div class="form-group">
         <label>Primer Apellido</label>
-        <input type="password" name="quantity" [(ngModel)]="newNutricionista.apellido1" class="form-control" placeholder="Primer Apellido"
+        <input  name="quantity" [(ngModel)]="newNutricionista.apellido1" class="form-control" placeholder="Primer Apellido"
             required>
 
     </div> <!-- form-group// -->
@@ -29,7 +29,10 @@
     </div> <!-- form-group// -->
     <div class="form-group">
         <label>Fecha de Nacimiento</label>
-        <input name="quantity" [(ngModel)]="newNutricionista.fechanacimiento" class="form-control" placeholder="Fecha de Nacimiento" required>
+        <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="newNutricionista.fechanacimiento"
+(ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true" 
+dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Fecha" 
+[ngModelOptions]="{standalone: true}" />
     </div> <!-- form-group// -->
     <div class="form-group">
         <label>Peso</label>
@@ -69,7 +72,7 @@
     </div> <!-- form-group// -->
     <div class="form-group">
         <label>Contraseña</label>
-        <input name="quantity" [(ngModel)]="newNutricionista.password" class="form-control" placeholder="Contraseña" required>
+        <input type="password" name="quantity" [(ngModel)]="newNutricionista.password" class="form-control" placeholder="Contraseña" required>
     </div> <!-- form-group// -->
 
     <div class="form-group">

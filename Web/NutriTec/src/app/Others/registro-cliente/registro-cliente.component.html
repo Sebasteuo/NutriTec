@@ -26,7 +26,12 @@
     </div> <!-- form-group// -->
     <div class="form-group">
         <label>Fecha de Nacimiento</label>
-        <input name="quantity" [(ngModel)]="newCliente.fechanacimiento" class="form-control" placeholder="Fecha de Nacimiento" required>
+        <div class="col form-group">
+            <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="newCliente.fechanacimiento"
+(ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true" 
+dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Fecha" 
+[ngModelOptions]="{standalone: true}" />
+        </div>
     </div> <!-- form-group// -->
     <div class="form-group">
         <label>Peso</label>

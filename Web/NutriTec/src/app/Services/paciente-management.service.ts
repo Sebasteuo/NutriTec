@@ -12,8 +12,8 @@ export class PacienteManagementService {
   Clientes: Cliente []=[]
   async getPacientes(codigoNutricionista: number){  //Función que obtiene clientes
 
-    await this.http.get(environment.api+"/Cliente").toPromise().then(res=>{
-      this.Clientes=res as Cliente[]
+    await this.http.get(environment.api+"/Usuario").toPromise().then(res=>{
+      this.Clientes=JSON.parse(res as string) as Cliente[]
 
     
     })

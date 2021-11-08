@@ -110,7 +110,7 @@ namespace API_Relacional.Controllers
                     cmd.Parameters["@altura"].Value = x.altura;
 
                     cmd.Parameters.Add("@numerotarjetacredito", SqlDbType.NVarChar);
-                    cmd.Parameters["@numetotarjetacredito"].Value = x.numerotarjetacredito;
+                    cmd.Parameters["@numerotarjetacredito"].Value = x.numerotarjetacredito;
 
                     cmd.Parameters.Add("@tipocobro", SqlDbType.NVarChar);
                     cmd.Parameters["@tipocobro"].Value = x.tipocobro;

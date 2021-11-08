@@ -13,12 +13,9 @@ export class ProductManagementService {
   productos: Producto []=[]
   async getProductos(){  //Función que obtiene clientes
 
-    await this.http.get(environment.api+"/producto",{responseType:"text"}).toPromise().then(res=>{
-      console.log(res)
-      var str=res.replace('/\[^x-y]/g','')
-      console.log(str)
-      console.log(JSON.stringify(str))
-      this.productos=str as unknown as Producto[] 
+    await this.http.get(environment.api+"/producto").toPromise().then(res=>{
+     
+      this.productos=JSON.parse(res as string) as Producto[] 
 
     
     })

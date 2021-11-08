@@ -17,7 +17,7 @@ export class PlanesComponent implements OnInit {
   selectedMeriendaTarde: Producto[]=[]
   selectedAlmuerzo: Producto[]=[]
   selectedCena: Producto[]=[]
-  keyword="Nombre"
+  keyword="nombre"
   newPlan: Plan= {
     id: 0,
     idNutricionista: 0,

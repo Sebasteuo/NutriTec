@@ -32,7 +32,7 @@
                                                         [notFoundTemplate]="notFoundTemplate" placeHolder="Productos">
                                                     </ng-autocomplete>
                                                     <ng-template #itemTemplate let-item>
-                                                        <a [innerHTML]="item.Nombre"></a>
+                                                        <a [innerHTML]="item.nombre"></a>
                                                     </ng-template>
                                                     <ng-template #notFoundTemplate let-notFound>
                                                         <div [innerHTML]="notFound"></div>
@@ -53,7 +53,7 @@
                                                         [notFoundTemplate]="notFoundTemplate" placeHolder="Productos">
                                                     </ng-autocomplete>
                                                     <ng-template #itemTemplate let-item>
-                                                        <a [innerHTML]="item.Nombre"></a>
+                                                        <a [innerHTML]="item.nombre"></a>
                                                     </ng-template>
                                                     <ng-template #notFoundTemplate let-notFound>
                                                         <div [innerHTML]="notFound"></div>
@@ -74,7 +74,7 @@
                                                         [notFoundTemplate]="notFoundTemplate" placeHolder="Productos">
                                                     </ng-autocomplete>
                                                     <ng-template #itemTemplate let-item>
-                                                        <a [innerHTML]="item.Nombre"></a>
+                                                        <a [innerHTML]="item.nombre"></a>
                                                     </ng-template>
                                                     <ng-template #notFoundTemplate let-notFound>
                                                         <div [innerHTML]="notFound"></div>
@@ -96,7 +96,7 @@
                                                         [notFoundTemplate]="notFoundTemplate" placeHolder="Productos">
                                                     </ng-autocomplete>
                                                     <ng-template #itemTemplate let-item>
-                                                        <a [innerHTML]="item.Nombre"></a>
+                                                        <a [innerHTML]="item.nombre"></a>
                                                     </ng-template>
                                                     <ng-template #notFoundTemplate let-notFound>
                                                         <div [innerHTML]="notFound"></div>
@@ -116,7 +116,7 @@
                                                         [notFoundTemplate]="notFoundTemplate" placeHolder="Productos">
                                                     </ng-autocomplete>
                                                     <ng-template #itemTemplate let-item>
-                                                        <a [innerHTML]="item.Nombre"></a>
+                                                        <a [innerHTML]="item.nombre"></a>
                                                     </ng-template>
                                                     <ng-template #notFoundTemplate let-notFound>
                                                         <div [innerHTML]="notFound"></div>
@@ -150,6 +150,7 @@
                                                         <!-- Columnas para los datos mostrados de los clientes-->
                                                         <tr>
                                                             <th>Código de Barras</th>
+                                                            <th>Nombre</th>
                                                             <th>Descripción</th>
                                                             <th>Porción(g/ml)</th>
                                                             <th>Energía(Kcal)</th>
@@ -169,6 +170,7 @@
                                                         <tr *ngFor="let producto of this.selectedDesayuno">
                                                             <!-- ngFor repite una sección del código HTML, por cada cliente hace una nueva fila en la tabla-->
                                                             <td>{{producto.codigodbarras}}</td>
+                                                            <td>{{producto.nombre}}</td>
                                                             <td>{{producto.descripcion}}</td>
                                                             <td>{{producto.porcion}}</td>
                                                             <td>{{producto.energia}}</td>
@@ -209,6 +211,7 @@
                                                         <!-- Columnas para los datos mostrados de los clientes-->
                                                         <tr>
                                                             <th>Código de Barras</th>
+                                                            <th>Nombre</th>
                                                             <th>Descripción</th>
                                                             <th>Porción(g/ml)</th>
                                                             <th>Energía(Kcal)</th>
@@ -228,6 +231,7 @@
                                                         <tr *ngFor="let producto of this.selectedMeriendaMatutina">
                                                             <!-- ngFor repite una sección del código HTML, por cada cliente hace una nueva fila en la tabla-->
                                                             <td>{{producto.codigodbarras}}</td>
+                                                            <td>{{producto.nombre}}</td>
                                                             <td>{{producto.descripcion}}</td>
                                                             <td>{{producto.porcion}}</td>
                                                             <td>{{producto.energia}}</td>
@@ -269,6 +273,7 @@
                                                         <!-- Columnas para los datos mostrados de los clientes-->
                                                         <tr>
                                                             <th>Código de Barras</th>
+                                                            <th>Nombre</th>
                                                             <th>Descripción</th>
                                                             <th>Porción(g/ml)</th>
                                                             <th>Energía(Kcal)</th>
@@ -288,6 +293,7 @@
                                                         <tr *ngFor="let producto of this.selectedAlmuerzo">
                                                             <!-- ngFor repite una sección del código HTML, por cada cliente hace una nueva fila en la tabla-->
                                                             <td>{{producto.codigodbarras}}</td>
+                                                            <td>{{producto.nombre}}</td>
                                                             <td>{{producto.descripcion}}</td>
                                                             <td>{{producto.porcion}}</td>
                                                             <td>{{producto.energia}}</td>
@@ -328,6 +334,7 @@
                                                         <!-- Columnas para los datos mostrados de los clientes-->
                                                         <tr>
                                                             <th>Código de Barras</th>
+                                                            <th>Nombre</th>
                                                             <th>Descripción</th>
                                                             <th>Porción(g/ml)</th>
                                                             <th>Energía(Kcal)</th>
@@ -347,6 +354,7 @@
                                                         <tr *ngFor="let producto of this.selectedMeriendaTarde">
                                                             <!-- ngFor repite una sección del código HTML, por cada cliente hace una nueva fila en la tabla-->
                                                             <td>{{producto.codigodbarras}}</td>
+                                                            <td>{{producto.nombre}}</td>
                                                             <td>{{producto.descripcion}}</td>
                                                             <td>{{producto.porcion}}</td>
                                                             <td>{{producto.energia}}</td>
@@ -387,6 +395,7 @@
                                                         <!-- Columnas para los datos mostrados de los clientes-->
                                                         <tr>
                                                             <th>Código de Barras</th>
+                                                            <th>Nombre</th>
                                                             <th>Descripción</th>
                                                             <th>Porción(g/ml)</th>
                                                             <th>Energía(Kcal)</th>
@@ -406,6 +415,7 @@
                                                         <tr *ngFor="let producto of this.selectedCena">
                                                             <!-- ngFor repite una sección del código HTML, por cada cliente hace una nueva fila en la tabla-->
                                                             <td>{{producto.codigodbarras}}</td>
+                                                            <td>{{producto.nombre}}</td>
                                                             <td>{{producto.descripcion}}</td>
                                                             <td>{{producto.porcion}}</td>
                                                             <td>{{producto.energia}}</td>

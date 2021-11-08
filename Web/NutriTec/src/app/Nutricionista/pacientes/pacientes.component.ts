@@ -13,7 +13,7 @@ import { PacienteManagementService } from 'src/app/Services/paciente-management.
 })
 export class PacientesComponent implements OnInit {
 
-    keyword = "Nombre"
+    keyword = "nombre1"
     clientes: Cliente[]=[]
     pacientes: Cliente[]=[]
     planes: Plan[]=[]
@@ -58,95 +58,11 @@ export class PacientesComponent implements OnInit {
   constructor(private clienteService: ClienteManagementService, private pacienteService: PacienteManagementService) { }
 
   ngOnInit(): void {
-    this.clienteService.getClientes().then(res=>{this.clientes= res})
-    this.clientes=[{
-      nombre1:  "sdffd",
-    nombre2:  "sdfd",
-    apellido1:  "sdfsd",
-    apellido2: "sdfdsf",
-    Edad:  5,//Falta en el API
-    fechanacimiento:new Date(),
-    peso:  6,
-    IMC:  7,//Falta en el API
-    pais:   "sdfsfd",
-    altura: 6,
-    PesoActual:  6,//Falta en el API
-    Cintura:  66,//Falta en el API
-    Cuello:  4,//Falta en el API
-    Caderas:  44,//Falta en el API
-    porcentajemusculo:  2,
-    porcentajegrasa:  22,
-    ConsumoCalorias: 8, //Falta en el API
-    correo:   "dbdf",
-    password:   "fdd",
-    cedula:  99
-    },
-    {
-      nombre1:  "sdffd",
-    nombre2:  "sdfd",
-    apellido1:  "sdfsd",
-    apellido2: "sdfdsf",
-    Edad:  5,//Falta en el API
-    fechanacimiento:new Date(),
-    peso:  6,
-    IMC:  7,//Falta en el API
-    pais:   "sdfsfd",
-    altura: 6,
-    PesoActual:  6,//Falta en el API
-    Cintura:  66,//Falta en el API
-    Cuello:  4,//Falta en el API
-    Caderas:  44,//Falta en el API
-    porcentajemusculo:  2,
-    porcentajegrasa:  22,
-    ConsumoCalorias: 8, //Falta en el API
-    correo:   "dbdf",
-    password:   "fdd",
-    cedula:  99
-    },
-    {
-      nombre1:  "sdffd",
-    nombre2:  "sdfd",
-    apellido1:  "sdfsd",
-    apellido2: "sdfdsf",
-    Edad:  5,//Falta en el API
-    fechanacimiento:new Date(),
-    peso:  6,
-    IMC:  7,//Falta en el API
-    pais:   "sdfsfd",
-    altura: 6,
-    PesoActual:  6,//Falta en el API
-    Cintura:  66,//Falta en el API
-    Cuello:  4,//Falta en el API
-    Caderas:  44,//Falta en el API
-    porcentajemusculo:  2,
-    porcentajegrasa:  22,
-    ConsumoCalorias: 8, //Falta en el API
-    correo:   "dbdf",
-    password:   "fdd",
-    cedula:  99
-    },
-    {
-      nombre1:  "sdffd",
-    nombre2:  "sdfd",
-    apellido1:  "sdfsd",
-    apellido2: "sdfdsf",
-    Edad:  5,//Falta en el API
-    fechanacimiento:new Date(),
-    peso:  6,
-    IMC:  7,//Falta en el API
-    pais:   "sdfsfd",
-    altura: 6,
-    PesoActual:  6,//Falta en el API
-    Cintura:  66,//Falta en el API
-    Cuello:  4,//Falta en el API
-    Caderas:  44,//Falta en el API
-    porcentajemusculo:  2,
-    porcentajegrasa:  22,
-    ConsumoCalorias: 8, //Falta en el API
-    correo:   "dbdf",
-    password:   "fdd",
-    cedula:  99
-    }]
+    this.clienteService.getClientes().then(res=>{this.clientes= res
+    console.log(this.clientes)
+    })
+    
+    
   }
 
   selectCliente(cliente: any){

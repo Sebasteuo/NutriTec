@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Crypto from "crypto-js"
+import { Subject } from 'rxjs';
 import { Nutricionista } from 'src/app/Models/nutricionista.model';
 import { AuthenticationManagementService } from 'src/app/Services/authentication-management.service';
 
@@ -9,7 +10,7 @@ import { AuthenticationManagementService } from 'src/app/Services/authentication
   styleUrls: ['./registro-nutricionista.component.scss']
 })
 export class RegistroNutricionistaComponent implements OnInit {
-
+  refresh: Subject<any> = new Subject();
   constructor(private authenticationService: AuthenticationManagementService) { }
   active = 1
   newNutricionista: Nutricionista={
@@ -36,8 +37,8 @@ export class RegistroNutricionistaComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit() {
-    var pass = (CryptoJS.MD5(this.newNutricionista.password) as unknown) as string;
-    this.authenticationService.Register(this.newNutricionista.cedula as unknown as number,
-       "Cliente", this.newNutricionista.correo, CryptoJS.enc.Base64.stringify(Crypto.SHA256(pass)));
+    var pass = (Crypto.MD5(this.newNutricionista.password) as unknown) as string;
+    this.newNutricionista.password=Crypto.enc.Base64.stringify(Crypto.SHA256(pass))
+    this.authenticationService.RegisterNutricionista(this.newNutricionista);
   }
 }

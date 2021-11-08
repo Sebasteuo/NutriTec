@@ -14,11 +14,7 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onSubmit(user: string, password: string, id: string) {
-    var pass = (CryptoJS.MD5(password) as unknown) as string;
-    this.authenticationService.Register(id as unknown as number,
-       "Cliente", user, CryptoJS.enc.Base64.stringify(Crypto.SHA256(pass)));
-  }
+  
 
 
 }

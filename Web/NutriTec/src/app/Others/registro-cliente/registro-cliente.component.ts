@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Crypto from "crypto-js"
+import { Subject } from 'rxjs';
 import { Cliente } from 'src/app/Models/cliente.model';
 import { AuthenticationManagementService } from 'src/app/Services/authentication-management.service';
 
@@ -9,7 +10,7 @@ import { AuthenticationManagementService } from 'src/app/Services/authentication
   styleUrls: ['./registro-cliente.component.scss']
 })
 export class RegistroClienteComponent implements OnInit {
-
+  refresh: Subject<any> = new Subject();
   constructor(private authenticationService: AuthenticationManagementService) { }
   active = 1
   newCliente:Cliente ={
@@ -37,9 +38,9 @@ export class RegistroClienteComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit() {
-    var pass = (CryptoJS.MD5(this.newCliente.password) as unknown) as string;
-    this.authenticationService.Register(this.newCliente.cedula as unknown as number,
-       "Cliente", this.newCliente.correo, CryptoJS.enc.Base64.stringify(Crypto.SHA256(pass)));
+    var pass = (Crypto.MD5(this.newCliente.password) as unknown) as string;
+    this.newCliente.password=Crypto.enc.Base64.stringify(Crypto.SHA256(pass))
+    this.authenticationService.RegisterCliente(this.newCliente);
   }
 
 }
