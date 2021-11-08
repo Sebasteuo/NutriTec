@@ -1,5 +1,5 @@
 /************************************************************************************************
-   Nombre:    up_MasterGestorProductoXPlan     
+   Nombre:    up_MasterGestorTiempoDComida     
   
    Proposito:  Crea, muestra (lista), muestra (especifico), modifica, elimina elemento Nutricionista 
    
@@ -10,53 +10,52 @@
 
 
    Notas: para poder obtner las opcion de insert, select, update y delete la palabras claves son
-   -Insert:crea un nuevo ProductoXPlan 
-   -SelectLista: muestra una lista de todos las ProductoXPlan en todos los productos 
-   -SelectEspecifico: muestra un ProductoXPlan especifico para un producto
-   -Update: actualiza todos los valores del ProductoXPlan usando IDPlan,CodigoDBarras como llaves de busqueda
-   -Delete: elimina todos los valores del ProductoXPlan usando IDPlan,CodigoDBarras como llaves de busqueda
+   -Insert:crea un nuevo TiempoDComida 
+   -SelectLista: muestra una lista de todos las TiempoDComida en todos los productos 
+   -SelectEspecifico: muestra un TiempoDComida especifico para un producto
+   -Update: actualiza todos los valores del TiempoDComida usando IdTiempo,CodigoDBarras como llaves de busqueda
+   -Delete: elimina todos los valores del TiempoDComida usando IdTiempo,CodigoDBarras como llaves de busqueda
 
 
 *************************************************************************************************/
 
 
-CREATE PROCEDURE up_MasterGestorProductoXPlan(
-    @IDPlan INT,
-    @CodigoDBarras  INT,
+CREATE PROCEDURE up_MasterGestorTiempoDComida(
     @IdTiempo INT,  
+    @Nombre VARCHAR(50),
     @StatementType NVARCHAR(50) = '')
 AS
   BEGIN
       IF @StatementType = 'Insert'
         BEGIN
-            INSERT INTO Dbo.PRODUCTOXPLAN(IDPlan,CodigoDBarras,IdTiempo)
-            VALUES(@IDPlan,@CodigoDBarras,@IdTiempo);
+            INSERT INTO Dbo.TIEMPODCOMIDA(IdTiempo,Nombre)
+            VALUES(@IdTiempo,@Nombre);
         END
 
       IF @StatementType = 'SelectLista'
         BEGIN
             SELECT *
-            FROM   Dbo.PRODUCTOXPLAN
+            FROM   Dbo.TIEMPODCOMIDA
         END
 
         IF @StatementType = 'SelectEspecifico'
         BEGIN
             SELECT *
-            FROM Dbo.PRODUCTOXPLAN  
-            WHERE  IDPlan=@IDPlan AND CodigoDBarras=@CodigoDBarras
+            FROM Dbo.TIEMPODCOMIDA  
+            WHERE  IdTiempo=@IdTiempo 
         END  
 
       IF @StatementType = 'Update'
         BEGIN
-            UPDATE Dbo.PRODUCTOXPLAN
+            UPDATE Dbo.TIEMPODCOMIDA
             SET CodigoDBarras =@CodigoDBarras,
-                @IDPlan =@IDPlan,
-                @IdTiempo=IdTiempo,
-            WHERE  IDPlan=@IDPlan AND CodigoDBarras=@CodigoDBarras
+                @IdTiempo =@IdTiempo,
+                @Nombre=Nombre,
+            WHERE  IdTiempo=@IdTiempo 
         END
       ELSE IF @StatementType = 'Delete'
         BEGIN
-            DELETE FROM Dbo.PRODUCTOXPLAN
-            WHERE  IDPlan=@IDPlan AND CodigoDBarras=@CodigoDBarras
+            DELETE FROM Dbo.TIEMPODCOMIDA
+            WHERE  IdTiempo=@IdTiempo 
         END
   END
