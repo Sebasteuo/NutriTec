@@ -23,7 +23,7 @@ CREATE PROCEDURE up_LoginCheck(
     @StatementType NVARCHAR(50) = '')
     AS
   BEGIN
-  DECLARE @esta AS INT;
+
   IF @StatementType = 'nutricionista'
         BEGIN
             IF EXISTS ( select CodigoNutricionista from dbo.NUTRICIONISTA where (CodigoNutricionista = @identificacion AND Password=@Password))
