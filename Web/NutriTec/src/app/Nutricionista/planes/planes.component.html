@@ -13,6 +13,15 @@
                                     <form #form autocomplete="off">
                                         <div class="form-row">
                                             <div class="col form-group">
+                                                <label>Id: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                <input name="quantity" class="form-control" placeholder="Id"
+                                                    [(ngModel)]="newPlan.id" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col form-group">
                                                 <label>Nombre del plan: </label>
                                             </div>
                                             <div class="col form-group">
@@ -458,7 +467,7 @@
                                 </div>
                             </div>
 
-                        </div> <!-- card.// -->
+                        </div> <!-- card.// --> 
                         <br />
                         <br />
                     </div>

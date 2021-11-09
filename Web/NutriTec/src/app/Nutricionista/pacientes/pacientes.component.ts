@@ -5,6 +5,8 @@ import { PlanAsignado } from 'src/app/Models/plan-asignado.model';
 import { Plan } from 'src/app/Models/plan.model';
 import { ClienteManagementService } from 'src/app/Services/cliente-management.service';
 import { PacienteManagementService } from 'src/app/Services/paciente-management.service';
+import { PlanManagementService } from 'src/app/Services/plan-management.service';
+import { convertToObject } from 'typescript';
 
 @Component({
   selector: 'app-pacientes',
@@ -14,6 +16,7 @@ import { PacienteManagementService } from 'src/app/Services/paciente-management.
 export class PacientesComponent implements OnInit {
 
     keyword = "nombre1"
+    keywordPlanes = "nombre"
     clientes: Cliente[]=[]
     pacientes: Cliente[]=[]
     planes: Plan[]=[]
@@ -55,23 +58,29 @@ export class PacientesComponent implements OnInit {
     password:   "",
     cedula:  0
     }
-  constructor(private clienteService: ClienteManagementService, private pacienteService: PacienteManagementService) { }
+  constructor(private clienteService: ClienteManagementService, private pacienteService: PacienteManagementService, private planservice: PlanManagementService) { }
 
   ngOnInit(): void {
     this.clienteService.getClientes().then(res=>{this.clientes= res
-    console.log(this.clientes)
+
     })
-    
+    this.pacienteService.getPacientes(888).then(res=>{this.pacientes=res
+    })
+
+    this.planservice.getPlanes().then(res=>{this.planes=res
+    console.log(this.planes)
+    })
     
   }
 
   selectCliente(cliente: any){
-    console.log(cliente)
+
     this.selectedCliente= cliente
   }
 
   add(id:number){
-
+    var codigoNutricionista= localStorage.getItem("codigonutricionista")
+    this.pacienteService.addPaciente(id, 888)
   }
 
   addPlan(){

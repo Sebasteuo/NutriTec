@@ -49,7 +49,7 @@ namespace API_Relacional.Controllers
             string query = @"
                 SELECT codigonutricionista, cedula, chatid
                 FROM puede_tener
-                WHERE cedula=" + id +
+                WHERE codigonutricionista=" + id +
                 "";
 
             return consulta.get(query, _configuration, cadenaDeConexion);

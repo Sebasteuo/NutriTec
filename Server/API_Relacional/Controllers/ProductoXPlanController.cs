@@ -31,7 +31,7 @@ namespace API_Relacional.Controllers
         public JsonResult Get()
         {
             string query = @"
-                SELECT idplan, codigodbarras, tiempocomida 
+                SELECT idplan, codigodbarras, IdTiempo 
                 FROM productoxplan
                 ";
 
@@ -44,7 +44,7 @@ namespace API_Relacional.Controllers
         public JsonResult Get(int id)
         {
             string query = @"
-                SELECT idplan, codigodbarras, tiempocomida 
+                SELECT idplan, codigodbarras, IdTiempo 
                 FROM productoxplan
                 WHERE idplan=" + id +
                 "";
@@ -58,8 +58,8 @@ namespace API_Relacional.Controllers
         public JsonResult Post(ProductoXPlan x)
         {
             string query = @"
-                insert into productoxplan(idplan, codigodbarras, tiempocomida)
-                values (@idplan, @codigodbarras, @tiempocomida)";
+                insert into productoxplan(idplan, codigodbarras, IdTiempo)
+                values (@idplan, @codigodbarras, @IdTiempo)";
 
             string sqlDataSource = _configuration.GetConnectionString(cadenaDeConexion);//La fuente de los datos se obtiene de la cadena de conexion
             SqlDataReader reader;
@@ -78,8 +78,8 @@ namespace API_Relacional.Controllers
                     cmd.Parameters.Add("@codigodbarras", SqlDbType.NVarChar);
                     cmd.Parameters["@codigodbarras"].Value = x.codigodbarras;
 
-                    cmd.Parameters.Add("@tiempocomida", SqlDbType.NVarChar);
-                    cmd.Parameters["@tiempocomida"].Value = x.tiempocomida;
+                    cmd.Parameters.Add("@IdTiempo", SqlDbType.NVarChar);
+                    cmd.Parameters["@IdTiempo"].Value = x.IdTiempo;
 
                     reader = cmd.ExecuteReader();//El lector ejecuta el comando
                     reader.Close(); //Se cierra  el lector
@@ -97,7 +97,7 @@ namespace API_Relacional.Controllers
                 UPDATE productoxplan
                 SET idplan = @idplan,
                 codigodbarras = @codigodbarras, 
-                tiempocomida = @tiempocomida
+                IdTiempo = @IdTiempo
                 WHERE idplan = @idplan";
 
             string sqlDataSource = _configuration.GetConnectionString(cadenaDeConexion);//La fuente de los datos se obtiene de la cadena de conexion
@@ -116,8 +116,8 @@ namespace API_Relacional.Controllers
                     cmd.Parameters.Add("@codigodbarras", SqlDbType.NVarChar);
                     cmd.Parameters["@codigodbarras"].Value = x.codigodbarras;
 
-                    cmd.Parameters.Add("@tiempocomida", SqlDbType.NVarChar);
-                    cmd.Parameters["@tiempocomida"].Value = x.tiempocomida;
+                    cmd.Parameters.Add("@IdTiempo", SqlDbType.NVarChar);
+                    cmd.Parameters["@IdTiempo"].Value = x.IdTiempo;
 
                     reader = cmd.ExecuteReader();
                     reader.Close(); //Se cierra  el lector
@@ -136,6 +136,19 @@ namespace API_Relacional.Controllers
                 where idplan =" + id;
 
             return consulta.delete(query, _configuration, cadenaDeConexion);
+        }
+
+        [HttpGet("{id}/{idTiempo}")]
+        public JsonResult GetByTiempo(int id, int idTiempo)
+        {
+            string query = @"
+                SELECT idplan, codigodbarras, IdTiempo 
+                FROM productoxplan
+                WHERE idplan=" + id + " and IdTiempo = " + idTiempo +
+                "";
+
+            return consulta.get(query, _configuration, cadenaDeConexion);
+
         }
     }
 }

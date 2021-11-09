@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Plan } from 'src/app/Models/plan.model';
 import { Producto } from 'src/app/Models/producto.model';
 import { PacienteManagementService } from 'src/app/Services/paciente-management.service';
+import { PlanManagementService } from 'src/app/Services/plan-management.service';
 import { ProductManagementService } from 'src/app/Services/product-management.service';
 
 @Component({
@@ -29,11 +30,13 @@ export class PlanesComponent implements OnInit {
     nombre: ""
   }
   caloriasTotales: number = 0
-  constructor(private productoService: ProductManagementService) { }
+  constructor(private productoService: ProductManagementService, private planService: PlanManagementService) { }
 
   ngOnInit(): void {
-    this.productoService.getProductos().then(res=>{this.productos=res})
-    
+    this.productoService.getProductos().then(res=>{
+      this.productos=res
+      this.productos.map(product => product.nombre = ` ${product.codigodbarras} ${product.nombre}`);
+    })
   }
 
   selectDesayuno(producto: Producto){
@@ -77,7 +80,19 @@ export class PlanesComponent implements OnInit {
     this.caloriasTotales=this.caloriasTotales - producto.energia
   }
   add(){
-
+    //this.newPlan.idNutricionista=localStorage.getItem("codigoNutricionista") as unknown as number
+    this.newPlan.idNutricionista=888
+    this.newPlan.desayuno=this.selectedDesayuno
+    this.newPlan.meriendaMatutina=this.selectedMeriendaMatutina
+    this.newPlan.almuerzo=this.selectedAlmuerzo
+    this.newPlan.meriendaTarde=this.selectedMeriendaTarde
+    this.newPlan.cena=this.selectedCena
+    this.planService.addPlan(this.newPlan)
+    this.selectedDesayuno=[]
+    this.selectedMeriendaMatutina=[]
+    this.selectedAlmuerzo=[]
+    this.selectedMeriendaTarde=[]
+    this.selectedCena=[]
   }
 
 
