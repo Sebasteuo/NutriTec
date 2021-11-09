@@ -19,13 +19,14 @@
 CREATE PROCEDURE up_LoginCheck(
     @identificacion INT,
 	@resultado INT OUTPUT,
+    @Password  VARCHAR(50),
     @StatementType NVARCHAR(50) = '')
     AS
   BEGIN
   DECLARE @esta AS INT;
   IF @StatementType = 'nutricionista'
         BEGIN
-            IF EXISTS ( select CodigoNutricionista from dbo.NUTRICIONISTA where CodigoNutricionista = @identificacion )
+            IF EXISTS ( select CodigoNutricionista from dbo.NUTRICIONISTA where (CodigoNutricionista = @identificacion AND Password=@Password))
                 BEGIN
                     set @resultado =1
                 END
@@ -36,7 +37,7 @@ CREATE PROCEDURE up_LoginCheck(
         
         IF @StatementType = 'cliente'
         BEGIN
-           IF EXISTS ( select Cedula from dbo.USUARIO where Cedula =  @identificacion)
+           IF EXISTS ( select Cedula from dbo.USUARIO where (Cedula =  @identificacion AND Password=@Password))
                 BEGIN
                     set @resultado =1
                 END
