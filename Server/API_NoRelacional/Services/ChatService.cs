@@ -1,5 +1,4 @@
-﻿using API_NoRelacional.ConnectionDB;
-using API_NoRelacional.Models;
+﻿using API_NoRelacional.Models;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -11,27 +10,26 @@ namespace API_NoRelacional.ChatService
     public class ChatService
     {
 
-        private readonly IMongoCollection<Chat> _chatCollection;
+        private IMongoCollection<Chat> _chatCollection;
 
-        public ChatService(IChatStoreSettings settings)
+        public ChatService(IChatSettings settings)
         {
-            // var mdbClient = new MongoClient(settings.ConnectionString);
-            var mdbClient = new MongoClient(settings.ConnectionString);
+            var client = new MongoClient(settings.Server);
 
-            var database = mdbClient.GetDatabase(settings.DatabaseName);
+            var database = client.GetDatabase(settings.Database);
 
-            _chatCollection = database.GetCollection<Chat>(settings.ChatCollectionName);
+            _chatCollection = database.GetCollection<Chat>(settings.Collection);
         }
 
         public List<Chat> Get()
         {
-            return _chatCollection.Find(chat => true).ToList();
+            return _chatCollection.Find(cht => true).ToList();
 
         }
 
         public Chat GetById(int id)
         {
-            return _chatCollection.Find<Chat>(chat => chat.id == id).FirstOrDefault();
+            return _chatCollection.Find<Chat>(cht => cht.id == id).FirstOrDefault();
         }
 
         public void Create(Chat chat)

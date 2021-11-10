@@ -5,12 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API_NoRelacional.Controllers
+namespace API_Relacional.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ChatController : ControllerBase
+    public class up_MasterGestorRecetaController : ControllerBase
     {
-        public ChatService ChatService;
     }
 }
