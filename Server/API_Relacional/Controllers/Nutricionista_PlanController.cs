@@ -53,6 +53,20 @@ namespace API_Relacional.Controllers
 
         }
 
+        [HttpGet("[action]/{id}")]
+        public JsonResult GetByNutricionista(int id)
+        {
+            string query = @"
+                SELECT idplan, codigonutricionista 
+                FROM nutricionista_plan
+                WHERE codigonutricionista=" + id +
+                "";
+
+            return consulta.get(query, _configuration, cadenaDeConexion);
+
+        }
+
+
         // POST api/<HablaController>
         [HttpPost]
         public JsonResult Post(Nutricionista_Plan x)

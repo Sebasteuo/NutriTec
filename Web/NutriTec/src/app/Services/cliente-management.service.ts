@@ -59,9 +59,31 @@ export class ClienteManagementService {
     return this.Clientes
     
   }
+  async getClienteByID(id: number){  //Función que obtiene clientes
+
+    await this.http.get(environment.api+"/Usuario/"+id).toPromise().then(res=>{
+      this.Clientes=JSON.parse(res as string) as Cliente[]
+      this.Clientes.forEach(cliente=>{
+        cliente.Edad= this.calcAge(cliente.fechanacimiento)
+        console.log(cliente)
+        cliente.IMC = this.calcIMC(cliente.PesoActual, cliente.altura)
+        console.log(cliente.Edad)
+      })
+    
+    })
+    
+    return this.Clientes[0]
+    
+  }
    calcAge(dateString:Date) {
     var birthday = +new Date(dateString);
     return ~~((Date.now() - birthday) / (31557600000));
+  }
+
+  calcIMC(peso: number, altura: number){
+    console.log(peso)
+    return peso/(altura*altura)
+    
   }
 
   async addCliente(Cliente : Cliente){

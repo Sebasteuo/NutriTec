@@ -67,7 +67,7 @@ export class PacientesComponent implements OnInit {
     this.pacienteService.getPacientes(888).then(res=>{this.pacientes=res
     })
 
-    this.planservice.getPlanes().then(res=>{this.planes=res
+    this.planservice.getPlanes(888).then(res=>{this.planes=res
     console.log(this.planes)
     })
     
