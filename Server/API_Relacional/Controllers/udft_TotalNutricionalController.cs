@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -27,13 +28,38 @@ namespace API_Relacional.Controllers
 
         // Get api/<udft_TotalNutricionalController>
         [HttpGet]
-        public JsonResult Get()
+        public JsonResult Get(int numReceta)
         {
             string query = @"
-                select dbo.udft_TotalNutricional()
+                select totalEnergia, totalGrasa, totalSodio, totalCarbohidratos, totalProteina, totalHierro, totalCalcio
+                from dbo.udtf_totalNutricional(@numReceta)
                 ";
+            String result;
+            DataTable table = new DataTable();
+            SqlDataReader reader;
 
-            return consulta.get(query, _configuration, cadenaDeConexion);
+            string sqlDataSource = _configuration.GetConnectionString(cadenaDeConexion);//La fuente de los datos se obtiene de la cadena de conexion
+
+            using (SqlConnection connection = new SqlConnection(sqlDataSource))//Se utiliza la fuente de datos para hacer la conexion
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))//El comando a ejecutar se hace con un query y la conexion
+                {
+
+                    //Se agregan los valores y el tipo de dato respectivo
+                    cmd.Parameters.Add("@numReceta", SqlDbType.Int);
+                    cmd.Parameters["@numReceta"].Value = numReceta;
+
+                   
+                    reader = cmd.ExecuteReader(); //El lector ejecuta el comando
+                    table.Load(reader); //El objeto DataTable se carga con los datos del lector
+                    result = JsonConvert.SerializeObject(table); //Se serializa la tabla a JSON
+                    reader.Close(); //Se cierra  el lector
+                    connection.Close(); //Se cierra la conexion
+                }
+            }
+            return new JsonResult(result);
         }
     }
 }

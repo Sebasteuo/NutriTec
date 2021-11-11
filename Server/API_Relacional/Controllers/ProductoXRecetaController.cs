@@ -75,7 +75,7 @@ namespace API_Relacional.Controllers
                     cmd.Parameters.Add("@codigodbarras", SqlDbType.Int);
                     cmd.Parameters["@codigodbarras"].Value = x.codigodbarras;
 
-                    cmd.Parameters.Add("@idreceta", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@idreceta", SqlDbType.Int);
                     cmd.Parameters["@idreceta"].Value = x.idreceta;
 
                     reader = cmd.ExecuteReader();//El lector ejecuta el comando

@@ -80,31 +80,31 @@ namespace API_Relacional.Controllers
                     cmd.Parameters.Add("@descripcion", SqlDbType.NVarChar);
                     cmd.Parameters["@descripcion"].Value = x.descripcion;
 
-                    cmd.Parameters.Add("@porcion", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@porcion", SqlDbType.Int);
                     cmd.Parameters["@porcion"].Value = x.porcion;
 
-                    cmd.Parameters.Add("@energia", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@energia", SqlDbType.Int);
                     cmd.Parameters["@energia"].Value = x.energia;
 
-                    cmd.Parameters.Add("@grasa", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@grasa", SqlDbType.Int);
                     cmd.Parameters["@grasa"].Value = x.grasa;
 
-                    cmd.Parameters.Add("@sodio", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@sodio", SqlDbType.Int);
                     cmd.Parameters["@sodio"].Value = x.sodio;
 
-                    cmd.Parameters.Add("@carbohidratos", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@carbohidratos", SqlDbType.Int);
                     cmd.Parameters["@carbohidratos"].Value = x.carbohidratos;
 
-                    cmd.Parameters.Add("@proteina", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@proteina", SqlDbType.Int);
                     cmd.Parameters["@proteina"].Value = x.proteina;
 
-                    cmd.Parameters.Add("@hierro", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@hierro", SqlDbType.Int);
                     cmd.Parameters["@hierro"].Value = x.hierro;
 
-                    cmd.Parameters.Add("@calcio", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@calcio", SqlDbType.Int);
                     cmd.Parameters["@calcio"].Value = x.calcio;
 
-                    cmd.Parameters.Add("@aprobado", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@aprobado", SqlDbType.Int);
                     cmd.Parameters["@aprobado"].Value = x.aprobado;
 
                     reader = cmd.ExecuteReader();//El lector ejecuta el comando
@@ -155,31 +155,31 @@ namespace API_Relacional.Controllers
                     cmd.Parameters.Add("@descripcion", SqlDbType.NVarChar);
                     cmd.Parameters["@descripcion"].Value = x.descripcion;
 
-                    cmd.Parameters.Add("@porcion", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@porcion", SqlDbType.Int);
                     cmd.Parameters["@porcion"].Value = x.porcion;
 
-                    cmd.Parameters.Add("@energia", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@energia", SqlDbType.Int);
                     cmd.Parameters["@energia"].Value = x.energia;
 
-                    cmd.Parameters.Add("@grasa", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@grasa", SqlDbType.Int);
                     cmd.Parameters["@grasa"].Value = x.grasa;
 
-                    cmd.Parameters.Add("@sodio", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@sodio", SqlDbType.Int);
                     cmd.Parameters["@sodio"].Value = x.sodio;
 
-                    cmd.Parameters.Add("@carbohidratos", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@carbohidratos", SqlDbType.Int);
                     cmd.Parameters["@carbohidratos"].Value = x.carbohidratos;
 
-                    cmd.Parameters.Add("@proteina", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@proteina", SqlDbType.Int);
                     cmd.Parameters["@proteina"].Value = x.proteina;
 
-                    cmd.Parameters.Add("@hierro", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@hierro", SqlDbType.Int);
                     cmd.Parameters["@hierro"].Value = x.hierro;
 
-                    cmd.Parameters.Add("@calcio", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@calcio", SqlDbType.Int);
                     cmd.Parameters["@calcio"].Value = x.calcio;
 
-                    cmd.Parameters.Add("@aprobado", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@aprobado", SqlDbType.Int);
                     cmd.Parameters["@aprobado"].Value = x.aprobado;
 
                     reader = cmd.ExecuteReader();

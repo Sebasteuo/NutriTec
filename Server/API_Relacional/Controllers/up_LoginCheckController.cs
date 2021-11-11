@@ -57,10 +57,9 @@ namespace API_Relacional.Controllers
                     cmd.Parameters.Add("@statementType", SqlDbType.NVarChar);
                     cmd.Parameters["@statementType"].Value = statementType;
 
-                    // Create a parameter for the ReturnValue.
+                    // Parametros para el valor de retorno
                     cmd.Parameters.Add("@resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
-                    //parameter.Direction = ParameterDirection.ReturnValue;
-
+                    
                     reader = cmd.ExecuteReader(); //El lector ejecuta el comando
 
                     result = cmd.Parameters["@resultado"].Value.ToString();
