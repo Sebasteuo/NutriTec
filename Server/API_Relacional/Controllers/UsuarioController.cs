@@ -75,40 +75,40 @@ namespace API_Relacional.Controllers
                     cmd.Parameters.Add("@cedula", SqlDbType.Int);
                     cmd.Parameters["@cedula"].Value = x.cedula;
 
-                    cmd.Parameters.Add("@nombre1", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@nombre1", SqlDbType.VarChar);
                     cmd.Parameters["@nombre1"].Value = x.nombre1;
 
-                    cmd.Parameters.Add("@nombre2", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@nombre2", SqlDbType.VarChar);
                     cmd.Parameters["@nombre2"].Value = x.nombre2;
 
-                    cmd.Parameters.Add("@apellido1", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@apellido1", SqlDbType.VarChar);
                     cmd.Parameters["@apellido1"].Value = x.apellido1;
 
-                    cmd.Parameters.Add("@apellido2", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@apellido2", SqlDbType.VarChar);
                     cmd.Parameters["@apellido2"].Value = x.apellido2;
 
-                    cmd.Parameters.Add("@fechanacimiento", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@fechanacimiento", SqlDbType.Date);
                     cmd.Parameters["@fechanacimiento"].Value = x.fechanacimiento;
 
-                    cmd.Parameters.Add("@peso", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@peso", SqlDbType.Int);
                     cmd.Parameters["@peso"].Value = x.peso;
 
-                    cmd.Parameters.Add("@altura", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@altura", SqlDbType.Int);
                     cmd.Parameters["@altura"].Value = x.altura;
 
-                    cmd.Parameters.Add("@pais", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@pais", SqlDbType.VarChar);
                     cmd.Parameters["@pais"].Value = x.pais;
 
-                    cmd.Parameters.Add("@correo", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@correo", SqlDbType.VarChar);
                     cmd.Parameters["@correo"].Value = x.correo;
 
-                    cmd.Parameters.Add("@password", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@password", SqlDbType.VarChar);
                     cmd.Parameters["@password"].Value = x.password;
 
-                    cmd.Parameters.Add("@porcentajemusculo", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@porcentajemusculo", SqlDbType.Int);
                     cmd.Parameters["@porcentajemusculo"].Value = x.porcentajemusculo;
 
-                    cmd.Parameters.Add("@porcentajegrasa", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@porcentajegrasa", SqlDbType.Int);
                     cmd.Parameters["@porcentajegrasa"].Value = x.porcentajegrasa;
 
                     reader = cmd.ExecuteReader();//El lector ejecuta el comando

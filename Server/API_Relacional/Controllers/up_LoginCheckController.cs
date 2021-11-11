@@ -32,7 +32,7 @@ namespace API_Relacional.Controllers
         public JsonResult Post(int identificacion, string password, string statementType)
         {
             string query = @"
-                exec dbo.up_LoginCheck @identificacion, @password, @statementType, @resultado OUTPUT
+                exec dbo.up_LoginCheck @identificacion, @resultado OUTPUT, @password, @statementType
                 ";
             String result;
             DataTable table = new DataTable();
@@ -57,7 +57,11 @@ namespace API_Relacional.Controllers
                     cmd.Parameters.Add("@statementType", SqlDbType.NVarChar);
                     cmd.Parameters["@statementType"].Value = statementType;
 
-                    cmd.Parameters.Add("@resultado", SqlDbType.NVarChar);
+                    // Create a parameter for the ReturnValue.
+                    cmd.Parameters.Add("@resultado", SqlDbType.Int);
+                    cmd.Parameters["@resultado"].Value = ParameterDirection.ReturnValue;
+                    //parameter.Direction = ParameterDirection.ReturnValue;
+
                     reader = cmd.ExecuteReader(); //El lector ejecuta el comando
                     table.Load(reader); //El objeto DataTable se carga con los datos del lector
                     result = JsonConvert.SerializeObject(table); //Se serializa la tabla a JSON

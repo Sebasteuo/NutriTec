@@ -18,9 +18,9 @@ namespace API_Relacional.Models
         public int peso { get; set; }
         public int altura { get; set; }
         public string pais { get; set; }
-        public string password { get; set; }
         public string correo { get; set; }
-        public int porcentajegrasa { get; set; }
+        public string password { get; set; }
         public int porcentajemusculo { get; set; }
+        public int porcentajegrasa { get; set; }
     }
 }
