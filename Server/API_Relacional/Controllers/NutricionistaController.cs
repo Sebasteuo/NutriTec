@@ -103,10 +103,10 @@ namespace API_Relacional.Controllers
                     cmd.Parameters.Add("@fechanacimiento", SqlDbType.NVarChar);
                     cmd.Parameters["@fechanacimiento"].Value = x.fechanacimiento;
 
-                    cmd.Parameters.Add("@peso", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@peso", SqlDbType.Decimal);
                     cmd.Parameters["@peso"].Value = x.peso;
 
-                    cmd.Parameters.Add("@altura", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@altura", SqlDbType.Decimal);
                     cmd.Parameters["@altura"].Value = x.altura;
 
                     cmd.Parameters.Add("@numerotarjetacredito", SqlDbType.NVarChar);

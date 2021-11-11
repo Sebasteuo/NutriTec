@@ -18,9 +18,9 @@ namespace API_Relacional.Models
         public string direccion { get; set; }
         public string foto { get; set; }
         public DateTime fechanacimiento { get; set; }
-        public int peso { get; set; }
-        public int altura { get; set; }
-        public int numerotarjetacredito { get; set; }
+        public Decimal peso { get; set; }
+        public Decimal altura { get; set; }
+        public string numerotarjetacredito { get; set; }
         public string tipocobro { get; set; }
         public string correo { get; set; }
         public string password { get; set; }
