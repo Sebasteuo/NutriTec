@@ -133,14 +133,14 @@
                                                                                 <ng-autocomplete [data]="planes"
                                                                                     [searchKeyword]="keywordPlanes"
                                                                                     (selected)='selectPlan($event)'
-                                                                                    [itemTemplate]="itemTemplate"
-                                                                                    [notFoundTemplate]="notFoundTemplate"
+                                                                                    [itemTemplate]="itemTemplate2"
+                                                                                    [notFoundTemplate]="notFoundTemplate2"
                                                                                     placeHolder="planes">
                                                                                 </ng-autocomplete>
-                                                                                <ng-template #itemTemplate let-item>
+                                                                                <ng-template #itemTemplate2 let-item>
                                                                                     <a [innerHTML]="item.nombre"></a>
                                                                                 </ng-template>
-                                                                                <ng-template #notFoundTemplate
+                                                                                <ng-template #notFoundTemplate2
                                                                                     let-notFound>
                                                                                     <div [innerHTML]="notFound">
                                                                                     </div>

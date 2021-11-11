@@ -66,8 +66,8 @@ export class AuthenticationManagementService {
       password: Credenciales.password
     }
 
-    /*await this.http.post(environment.api + "/empleado/checkCredentials", body).toPromise().then(res => {
-      if ((res as Empleado[]).length > 0) {
+    await this.http.post(environment.api + "/up_LoginCheck", body, {responseType: "text"}).toPromise().then(res => {
+     /* if ((res as Empleado[]).length > 0) {
         localStorage.setItem("User", Credenciales.user as unknown as string)
         localStorage.setItem("UserId", (res as Empleado[])[0].cedulaempleado as unknown as string)
         this.http.get(environment.api + "/RolXEmpleado/" + (res as Empleado[])[0].cedulaempleado).toPromise().then(res2 => {
@@ -87,8 +87,8 @@ export class AuthenticationManagementService {
             this.toastr.error("Credenciales incorrectas", "Error")
           }
         })
-      }
-    })*/
+      }*/
+    })
   }
   async getClientID(user: Credenciales) {
 

@@ -6,6 +6,7 @@ import { PlanDeComida } from '../Models/plan-de-comida.model';
 import { Plan } from '../Models/plan.model';
 import { ProductoXPlan } from '../Models/producto-xplan.model';
 import { Producto } from '../Models/producto.model';
+import { VistaPlan } from '../Models/vista-plan.model';
 import { ProductManagementService } from './product-management.service';
 
 @Injectable({
@@ -14,7 +15,13 @@ import { ProductManagementService } from './product-management.service';
 export class PlanManagementService {
 
   constructor(private http: HttpClient, private productoService: ProductManagementService) { }
+
+  planes : VistaPlan[] = [] 
   Plans: PlanDeComida[] = []
+  plandcomida: PlanDeComida = {
+    idplan: 0,
+    nombre: ""
+  }
   PlanesProd: Plan[] = []
   newPlan: Plan = {
     id: 0,
@@ -35,53 +42,40 @@ export class PlanManagementService {
 
   //Retorna los planes completos con los productos para cada tiempo de comida y el codigo nutri
   async getPlanes(codigonutricionista: number) {  //Función que obtiene Plans
-    await this.http.get(environment.api + "/nutricionista_plan/getByNutricionista/"+ codigonutricionista).toPromise().then(res => {
-      this.Plans = JSON.parse(res as string) as PlanDeComida[]
-      console.log(this.Plans)
-      this.Plans.forEach(plan => {
-        this.newPlan.id = plan.idplan
-        console.log(plan)
-        this.newPlan.nombre = plan.nombre
-        this.newPlan.idNutricionista = codigonutricionista
-        this.getProductosByPlan(plan.idplan, 1).then(res2 => {
-          this.newPlan.desayuno = res2
-          this.getProductosByPlan(plan.idplan, 2).then(res3 => {
-            this.newPlan.meriendaMatutina = res3
-            this.getProductosByPlan(plan.idplan, 3).then(res4 => {
-              this.newPlan.almuerzo = res4
-              this.getProductosByPlan(plan.idplan, 4).then(res5 => {
-                this.newPlan.meriendaTarde = res5
-                this.getProductosByPlan(plan.idplan, 5).then(res6 => {
-                  this.newPlan.cena = res6
-                  this.PlanesProd.push(this.newPlan)
-                })
-              })
-            })
-          })
-        })
-      })
+    await this.http.get(environment.api + "/nutricionista_plan/getByNutricionista/" + codigonutricionista).toPromise().then(response => {
+      this.planes = JSON.parse(response as string) as VistaPlan[]
     })
-    return this.PlanesProd
+    return this.planes
   }
-  async getProductosByPlan(idPlan: number, idTiempo: number) {
-    this.productos=[]
+
+  async getProductosByPlan(idPlan: number) {
+    var comidas = {
+      desayuno: [] as Producto[],
+      meriendaMatutina: [] as Producto[],
+      Almuerzo: [] as Producto[],
+      MeriendaTarde: [] as Producto[],
+      Cena: [] as Producto[]
+    }
     await this.http.get(environment.api + "/ProductoXPlan/" + idPlan).toPromise().then(res => {
       this.ProductosXPlan = JSON.parse(res as string) as ProductoXPlan[]
       this.ProductosXPlan.forEach(producto => {
         this.productoService.getProductoByCodigo(producto.codigodbarras).then(res2 => {
-          this.productos.push(res2)
+          if (producto.IdTiempo == 1)
+            comidas.desayuno.push(res2)
+          if (producto.IdTiempo == 2)
+            comidas.meriendaMatutina.push(res2)
+          if (producto.IdTiempo == 3)
+            comidas.Almuerzo.push(res2)
+          if (producto.IdTiempo == 4)
+            comidas.MeriendaTarde.push(res2)
+          if (producto.IdTiempo == 5)
+            comidas.Cena.push(res2)
         })
       })
     })
-    return this.productos
+    return comidas
   }
 
-  async getNutricionistaByPlan(idPlan: number) {
-    await this.http.get(environment.api + "/Nutricionista_Plan/" + idPlan).toPromise().then(res => {
-      this.nutriXplan = JSON.parse(res as string) as NutriXplan
-    })
-    return this.nutriXplan.codigonutricionista
-  }
 
   async addPlan(plan: Plan) {
     const planD = {
@@ -96,52 +90,49 @@ export class PlanManagementService {
       this.http.post(environment.api + "/Nutricionista_Plan", nutri).toPromise().then(res2 => {
         plan.desayuno.forEach(prod => {
           const prodPlan = {
-            idplan : plan.id,
+            idplan: plan.id,
             IdTiempo: 1,
-            codigodbarras : prod.codigodbarras
+            codigodbarras: prod.codigodbarras
           }
           this.http.post(environment.api + "/Productoxplan", prodPlan).toPromise().then(res => {
           })
         })
         plan.meriendaMatutina.forEach(prod => {
           const prodPlan = {
-            idplan : plan.id,
+            idplan: plan.id,
             IdTiempo: 2,
-            codigodbarras : prod.codigodbarras
+            codigodbarras: prod.codigodbarras
           }
           this.http.post(environment.api + "/Productoxplan", prodPlan).toPromise().then(res => {
           })
         })
         plan.almuerzo.forEach(prod => {
           const prodPlan = {
-            idplan : plan.id,
+            idplan: plan.id,
             IdTiempo: 3,
-            codigodbarras : prod.codigodbarras
+            codigodbarras: prod.codigodbarras
           }
           this.http.post(environment.api + "/Productoxplan", prodPlan).toPromise().then(res => {
           })
         })
         plan.meriendaTarde.forEach(prod => {
           const prodPlan = {
-            idplan : plan.id,
+            idplan: plan.id,
             IdTiempo: 4,
-            codigodbarras : prod.codigodbarras
+            codigodbarras: prod.codigodbarras
           }
           this.http.post(environment.api + "/Productoxplan", prodPlan).toPromise().then(res => {
           })
         })
         plan.cena.forEach(prod => {
           const prodPlan = {
-            idplan : plan.id,
+            idplan: plan.id,
             IdTiempo: 5,
-            codigodbarras : prod.codigodbarras
+            codigodbarras: prod.codigodbarras
           }
           this.http.post(environment.api + "/Productoxplan", prodPlan).toPromise().then(res => {
           })
         })
-      })
-      this.getPlanes(plan.idNutricionista).then(result => {
-        this.PlanesProd = result
       })
     })
     return this.Plans;
@@ -149,13 +140,14 @@ export class PlanManagementService {
 
   async deletePlan(id: number | undefined, codigoNutricionista: number) {
     //this.Plans = this.Plans.filter((obj) => obj.cedula !== id);
-    await this.http.delete(environment.api + '/Plans/' + id).toPromise().then(res => { this.getPlanes(codigoNutricionista).then(result => { this.PlanesProd = result }) })
+    await this.http.delete(environment.api + '/Plans/' + id).toPromise().then(res => { this.getPlanes(codigoNutricionista).then(result => { 
+       }) })
     return this.Plans
   }
 
   //Envía los datos modificados al API (esta función se comporta igual a la que account-management.service)
   async editPlan(Plan: Plan, codigoNutricionista: number) {
-    await this.http.put(environment.api + "/Plans", Plan).toPromise().then(res => { this.getPlanes(codigoNutricionista).then(result => { this.PlanesProd = result }) })
+    await this.http.put(environment.api + "/Plans", Plan).toPromise().then(res => { this.getPlanes(codigoNutricionista).then(result => {  }) })
     return this.Plans
   }
 

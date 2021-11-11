@@ -57,6 +57,7 @@ namespace API_Relacional.Controllers
                     cmd.Parameters.Add("@statementType", SqlDbType.NVarChar);
                     cmd.Parameters["@statementType"].Value = statementType;
 
+                    cmd.Parameters.Add("@resultado", SqlDbType.NVarChar);
                     reader = cmd.ExecuteReader(); //El lector ejecuta el comando
                     table.Load(reader); //El objeto DataTable se carga con los datos del lector
                     result = JsonConvert.SerializeObject(table); //Se serializa la tabla a JSON

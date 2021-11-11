@@ -57,9 +57,7 @@ namespace API_Relacional.Controllers
         public JsonResult GetByNutricionista(int id)
         {
             string query = @"
-                SELECT idplan, codigonutricionista 
-                FROM nutricionista_plan
-                WHERE codigonutricionista=" + id +
+                select * from planes where CodigoNutricionista = " + id +
                 "";
 
             return consulta.get(query, _configuration, cadenaDeConexion);

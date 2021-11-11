@@ -35,6 +35,12 @@ export class PlanesComponent implements OnInit {
   ngOnInit(): void {
     this.productoService.getProductos().then(res=>{
       this.productos=res
+      this.productos.forEach(producto=> {
+        this.productoService.getVitaminas(producto.codigodbarras).then( res2 => {
+          producto.vitaminas = res2
+          console.log(res2)
+        })
+      })
       this.productos.map(product => product.nombre = ` ${product.codigodbarras} ${product.nombre}`);
     })
   }

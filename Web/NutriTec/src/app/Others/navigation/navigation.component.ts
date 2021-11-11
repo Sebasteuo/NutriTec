@@ -19,10 +19,10 @@ export class NavigationComponent implements OnInit {
     this.logged = true;
     this.showadmin = this.isAdmin();
     //this.showadmin = true;
-    this.showclient = this.isClient();
-    //this.showclient = true;
-    //this.showNutricionista = this.isNutricionista();
-    this.showNutricionista = true;
+    //this.showclient = this.isClient();
+    this.showclient = true;
+    this.showNutricionista = this.isNutricionista();
+    //this.showNutricionista = true;
   }
   loggedIn() {
     if (localStorage.getItem('User') != null)

@@ -9,7 +9,7 @@ export class Producto {
     sodio: number = 0
     carbohidratos: number = 0
     proteina: number = 0
-    vitaminas: number = 0
+    vitaminas: string = ""
     calcio: number = 0
     hierro: number = 0
     aprobado: number = 0

@@ -11,59 +11,45 @@ import { ClienteManagementService } from 'src/app/Services/cliente-management.se
 export class RegistroDeMedidasComponent implements OnInit {
 
   refresh: Subject<any> = new Subject();
+  selectedZona: string = ""
+  zonas: string[]=["Cintura", "Cuello", "Caderas", "Músculo", "Grasa"]
   constructor(private service: ClienteManagementService) { 
 
   }
 
   newMedida: Medidas = {  
-    cintura: 0, 
-    cuello: 0,
-    caderas: 0, 
-    musculo:0,
-    grasa: 0,
-    fecha: new Date(),
-    id: 0,
-    cliente: 0
+    zona: "",
+    medida: 0,
+    fecharegistro: new Date(),
+    cedula: 0,
+    
   }
   selectedMedida: Medidas = {
-    cintura: 0, 
-    cuello: 0,
-    caderas: 0, 
-    musculo:0,
-    grasa: 0,
-    fecha: new Date(),
-    id: 0,
-    cliente: 0
+    zona: "",
+    medida: 0,
+    fecharegistro: new Date(),
+    cedula: 0,
   }
 
   medidas: Medidas[]=[]
   editingID: number = 0
+
+
+  selectZona(zona: string){
+    this.selectedZona=zona
+  }
+
   ngOnInit(): void {
-    this.service.getmedidas().then(res=>this.medidas=res)
-    this.medidas =[{
-      cintura: 0, 
-    cuello: 0,
-    caderas: 0, 
-    musculo:0,
-    grasa: 0,
-    fecha: new Date(),
-    id: 1,
-    cliente: 0
-    },{
-      cintura: 0, 
-    cuello: 0,
-    caderas: 0, 
-    musculo:0,
-    grasa: 0,
-    fecha: new Date(),
-    id: 2,
-    cliente: 0
-    }]
+    this.service.getmedidas(123213).then(res=>{this.medidas=res
+      console.log(this.medidas)
+    })
+   
+    
   }
 
   edit(medida: Medidas){
     this.selectedMedida = medida
-    this.editingID = medida.id
+    this.editingID = medida.cedula
   }
 
   submit(){
@@ -71,22 +57,20 @@ export class RegistroDeMedidasComponent implements OnInit {
     this.service.editmedida(this.selectedMedida).then(res=>{this.medidas=res})
   }
 
-  delete(codigoDeBarras:number){
-    this.service.deletemedida(codigoDeBarras).then(res=>{this.medidas=res})
+  delete(medida: Medidas){
+    this.service.deletemedida(medida).then(res=>{this.medidas=res})
   }
 
 
   add(){
+    this.newMedida.cedula=123213
+    this.newMedida.zona= this.selectedZona
     this.service.addmedida(this.newMedida).then(res=>{this.medidas=res})
     this.newMedida = {
-      cintura: 0, 
-      cuello: 0,
-      caderas: 0, 
-      musculo:0,
-      grasa: 0,
-      fecha: new Date(),
-      id: 0,
-      cliente: 0
+      zona: "",
+      medida: 0,
+      fecharegistro: new Date(),
+      cedula: 0,
     }
   }
 

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Cliente } from '../Models/cliente.model';
 import { Medidas } from '../Models/medidas.model';
+import { formatISO, parseISO } from 'date-fns';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,10 @@ export class ClienteManagementService {
   constructor(private http: HttpClient) { }
 
   medidas: Medidas []=[]
-  async getmedidas(){  //Función que obtiene clientes
+  async getmedidas(cedula:number){  //Función que obtiene clientes
 
-    await this.http.get(environment.api+"/medida").toPromise().then(res=>{
-      this.medidas=res as Medidas[]
+    await this.http.get(environment.api+"/registramedidas/"+cedula).toPromise().then(res=>{
+      this.medidas=JSON.parse(res as string) as Medidas[]
 
     
     })
@@ -27,19 +28,22 @@ export class ClienteManagementService {
   async addmedida(medida : Medidas){
 
     const body = {}
-    await this.http.post(environment.api+"/medidas", medida).toPromise().then(res=>{this.getmedidas().then(result=>{this.medidas=result})})
+    await this.http.post(environment.api+"/registramedidas", medida).toPromise().then(res=>{this.getmedidas(medida.cedula).then(result=>{this.medidas=result})})
     return this.medidas;
   }
 
-  async deletemedida(id: number | undefined) {
+  async deletemedida(medida:Medidas) {
+    const body= {cedula:medida.cedula,
+      fecharegistro: formatISO(parseISO(medida.fecharegistro.toISOString())),
+    }
     //this.medidas = this.medidas.filter((obj) => obj.cedula !== id);
-    await this.http.delete(environment.api+'/medidas/'+id).toPromise().then(res=>{this.getmedidas().then(result=>{this.medidas=result})})
+    await this.http.put(environment.api+'/registramedidas/delete', medida).toPromise().then(res=>{this.getmedidas(medida.cedula).then(result=>{this.medidas=result})})
     return this.medidas
   }
 
   //Envía los datos modificados al API (esta función se comporta igual a la que account-management.service)
   async editmedida(medida: Medidas) {
-    await this.http.put(environment.api+"/medidas", medida).toPromise().then(res=>{this.getmedidas().then(result=>{this.medidas=result})})
+    await this.http.put(environment.api+"/registramedidas", medida).toPromise().then(res=>{this.getmedidas(medida.cedula).then(result=>{this.medidas=result})})
     return this.medidas
 
 }
@@ -51,7 +55,7 @@ export class ClienteManagementService {
       this.Clientes=JSON.parse(res as string) as Cliente[]
       this.Clientes.forEach(cliente=>{
         cliente.Edad= this.calcAge(cliente.fechanacimiento)
-        console.log(cliente.Edad)
+        cliente.IMC = this.calcIMC(cliente.PesoActual, cliente.altura)
       })
     
     })
@@ -60,14 +64,11 @@ export class ClienteManagementService {
     
   }
   async getClienteByID(id: number){  //Función que obtiene clientes
-
     await this.http.get(environment.api+"/Usuario/"+id).toPromise().then(res=>{
       this.Clientes=JSON.parse(res as string) as Cliente[]
       this.Clientes.forEach(cliente=>{
         cliente.Edad= this.calcAge(cliente.fechanacimiento)
-        console.log(cliente)
         cliente.IMC = this.calcIMC(cliente.PesoActual, cliente.altura)
-        console.log(cliente.Edad)
       })
     
     })
@@ -81,7 +82,6 @@ export class ClienteManagementService {
   }
 
   calcIMC(peso: number, altura: number){
-    console.log(peso)
     return peso/(altura*altura)
     
   }

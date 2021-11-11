@@ -18,31 +18,33 @@ export class RegistroConsumoComponent implements OnInit {
   consumos: Consumo[] = []
   editingID: number = 0
   selectedTiempo: string = "Desayuno"
-  keyword= "nombre"
-  productos: Producto[]=[]
-  selectedProduct: Producto ={
+  keyword = "nombre"
+  productos: Producto[] = []
+  selectedProduct: Producto = {
     codigodbarras: 0,
-    descripcion:"",
-    porcion:0,
-    energia:0,
+    descripcion: "",
+    porcion: 0,
+    energia: 0,
     grasa: 0,
     sodio: 0,
-    carbohidratos:0,
-    proteina:0,
-    vitaminas: 0,
+    carbohidratos: 0,
+    proteina: 0,
+    vitaminas: "",
     calcio: 0,
     hierro: 0,
-    aprobado:0,
+    aprobado: 0,
     nombre: ""
 
   }
-  selectedConsumo : Consumo = { id:0,
+  selectedConsumo: Consumo = {
+    id: 0,
     fecha: new Date(),
     tiempo: "",
-    platillo: ""}
+    platillo: ""
+  }
   refresh: Subject<any> = new Subject();
   newConsumo: Consumo = {
-    id:0,
+    id: 0,
     fecha: new Date(),
     tiempo: "",
     platillo: ""
@@ -50,47 +52,19 @@ export class RegistroConsumoComponent implements OnInit {
   ngOnInit(): void {
     this.consumoService.getconsumos().then(res => { this.consumos = res })
     this.consumos = [{
-      id:44444,
-    fecha: new Date(),
-    tiempo: "Desayuno",
-    platillo: "Gallo Pinto"
+      id: 44444,
+      fecha: new Date(),
+      tiempo: "Desayuno",
+      platillo: "Gallo Pinto"
 
-    },{
-      id:666666,
-    fecha: new Date(),
-    tiempo: "Merienda",
-    platillo: "Yogurt"
+    }, {
+      id: 666666,
+      fecha: new Date(),
+      tiempo: "Merienda",
+      platillo: "Yogurt"
     }],
-    this.productService.getProductos().then(res=>{this.productos = res})
-    this.productos =[{
-      codigodbarras: 4444,
-    descripcion:"jaja",
-    porcion:3,
-    energia:4,
-    grasa: 6,
-    sodio: 9,
-    carbohidratos:1,
-    proteina:4,
-    vitaminas: 5,
-    calcio: 3,
-    hierro: 30,
-    aprobado:1,
-    nombre: "acas"
-    },{
-      codigodbarras: 3334,
-    descripcion:"jaja",
-    porcion:3,
-    energia:4,
-    grasa: 6,
-    sodio: 9,
-    carbohidratos:1,
-    proteina:4,
-    vitaminas: 5,
-    calcio: 3,
-    hierro: 30,
-    aprobado:1,
-    nombre: "hhhh"
-    }]
+      this.productService.getProductos().then(res => { this.productos = res })
+
 
   }
 
@@ -99,24 +73,24 @@ export class RegistroConsumoComponent implements OnInit {
 
   }
 
-  add(){
+  add() {
 
   }
 
-  edit(consumo: Consumo){
+  edit(consumo: Consumo) {
     this.selectedConsumo = consumo
     this.editingID = this.selectedConsumo.id
   }
 
-  submit(){
+  submit() {
 
-  
-  }
-  delete(id: number){
 
   }
+  delete(id: number) {
 
-  selectProduct(product: any){
+  }
+
+  selectProduct(product: any) {
     this.selectProduct = product
 
   }

@@ -69,7 +69,7 @@ CREATE TABLE REGISTRAMEDIDAS(
   Zona VARCHAR(50),
   Medida NUMERIC(5,2),
   FechaRegistro DATETIME NOT NULL,
-  PRIMARY KEY (Cedula,FechaRegistro),
+  PRIMARY KEY (Cedula,FechaRegistro, zona),
 );
 CREATE TABLE NUTRICIONISTA_PLAN(
   IDPlan INT NOT NULL,

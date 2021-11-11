@@ -21,7 +21,7 @@ export class ProductosComponent implements OnInit {
     sodio: 0,
     carbohidratos:0,
     proteina:0,
-    vitaminas: 0,
+    vitaminas: "",
     calcio: 0,
     hierro: 0,
     aprobado:0,
@@ -36,7 +36,7 @@ export class ProductosComponent implements OnInit {
     sodio: 0,
     carbohidratos:0,
     proteina:0,
-    vitaminas: 0,
+    vitaminas: "",
     calcio: 0,
     hierro: 0,
     aprobado:0,
@@ -46,7 +46,15 @@ export class ProductosComponent implements OnInit {
   products: Producto[]=[]
   editingID: number = 0
   ngOnInit(): void {
-    this.productService.getProductos().then(res=>this.products=res)
+    this.productService.getProductos().then(res=>{this.products=res
+      this.products.forEach(producto=> {
+        this.productService.getVitaminas(producto.codigodbarras).then( res2 => {
+          producto.vitaminas = res2
+          console.log(res2)
+        })
+      })
+    })
+
     
   }
 
@@ -76,7 +84,7 @@ export class ProductosComponent implements OnInit {
       sodio: 0,
       carbohidratos:0,
       proteina:0,
-      vitaminas: 0,
+      vitaminas: "",
       calcio: 0,
       hierro: 0,
       aprobado:0,

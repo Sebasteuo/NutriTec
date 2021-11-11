@@ -11,61 +11,46 @@
                             <article class="card-body">
                                 <div class="form">
                                     <form #form autocomplete="off">
-                                        <div class="form-row">
+                                       
 
-                                         
+                                        <div class="form-row">
                                             <div class="col form-group">
-                                                <label>Cintura: </label>
-                                            </div> 
+                                                <label>Zona: </label>
+                                            </div>
                                             <div class="col form-group">
-                                                <input name="quantity" class="form-control" placeholder="Cintura" [(ngModel)]="newMedida.cintura"
-                                                    required>
+                                                <div ngbDropdown class="d-inline-block">
+                                                    <button class="btn btn-outline-primary"
+                                                        id="dropdownBasic1"
+                                                        ngbDropdownToggle>{{selectedZona}}</button>
+                                                    <div ngbDropdownMenu
+                                                        aria-labelledby="dropdownBasic1">
+                                                        <button
+                                                            *ngFor="let zona of zonas"
+                                                            ngbDropdownItem
+                                                            (click)="selectZona(zona)">{{zona}}</button>
+
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="col form-group">
-                                                <label>Cuello: </label>
+                                                <label>Medida: </label>
                                             </div>
                                             <div class="col form-group">
-                                                <input name="quantity" class="form-control" placeholder="Cuello" [(ngModel)]="newMedida.cuello"
-                                                    required>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col form-group">
-                                                <label>Caderas: </label>
-                                            </div>
-                                            <div class="col form-group">
-                                                <input name="quantity" class="form-control" placeholder="Caderas" [(ngModel)]="newMedida.caderas"
-                                                    required>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col form-group">
-                                                <label>Músculo: </label>
-                                            </div>
-                                            <div class="col form-group">
-                                                <input name="quantity" class="form-control" placeholder="Músculo" [(ngModel)]="newMedida.musculo"
+                                                <input name="quantity" class="form-control" placeholder="Medida" [(ngModel)]="newMedida.medida"
                                                     required>
                                             </div>
                                         </div>
 
-                                        <div class="form-row">
-                                            <div class="col form-group">
-                                                <label>Grasa: </label>
-                                            </div>
-                                            <div class="col form-group">
-                                                <input name="quantity" class="form-control" placeholder="Grasa" [(ngModel)]="newMedida.grasa"
-                                                    required>
-                                            </div>
-                                        </div>
+
 
                                         <div class="form-row">
                                             <div class="col form-group">
-                                                <label>Fecha: </label>
+                                                <label>Fecha de Registro: </label>
                                             </div>
                                             <div class="col form-group">
-                                                <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="newMedida.fecha"
+                                                <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="newMedida.fecharegistro"
                             (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true" 
                             dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Fecha" 
                             [ngModelOptions]="{standalone: true}" />
@@ -98,62 +83,42 @@
                                         <table class="table table-hover bike-table">
                                             <thead>
                                                 <tr>
-                                                    <th>Cintura</th>
-                                                    <th>Cuello</th>
-                                                    <th>Caderas</th>
-                                                    <th>Músculo</th>
-                                                    <th>Grasa</th>
-                                                    <th>Fecha</th>
+                                                    <th>Zona</th>
+                                                    <th>Medida</th>
+                                                    <th>Fecha de Registro</th>
+                                                    
                                                     
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr *ngFor="let medida of this.medidas">
                             
-                                                    <td *ngIf='editingID != medida.id'>{{medida.id}}</td>
-                                                    <td *ngIf='editingID == medida.id'>{{medida.id}}</td>
-
-                                                    <td *ngIf='editingID != medida.id'>{{medida.cintura}}</td>
-                                                    <td *ngIf='editingID == medida.id'><input value="{{selectedMedida.cintura}}"
-                                                        [(ngModel)]="selectedMedida.cintura" class="form-control"></td>
-
-                                                        <td *ngIf='editingID != medida.id'>{{medida.cuello}}</td>
-                                                        <td *ngIf='editingID == medida.id'><input value="{{selectedMedida.cuello}}"
-                                                            [(ngModel)]="selectedMedida.cuello" class="form-control"></td>
-
-                                                            <td *ngIf='editingID != medida.id'>{{medida.musculo}}</td>
-                                                            <td *ngIf='editingID == medida.id'><input value="{{selectedMedida.musculo}}"
-                                                                [(ngModel)]="selectedMedida.musculo" class="form-control"></td>
+                                                    <td *ngIf='editingID != medida.cedula'>{{medida.zona}}</td>
+                                                    <td *ngIf='editingID == medida.cedula'>{{medida.zona}}</td>
+                                                        <td *ngIf='editingID != medida.cedula'>{{medida.medida}}</td>
+                                                        <td *ngIf='editingID == medida.cedula'><input value="{{selectedMedida.medida}}"
+                                                            [(ngModel)]="selectedMedida.medida" class="form-control"></td>
 
 
-                                                                <td *ngIf='editingID != medida.id'>{{medida.grasa}}</td>
-                                                    <td *ngIf='editingID == medida.id'><input value="{{selectedMedida.grasa}}"
-                                                        [(ngModel)]="selectedMedida.grasa" class="form-control"></td>
-
-
-                                                        <td *ngIf='editingID != medida.id'>{{medida.fecha}}</td>
-                                                    <td *ngIf='editingID == medida.id'>  <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="selectedMedida.fecha"
-                                                        (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true" 
-                                                        dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Hora de Proyección" [enableTime] = "true"
-                                                        [ngModelOptions]="{standalone: true}" /></td>
+                                                        <td *ngIf='editingID != medida.cedula'>{{medida.fecharegistro}}</td>
+                                                        <td *ngIf='editingID == medida.cedula'>{{medida.fecharegistro}}</td>
 
                                             
                                                     
                                                   
-                                                   
-
+                                    
                                                     <th scope="row">
-                                                        <button *ngIf='editingID != medida.id' (click)="edit(medida)" class="btn-icon" placement="top"
+                                                        <button *ngIf='editingID != medida.cedula' (click)="edit(medida)" class="btn-icon" placement="top"
                                                             ngbTooltip="Editar">
                                                             <i class="fa fa-edit" aria-hidden="true"></i>
                                                         </button>
-                                                        <button *ngIf='editingID == medida.id' (click)="submit()" class="btn-icon" placement="top"
+                                                        <button *ngIf='editingID == medida.cedula' (click)="submit()" class="btn-icon" placement="top"
                                                             ngbTooltip="Aceptar">
                                                             <i class="fa fa-check" aria-hidden="true"></i>
                                                         </button>
                                                     </th>
                                                     <th scope="row">
-                                                        <button (click)="delete(medida.id)" class="btn-icon" placement="top"
+                                                        <button (click)="delete(medida)" class="btn-icon" placement="top"
                                                             ngbTooltip="Eliminar">
                                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                                         </button>

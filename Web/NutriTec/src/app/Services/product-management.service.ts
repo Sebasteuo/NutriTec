@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { ProductoVitamina } from '../Models/producto-vitamina.model';
 import { Producto } from '../Models/producto.model';
 
 
@@ -12,14 +13,21 @@ export class ProductManagementService {
   constructor(private http: HttpClient) { }
 
   productos: Producto[] = []
+  productoVitaminas: ProductoVitamina[] = []
+  newVitamina: ProductoVitamina = {
+    codigodbarras: 0,
+    vitaminas: ""
+  }
+
   async getProductos() {  //Función que obtiene clientes
+    this.productos = []
     await this.http.get(environment.api + "/producto").toPromise().then(res => {
       this.productos = JSON.parse(res as string) as Producto[]
     })
     return this.productos
   }
 
-  async getProductoByCodigo(codigodbarras : number) {  //Función que obtiene clientes
+  async getProductoByCodigo(codigodbarras: number) {  //Función que obtiene clientes
     await this.http.get(environment.api + "/producto/" + codigodbarras).toPromise().then(res => {
       this.productos = JSON.parse(res as string) as Producto[]
     })
@@ -28,7 +36,15 @@ export class ProductManagementService {
 
   async addProducto(Producto: Producto) {
     const body = {}
-    await this.http.post(environment.api + "/producto", Producto).toPromise().then(res => { this.getProductos().then(result => { this.productos = result }) })
+    await this.http.post(environment.api + "/producto", Producto).toPromise().then(res => {
+      var lines = (Producto.vitaminas as unknown as string).split(',')
+      lines.forEach(line => {
+        this.newVitamina.codigodbarras = Producto.codigodbarras
+        this.newVitamina.vitaminas = line 
+        this.http.post(environment.api + "/Producto_vitamina", this.newVitamina).toPromise().then(res4 => { })
+      })
+      this.getProductos().then(result => { this.productos = result })
+    })
     return this.productos;
   }
 
@@ -54,5 +70,15 @@ export class ProductManagementService {
     return this.productos
   }
 
+  async getVitaminas(codigodebarras: number) {
+    var vitaminas = ""
+    await this.http.get(environment.api + "/producto_vitamina/" + codigodebarras).toPromise().then(res => {
+      this.productoVitaminas = JSON.parse(res as string) as ProductoVitamina[]
+      this.productoVitaminas.forEach(name => {
+        vitaminas = vitaminas.concat(name.vitaminas.toString() + ",")
+      })
+    })
 
+    return vitaminas
+  }
 }

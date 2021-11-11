@@ -13,19 +13,17 @@ export class PacienteManagementService {
   constructor(private http: HttpClient, private toastr: ToastrService) { }
   Clientes: Cliente []=[]
   PacientesXNutricionista: NutricionistaXPaciente[]=[]
-  async getPacientes(codigoNutricionista: number){  //Función que obtiene clientes
 
+  async getPacientes(codigoNutricionista: number){  //Función que obtiene clientes
+    this.Clientes = []
     await this.http.get(environment.api+"/puede_tener/"+codigoNutricionista).toPromise().then(res=>{
       this.PacientesXNutricionista=JSON.parse(res as string) as NutricionistaXPaciente[]
       this.PacientesXNutricionista.forEach(paciente=>{
         this.http.get(environment.api+"/Usuario/"+paciente.cedula).toPromise().then(res2=>{
           this.Clientes.push((JSON.parse(res2 as string) as Cliente[])[0])
         })
-
       })
-    
     })
-    
     return this.Clientes
     
   }

@@ -14,9 +14,10 @@ export class SeguimientoPacienteComponent implements OnInit {
 
   pacientes: Cliente[]=[]
   ngOnInit(): void {
-    this.pacienteService.getPacientes(888).then(res=>{this.pacientes=res})
+    this.pacienteService.getPacientes(888).then(res=>{
+      this.pacientes=res
+    })
   }
-
 
   view(paciente: Cliente){
     this.router.navigate(['/Paciente/' + paciente.cedula])
