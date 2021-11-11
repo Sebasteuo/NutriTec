@@ -28,6 +28,8 @@ namespace API_Relacional.Controllers
 
                 using (SqlCommand cmd = new SqlCommand(query, connection)) //El comando a ejecutar se hace con un query y la conexion
                 {
+                    //DataSet ds = new DataSet();
+                    //SqlDataAdapter da = new SqlDataAdapter(cmd);
                     reader = cmd.ExecuteReader(); //El lector ejecuta el comando
                     table.Load(reader); //El objeto DataTable se carga con los datos del lector
                     result = JsonConvert.SerializeObject(table); //Se serializa la tabla a JSON

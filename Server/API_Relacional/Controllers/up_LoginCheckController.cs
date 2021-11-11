@@ -58,18 +58,16 @@ namespace API_Relacional.Controllers
                     cmd.Parameters["@statementType"].Value = statementType;
 
                     // Create a parameter for the ReturnValue.
-                    cmd.Parameters.Add("@resultado", SqlDbType.Int);
-                    cmd.Parameters["@resultado"].Value = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add("@resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     //parameter.Direction = ParameterDirection.ReturnValue;
 
                     reader = cmd.ExecuteReader(); //El lector ejecuta el comando
-                    table.Load(reader); //El objeto DataTable se carga con los datos del lector
-                    result = JsonConvert.SerializeObject(table); //Se serializa la tabla a JSON
+
+                    result = cmd.Parameters["@resultado"].Value.ToString();
+
                     reader.Close(); //Se cierra  el lector
                     connection.Close(); //Se cierra la conexion
-                    //DataSet ds = new DataSet();
-                    //SqlDataAdapter da = new SqlDataAdapter(cmd);
-                }
+                    }
             }
             return new JsonResult(result);
         }
