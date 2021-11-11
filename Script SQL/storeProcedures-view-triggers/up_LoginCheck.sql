@@ -9,7 +9,7 @@
    1.0          8/11/2021       Gabriel conejo valerio      1. Creacion de procedimiento			
 
 
-   Notas: para selecionarlo la tabla las opciones son 'nutricionista' y 'cliente' los resultados son 
+   Notas: para selecionarlo la tabla las opciones son 'nutricionista', 'cliente'  y 'admin' los resultados son 
    1 si existe 
    0 no existe
 
@@ -38,6 +38,16 @@ CREATE PROCEDURE up_LoginCheck(
         IF @StatementType = 'cliente'
         BEGIN
            IF EXISTS ( select Cedula from dbo.USUARIO where (Cedula =  @identificacion AND Password=@Password))
+                BEGIN
+                    set @resultado =1
+                END
+                ELSE
+                    set @resultado =0
+        END
+
+        IF @StatementType = 'admin'
+        BEGIN
+           IF EXISTS ( select ADMINID from dbo.USUARIO where (ADMINID =  @identificacion AND Password=@Password))
                 BEGIN
                     set @resultado =1
                 END
