@@ -90,10 +90,10 @@ namespace API_Relacional.Controllers
                     cmd.Parameters.Add("@fechanacimiento", SqlDbType.Date);
                     cmd.Parameters["@fechanacimiento"].Value = x.fechanacimiento;
 
-                    cmd.Parameters.Add("@peso", SqlDbType.Int);
+                    cmd.Parameters.Add("@peso", SqlDbType.Decimal);
                     cmd.Parameters["@peso"].Value = x.peso;
 
-                    cmd.Parameters.Add("@altura", SqlDbType.Int);
+                    cmd.Parameters.Add("@altura", SqlDbType.Decimal);
                     cmd.Parameters["@altura"].Value = x.altura;
 
                     cmd.Parameters.Add("@pais", SqlDbType.VarChar);
@@ -168,10 +168,10 @@ namespace API_Relacional.Controllers
                     cmd.Parameters.Add("@fechanacimiento", SqlDbType.NVarChar);
                     cmd.Parameters["@fechanacimiento"].Value = x.fechanacimiento;
 
-                    cmd.Parameters.Add("@peso", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@peso", SqlDbType.Decimal);
                     cmd.Parameters["@peso"].Value = x.peso;
 
-                    cmd.Parameters.Add("@altura", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@altura", SqlDbType.Decimal);
                     cmd.Parameters["@altura"].Value = x.altura;
 
                     cmd.Parameters.Add("@pais", SqlDbType.NVarChar);
@@ -183,10 +183,10 @@ namespace API_Relacional.Controllers
                     cmd.Parameters.Add("@password", SqlDbType.NVarChar);
                     cmd.Parameters["@password"].Value = x.password;
 
-                    cmd.Parameters.Add("@porcentajemusculo", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@porcentajemusculo", SqlDbType.Int);
                     cmd.Parameters["@porcentajemusculo"].Value = x.porcentajemusculo;
 
-                    cmd.Parameters.Add("@porcentajegrasa", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@porcentajegrasa", SqlDbType.Int);
                     cmd.Parameters["@porcentajegrasa"].Value = x.porcentajegrasa;
 
                     reader = cmd.ExecuteReader();

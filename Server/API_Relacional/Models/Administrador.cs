@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace API_Relacional.Models
 {
-    public class TiempoComida
+    public class Administrador
     {
         [Key]
-        public int idtiempo { get; set; }
-        public string nombre { get; set; }
+        public int adminid { get; set; }
+        public string correo { get; set; }
+        public string password { get; set; }
     }
 }

@@ -15,8 +15,8 @@ namespace API_Relacional.Models
         public string apellido1 { get; set; }
         public string apellido2 { get; set; }
         public DateTime fechanacimiento { get; set; }
-        public int peso { get; set; }
-        public int altura { get; set; }
+        public Decimal peso { get; set; }
+        public Decimal altura { get; set; }
         public string pais { get; set; }
         public string correo { get; set; }
         public string password { get; set; }
