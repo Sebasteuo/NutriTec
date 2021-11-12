@@ -47,7 +47,7 @@ CREATE PROCEDURE up_LoginCheck(
 
         IF @StatementType = 'admin'
         BEGIN
-           IF EXISTS ( select ADMINID from dbo.USUARIO where (ADMINID =  @identificacion AND Password=@Password))
+           IF EXISTS ( select ADMINID from dbo.ADMINISTRADOR where (ADMINID =  @identificacion AND Password=@Password))
                 BEGIN
                     set @resultado =1
                 END
