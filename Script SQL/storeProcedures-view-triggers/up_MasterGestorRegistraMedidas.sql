@@ -23,7 +23,7 @@
 CREATE PROCEDURE up_MasterGestorRegistraMedidas(
     @Cedula INT,
     @Zona VARCHAR(50),
-    @Medida NUMERIC(5,2),
+    @Medida DECIMAL(5,2),
     @FechaRegistro DATETIME,
     @StatementType NVARCHAR(50) = '')
 AS
