@@ -61,33 +61,52 @@ export class AuthenticationManagementService {
 
   //Hace una consulta en el API para verificar credenciales del usuario y guardar los datos del usuario como cookies
   async login(Credenciales: Credenciales) {
-    const body = {
-      user: Credenciales.user,
+    console.log(Credenciales)
+    const Admin = {
+      
+      cedula: Credenciales.cedula as unknown as number,
+      statementType: "admin",
       password: Credenciales.password
     }
 
-    await this.http.post(environment.api + "/up_LoginCheck", body, {responseType: "text"}).toPromise().then(res => {
-     /* if ((res as Empleado[]).length > 0) {
+    const bodyCliente = {
+
+      cedula: Credenciales.cedula  as unknown as number,
+      statementType: "cliente",
+      password: Credenciales.password
+    }
+
+    const bodyNutricionista = {
+
+      cedula: Credenciales.cedula  as unknown as number,
+      statementType: "nutricionista",
+      password: Credenciales.password
+    }
+
+    await this.http.post(environment.api + "/up_LoginCheck", JSON.parse(JSON.stringify(bodyCliente)), {responseType: "text"}).toPromise().then(res => {
+    console.log(res)
+    console.log(bodyCliente)
+      if (JSON.parse(res) == "1") {
         localStorage.setItem("User", Credenciales.user as unknown as string)
-        localStorage.setItem("UserId", (res as Empleado[])[0].cedulaempleado as unknown as string)
-        this.http.get(environment.api + "/RolXEmpleado/" + (res as Empleado[])[0].cedulaempleado).toPromise().then(res2 => {
-          localStorage.setItem("UserType", (res2 as RolXEmpleado[])[0].nombre as unknown as string)
-          this.router.navigate(["/Welcome"])
-        })
+        localStorage.setItem("UserId", Credenciales.cedula as unknown as string)
+        
+          localStorage.setItem("UserType", "cliente")
+          this.router.navigate(["/Consumo"])
+        
       }
       else {
-        this.http.post(environment.api + "/cliente/checkCredentials", body).toPromise().then(res => {
-          if ((res as Cliente[]).length > 0) {
+        this.http.post(environment.api + "/up_LoginCheck", JSON.parse(JSON.stringify(bodyNutricionista)),{responseType: "text"}).toPromise().then(res => {
+          if (JSON.parse(res) =="1") {
             localStorage.setItem("User", Credenciales.user as unknown as string)
-            localStorage.setItem("UserId", (res as Client[])[0].cedulacliente as unknown as string)
-            localStorage.setItem("UserType", "Cliente")
-            this.router.navigate(["/Compra"])
+            localStorage.setItem("UserId", Credenciales.cedula as unknown as string)
+            localStorage.setItem("UserType", "nutricionista")
+            this.router.navigate(["/Pacientes"])
           }
           else{
             this.toastr.error("Credenciales incorrectas", "Error")
           }
         })
-      }*/
+      }
     })
   }
   async getClientID(user: Credenciales) {

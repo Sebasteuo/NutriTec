@@ -16,6 +16,7 @@ export class NavNutricionistaComponent implements OnInit {
   logout(){
     localStorage.removeItem("User")
     localStorage.removeItem("UserType")
+    localStorage.removeItem("UserId")
     this.router.navigate(["/Login"])
   }
 

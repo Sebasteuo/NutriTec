@@ -40,7 +40,7 @@ export class RegistroDeMedidasComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getmedidas(123213).then(res=>{this.medidas=res
+    this.service.getmedidas(localStorage.getItem("UserId") as unknown as number).then(res=>{this.medidas=res
       console.log(this.medidas)
     })
    
@@ -63,7 +63,7 @@ export class RegistroDeMedidasComponent implements OnInit {
 
 
   add(){
-    this.newMedida.cedula=123213
+    this.newMedida.cedula=localStorage.getItem("UserId") as unknown as number
     this.newMedida.zona= this.selectedZona
     this.service.addmedida(this.newMedida).then(res=>{this.medidas=res})
     this.newMedida = {

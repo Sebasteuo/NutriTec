@@ -67,10 +67,10 @@ export class PacientesComponent implements OnInit {
     this.clienteService.getClientes().then(res => {
       this.clientes = res
     })
-    this.pacienteService.getPacientes(888).then(res => {
+    this.pacienteService.getPacientes(localStorage.getItem("UserId") as unknown as number).then(res => {
       this.pacientes = res
     })
-    this.planservice.getPlanes(888).then(res => {
+    this.planservice.getPlanes(localStorage.getItem("UserId") as unknown as number).then(res => {
       this.planesInc = res
       this.planesInc.forEach(plan => {
         var newPlan = {
@@ -106,7 +106,7 @@ export class PacientesComponent implements OnInit {
 
   add(id: number) {
     var codigoNutricionista = localStorage.getItem("codigonutricionista")
-    this.pacienteService.addPaciente(id, 888)
+    this.pacienteService.addPaciente(id, localStorage.getItem("UserId") as unknown as number)
   }
 
   addPlan() {

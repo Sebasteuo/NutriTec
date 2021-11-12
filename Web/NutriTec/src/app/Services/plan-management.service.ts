@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 import { NutriXplan } from '../Models/nutri-xplan.model';
 import { PlanDeComida } from '../Models/plan-de-comida.model';
@@ -14,7 +15,7 @@ import { ProductManagementService } from './product-management.service';
 })
 export class PlanManagementService {
 
-  constructor(private http: HttpClient, private productoService: ProductManagementService) { }
+  constructor(private http: HttpClient, private productoService: ProductManagementService, private toastr: ToastrService) { }
 
   planes : VistaPlan[] = [] 
   Plans: PlanDeComida[] = []
@@ -87,6 +88,7 @@ export class PlanManagementService {
         codigonutricionista: plan.idNutricionista,
         idplan: plan.id
       }
+      this.toastr.success("Se ha registrado correctamente", "exito")
       this.http.post(environment.api + "/Nutricionista_Plan", nutri).toPromise().then(res2 => {
         plan.desayuno.forEach(prod => {
           const prodPlan = {
@@ -134,6 +136,8 @@ export class PlanManagementService {
           })
         })
       })
+    }, error => {
+      this.toastr.error("No se ha podido registrar correctamente", "error")
     })
     return this.Plans;
   }

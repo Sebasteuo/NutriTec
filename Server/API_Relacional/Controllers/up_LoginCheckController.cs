@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using API_Relacional.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -29,7 +30,7 @@ namespace API_Relacional.Controllers
 
         // POST api/<HablaController>
         [HttpPost]
-        public JsonResult Post(int identificacion, string password, string statementType)
+        public JsonResult Post(Credenciales credenciales)
         {
             string query = @"
                 exec dbo.up_LoginCheck @identificacion, @resultado OUTPUT, @password, @statementType
@@ -49,13 +50,13 @@ namespace API_Relacional.Controllers
 
                     //Se agregan los valores y el tipo de dato respectivo
                     cmd.Parameters.Add("@identificacion", SqlDbType.Int);
-                    cmd.Parameters["@identificacion"].Value = identificacion;
+                    cmd.Parameters["@identificacion"].Value = credenciales.cedula;
 
                     cmd.Parameters.Add("@password", SqlDbType.VarChar);
-                    cmd.Parameters["@password"].Value = password;
+                    cmd.Parameters["@password"].Value = credenciales.password;
 
                     cmd.Parameters.Add("@statementType", SqlDbType.NVarChar);
-                    cmd.Parameters["@statementType"].Value = statementType;
+                    cmd.Parameters["@statementType"].Value = credenciales.statementType;
 
                     // Parametros para el valor de retorno
                     cmd.Parameters.Add("@resultado", SqlDbType.Int).Direction = ParameterDirection.Output;

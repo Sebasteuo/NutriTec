@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    var pass = (CryptoJS.MD5(this.password as unknown as string) as unknown) as string;
-    this.newCredenciales.password = CryptoJS.enc.Base64.stringify(Crypto.SHA256(pass))
+    var pass = (Crypto.MD5(this.password as unknown as string) as unknown) as string;
+    this.newCredenciales.password = Crypto.enc.Base64.stringify(Crypto.SHA256(pass))
     this.authenticationService.login(this.newCredenciales);
   }
 

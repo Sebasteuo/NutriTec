@@ -15,38 +15,38 @@ export class NavigationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    //this.logged = this.loggedIn();
-    this.logged = true;
+   this.logged = this.loggedIn();
+   // this.logged = true;
     this.showadmin = this.isAdmin();
     //this.showadmin = true;
-    //this.showclient = this.isClient();
-    this.showclient = true;
+    this.showclient = this.isClient();
+    //this.showclient = true;
     this.showNutricionista = this.isNutricionista();
     //this.showNutricionista = true;
   }
   loggedIn() {
-    if (localStorage.getItem('User') != null)
+    if (localStorage.getItem('UserId') != null)
       return true;
     else
       return false;
   }
 
   isClient() {
-    if (localStorage.getItem('UserType') == 'Cliente')
+    if (localStorage.getItem('UserType') == 'cliente')
       return true;
     else
       return false;
   }
 
   isNutricionista() {
-    if (localStorage.getItem('UserType') == 'Nutricionista')
+    if (localStorage.getItem('UserType') == 'nutricionista')
       return true;
     else
       return false;
   }
 
   isAdmin() {
-    if (localStorage.getItem('UserType') == 'administrador')
+    if (localStorage.getItem('UserType') == 'admin')
       return true;
     else
       return false;

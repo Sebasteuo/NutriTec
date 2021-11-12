@@ -14,7 +14,7 @@ export class SeguimientoPacienteComponent implements OnInit {
 
   pacientes: Cliente[]=[]
   ngOnInit(): void {
-    this.pacienteService.getPacientes(888).then(res=>{
+    this.pacienteService.getPacientes(localStorage.getItem("UserId") as unknown as number).then(res=>{
       this.pacientes=res
     })
   }

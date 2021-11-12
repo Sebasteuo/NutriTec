@@ -87,7 +87,7 @@ export class PlanesComponent implements OnInit {
   }
   add(){
     //this.newPlan.idNutricionista=localStorage.getItem("codigoNutricionista") as unknown as number
-    this.newPlan.idNutricionista=888
+    this.newPlan.idNutricionista=localStorage.getItem("UserId") as unknown as number
     this.newPlan.desayuno=this.selectedDesayuno
     this.newPlan.meriendaMatutina=this.selectedMeriendaMatutina
     this.newPlan.almuerzo=this.selectedAlmuerzo
