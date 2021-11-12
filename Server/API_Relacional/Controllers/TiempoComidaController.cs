@@ -31,8 +31,8 @@ namespace API_Relacional.Controllers
         public JsonResult Get()
         {
             string query = @"
-                SELECT id, nombre 
-                FROM tiempocomida
+                SELECT idtiempo, nombre 
+                FROM tiempodcomida
                 ";
 
             return consulta.get(query, _configuration, cadenaDeConexion);
@@ -44,9 +44,9 @@ namespace API_Relacional.Controllers
         public JsonResult Get(int id)
         {
             string query = @"
-                SELECT id, nombre 
-                FROM tiempocomida
-                WHERE id=" + id +
+                SELECT idtiempo, nombre 
+                FROM tiempodcomida
+                WHERE idtiempo=" + id +
                 "";
 
             return consulta.get(query, _configuration, cadenaDeConexion);
@@ -58,8 +58,8 @@ namespace API_Relacional.Controllers
         public JsonResult Post(TiempoComida x)
         {
             string query = @"
-                insert into tiempocomida(id, nombre)
-                values (@id, @nombre)";
+                insert into tiempodcomida(idtiempo, nombre)
+                values (@idtiempo, @nombre)";
 
             string sqlDataSource = _configuration.GetConnectionString(cadenaDeConexion);//La fuente de los datos se obtiene de la cadena de conexion
             SqlDataReader reader;
@@ -72,8 +72,8 @@ namespace API_Relacional.Controllers
                 {
 
                     //Se agregan los valores y el tipo de dato respectivo
-                    cmd.Parameters.Add("@id", SqlDbType.Int);
-                    cmd.Parameters["@id"].Value = x.id;
+                    cmd.Parameters.Add("@idtiempo", SqlDbType.Int);
+                    cmd.Parameters["@idtiempo"].Value = x.id;
 
                     cmd.Parameters.Add("@nombre", SqlDbType.NVarChar);
                     cmd.Parameters["@nombre"].Value = x.nombre;
@@ -91,10 +91,10 @@ namespace API_Relacional.Controllers
         public JsonResult Put(TiempoComida x)
         {
             string query = @"
-                UPDATE tiempocomida
-                SET id = @id,
+                UPDATE tiempodcomida
+                SET idtiempo = @idtiempo,
                 nombre = @nombre
-                WHERE id = @id";
+                WHERE idtiempo = @idtiempo";
 
             string sqlDataSource = _configuration.GetConnectionString(cadenaDeConexion);//La fuente de los datos se obtiene de la cadena de conexion
             SqlDataReader reader;
@@ -106,8 +106,8 @@ namespace API_Relacional.Controllers
                 using (SqlCommand cmd = new SqlCommand(query, connection))//El comando a ejecutar se hace con un query y la conexion
                 {
                     //Se agregan los valores y el tipo de dato respectivo
-                    cmd.Parameters.Add("@id", SqlDbType.Int);
-                    cmd.Parameters["@id"].Value = x.id;
+                    cmd.Parameters.Add("@idtiempo", SqlDbType.Int);
+                    cmd.Parameters["@idtiempo"].Value = x.id;
 
                     cmd.Parameters.Add("@nombre", SqlDbType.NVarChar);
                     cmd.Parameters["@nombre"].Value = x.nombre;
@@ -125,8 +125,8 @@ namespace API_Relacional.Controllers
         public JsonResult Delete(int id)
         {
             string query = @"
-                delete from tiempocomida
-                where id =" + id;
+                delete from tiempodcomida
+                where idtiempo =" + id;
 
             return consulta.delete(query, _configuration, cadenaDeConexion);
         }

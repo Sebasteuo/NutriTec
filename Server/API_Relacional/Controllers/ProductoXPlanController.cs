@@ -78,7 +78,7 @@ namespace API_Relacional.Controllers
                     cmd.Parameters.Add("@codigodbarras", SqlDbType.NVarChar);
                     cmd.Parameters["@codigodbarras"].Value = x.codigodbarras;
 
-                    cmd.Parameters.Add("@IdTiempo", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@IdTiempo", SqlDbType.Int);
                     cmd.Parameters["@IdTiempo"].Value = x.IdTiempo;
 
                     reader = cmd.ExecuteReader();//El lector ejecuta el comando
@@ -116,7 +116,7 @@ namespace API_Relacional.Controllers
                     cmd.Parameters.Add("@codigodbarras", SqlDbType.NVarChar);
                     cmd.Parameters["@codigodbarras"].Value = x.codigodbarras;
 
-                    cmd.Parameters.Add("@IdTiempo", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@IdTiempo", SqlDbType.Int);
                     cmd.Parameters["@IdTiempo"].Value = x.IdTiempo;
 
                     reader = cmd.ExecuteReader();

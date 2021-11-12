@@ -30,10 +30,10 @@ namespace API_Relacional.Controllers
 
         // POST api/<HablaController>
         [HttpPost]
-        public JsonResult Post(Nutricionista x, string statementtype)
+        public JsonResult Post(int idplan, int codigonutricionista, string statementtype)
         {
             string query = @"
-                exec dbo.up_MasterGestorNutricionista @codigonutricionista, @cedula, @nombre1, @nombre2, @apellido1, @apellido2, @direccion, @foto, @fechanacimiento, @peso, @altura, @numerotarjetacredito, @tipocobro, @correo, @password, @statementtype
+                exec dbo.up_MasterGestorNutricionista_Plan @idplan, @codigonutricionista, @statementtype
                 ";
 
             String result;
@@ -50,50 +50,12 @@ namespace API_Relacional.Controllers
                 {
 
                     //Se agregan los valores y el tipo de dato respectivo
+                    cmd.Parameters.Add("@idplan", SqlDbType.Int);
+                    cmd.Parameters["@idplan"].Value = idplan;
+
+
                     cmd.Parameters.Add("@codigonutricionista", SqlDbType.Int);
-                    cmd.Parameters["@codigonutricionista"].Value = x.codigonutricionista;
-
-                    cmd.Parameters.Add("@cedula", SqlDbType.Int);
-                    cmd.Parameters["@cedula"].Value = x.cedula;
-
-                    cmd.Parameters.Add("@nombre1", SqlDbType.NVarChar);
-                    cmd.Parameters["@nombre1"].Value = x.nombre1;
-
-                    cmd.Parameters.Add("@nombre2", SqlDbType.NVarChar);
-                    cmd.Parameters["@nombre2"].Value = x.nombre2;
-
-                    cmd.Parameters.Add("@apellido1", SqlDbType.NVarChar);
-                    cmd.Parameters["@apellido1"].Value = x.apellido1;
-
-                    cmd.Parameters.Add("@apellido2", SqlDbType.NVarChar);
-                    cmd.Parameters["@apellido2"].Value = x.apellido2;
-
-                    cmd.Parameters.Add("@direccion", SqlDbType.NVarChar);
-                    cmd.Parameters["@direccion"].Value = x.direccion;
-
-                    cmd.Parameters.Add("@foto", SqlDbType.NVarChar);
-                    cmd.Parameters["@foto"].Value = x.foto;
-
-                    cmd.Parameters.Add("@fechanacimiento", SqlDbType.DateTime);
-                    cmd.Parameters["@fechanacimiento"].Value = x.fechanacimiento;
-
-                    cmd.Parameters.Add("@peso", SqlDbType.Decimal);
-                    cmd.Parameters["@peso"].Value = x.peso;
-
-                    cmd.Parameters.Add("@altura", SqlDbType.Decimal);
-                    cmd.Parameters["@altura"].Value = x.altura;
-
-                    cmd.Parameters.Add("@numerotarjetacredito", SqlDbType.NVarChar);
-                    cmd.Parameters["@numerotarjetacredito"].Value = x.numerotarjetacredito;
-
-                    cmd.Parameters.Add("@tipocobro", SqlDbType.NVarChar);
-                    cmd.Parameters["@tipocobro"].Value = x.tipocobro;
-
-                    cmd.Parameters.Add("@correo", SqlDbType.NVarChar);
-                    cmd.Parameters["@correo"].Value = x.correo;
-
-                    cmd.Parameters.Add("@password", SqlDbType.NVarChar);
-                    cmd.Parameters["@password"].Value = x.password;
+                    cmd.Parameters["@codigonutricionista"].Value = codigonutricionista;
 
                     cmd.Parameters.Add("@statementtype", SqlDbType.NVarChar);
                     cmd.Parameters["@statementtype"].Value = statementtype;
