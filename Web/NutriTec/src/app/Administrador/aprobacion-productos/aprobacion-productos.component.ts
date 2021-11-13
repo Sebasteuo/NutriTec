@@ -13,16 +13,23 @@ export class AprobacionProductosComponent implements OnInit {
   productos: Producto[]=[]
 
   ngOnInit(): void {
-    //this.productoServicio.getProductos().then(res=>this.productos=res)
+    this.productoServicio.getProductosPorAprobar().then(res=>{this.productos=res
+      this.productos.forEach(producto=> {
+        this.productoServicio.getVitaminas(producto.codigodbarras).then( res2 => {
+          producto.vitaminas = res2
+          console.log(res2)
+        })
+      })
+    })
     
   }
 
-  reject(codigoDeBarras:Number){
-
+  reject(producto: Producto){
+    this.productoServicio.rechazarProducto(producto)
   }
 
-  approve(codigoDeBarras:Number){
-
+  approve(producto: Producto){
+    this.productoServicio.aprobarProducto(producto)
   }
 
 }

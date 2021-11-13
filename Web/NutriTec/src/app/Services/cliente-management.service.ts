@@ -33,11 +33,13 @@ export class ClienteManagementService {
   }
 
   async deletemedida(medida:Medidas) {
+    console.log(medida.fecharegistro)
     const body= {cedula:medida.cedula,
-      fecharegistro: formatISO(parseISO(medida.fecharegistro.toISOString())),
+      fecharegistro: medida.fecharegistro,
+      zona: medida.zona
     }
     //this.medidas = this.medidas.filter((obj) => obj.cedula !== id);
-    await this.http.put(environment.api+'/registramedidas/delete', medida).toPromise().then(res=>{this.getmedidas(medida.cedula).then(result=>{this.medidas=result})})
+    await this.http.put(environment.api+'/registramedidas/delete', body).toPromise().then(res=>{this.getmedidas(medida.cedula).then(result=>{this.medidas=result})})
     return this.medidas
   }
 

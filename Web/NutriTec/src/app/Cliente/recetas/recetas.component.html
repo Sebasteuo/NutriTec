@@ -1,1 +1,148 @@
-<p>recetas works!</p>
+<div class=" d-flex justify-content-center">
+    <aside class="col-lg" style="margin: 5% 5% 5% 5%;">
+        <div class="card">
+            <article class="card-body">
+                <h4 class="card-title mb-4 mt-1">Gestión de recetas</h4>
+                <hr>
+                <div class="row">
+                    <!-- table -->
+                    <div class="col-md-4 table-responsive">
+                        <div class="card" style="margin-bottom: 10px;">
+                            <article class="card-body">
+                                <div class="form">
+                                    <form #form autocomplete="off">
+                                        <div class="form-row">
+                                            <div class="col form-group">
+                                                <label>Id receta: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                <input name="quantity" class="form-control" placeholder="Nombre"
+                                                    [(ngModel)]="newReceta.idreceta" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col form-group">
+                                                <label>Nombre de la receta: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                <input name="quantity" class="form-control" placeholder="Nombre"
+                                                    [(ngModel)]="newReceta.nombre" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col form-group">
+                                                <label>Productos: </label>
+                                            </div>
+                                            <div class="col form-group">
+                                                <div class="ng-autocomplete">
+                                                    <ng-autocomplete [data]="productos" [searchKeyword]="keyword"
+                                                        (selected)='selectProduct($event)' [itemTemplate]="itemTemplate"
+                                                        [notFoundTemplate]="notFoundTemplate" placeHolder="Productos">
+                                                    </ng-autocomplete>
+                                                    <ng-template #itemTemplate let-item>
+                                                        <a [innerHTML]="item.nombre"></a>
+                                                    </ng-template>
+                                                    <ng-template #notFoundTemplate let-notFound>
+                                                        <div [innerHTML]="notFound"></div>
+                                                    </ng-template>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div  class="col form-group">
+                                                <div class="form-row" style="margin-left: 10px;" *ngFor="let producto of selectedProductos">
+                                                <label>{{producto.nombre}}</label>
+                                                <button (click)="deleteProd(producto)" class="btn-icon"
+                                                    placement="top" ngbTooltip="Eliminar">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="col form-group">
+                                                <label><b>Calorias totales:</b> {{caloriasTotales}}</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col form-groupform-group">
+                                            <button class="btn btn-primary btn-block" (click)="add()">Agregar</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </article>
+                        </div>
+
+                    </div>
+                    <div class="col-md-8">
+                        <!-- Employee data -->
+                        <div class="card">
+
+                            <div class="card-body">
+                                <div>
+
+
+                                    <div class=table-wrapper>
+                                        <table class="table table-hover bike-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Nombre</th>
+                                                    <th>Productos</th>
+                                                    <th colspan="2"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let receta of this.recetas">
+
+                                                    <td *ngIf='editingID != receta.idreceta'>{{receta.idreceta}}</td>
+                                                    <td *ngIf='editingID == receta.idreceta'>{{receta.idreceta}}</td>
+
+                                                    <td *ngIf='editingID != receta.idreceta'>{{receta.nombre}}</td>
+                                                    <td *ngIf='editingID == receta.idreceta'><input
+                                                            value="{{selectedReceta.nombre}}"
+                                                            [(ngModel)]="selectedReceta.nombre" class="form-control">
+                                                    </td>
+
+                                                    <td *ngIf='editingID != receta.idreceta'><tr *ngFor="let producto of receta.productos">{{producto.nombre}}</tr></td>
+                                                    <td *ngIf='editingID == receta.idreceta'><tr *ngFor="let producto of receta.productos">{{producto.nombre}}</tr></td>
+
+
+                                                    <th scope="row">
+                                                        <button *ngIf='editingID != receta.idreceta'
+                                                            (click)="edit(receta)" class="btn-icon" placement="top"
+                                                            ngbTooltip="Editar">
+                                                            <i class="fa fa-edit" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button *ngIf='editingID == receta.idreceta' (click)="submit()"
+                                                            class="btn-icon" placement="top" ngbTooltip="Aceptar">
+                                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                                        </button>
+                                                    </th>
+                                                    <th scope="row">
+                                                        <button (click)="delete(receta.idreceta)" class="btn-icon"
+                                                            placement="top" ngbTooltip="Eliminar">
+                                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                                        </button>
+                                                    </th>
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> <!-- card.// -->
+                        <br />
+                        <br />
+                    </div>
+                </div>
+            </article>
+        </div> <!-- card.// -->
+    </aside> <!-- col.// -->
+</div> <!-- row.// -->
+
+<!--container end.//-->

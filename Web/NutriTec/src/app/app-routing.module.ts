@@ -28,6 +28,7 @@ const routes: Routes = [
   { path: 'Paciente/:id', component: PerfilPacienteComponent},
   { path: 'Registro', component: RegistroComponent},
   { path: 'Login', component: LoginComponent},
+  { path: 'Recetas', component: RecetasComponent}
 ];
 
 @NgModule({

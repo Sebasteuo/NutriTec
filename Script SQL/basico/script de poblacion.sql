@@ -3,7 +3,7 @@
 INSERT INTO Dbo.ADMINISTRADOR(AdminID,Correo,Password)VALUES(0,'ad@mi.n','123');
 
 /*                             poblacion de Nutricionista                                                 */
-INSERT INTO Dbo.NUTRICIONISTA(CodigoNutricionista,Cedula,Nombre1,Nombre2,Apellido1,Apellido2,Direccion,Foto,FechaNacimiento,Peso,Altura,NumeroTarjetacredito,TipoCobro,Correo,Password)VALUES(  CodigoNutricionista  ,123456789,'a','b','c','d','por ahi ','url','1990-02-25',123.45,1.93,1234545612378970,1,'g@2g.com',123);
+INSERT INTO Dbo.NUTRICIONISTA(CodigoNutricionista,Cedula,Nombre1,Nombre2,Apellido1,Apellido2,Direccion,Foto,FechaNacimiento,Peso,Altura,NumeroTarjetacredito,TipoCobro,Correo,Password)VALUES(  3  ,123456789,'a','b','c','d','por ahi ','url','1990-02-25',123.45,1.93,1234545612378970,1,'g@2g.com',123);
 INSERT INTO Dbo.NUTRICIONISTA(CodigoNutricionista,Cedula,Nombre1,Nombre2,Apellido1,Apellido2,Direccion,Foto,FechaNacimiento,Peso,Altura,NumeroTarjetacredito,TipoCobro,Correo,Password)VALUES(1,857964123,'ad','bc','de','ef','casiniestan','url','1990-02-26',87.5,1.83,1234567812345670,2,'g@g.com',124);
 INSERT INTO Dbo.NUTRICIONISTA(CodigoNutricionista,Cedula,Nombre1,Nombre2,Apellido1,Apellido2,Direccion,Foto,FechaNacimiento,Peso,Altura,NumeroTarjetacredito,TipoCobro,Correo,Password)VALUES(2,478596002,'adol','bcok','desd','efas','porahistan','url','1990-02-27',87.5,1.83,4564567812345670,3,'g23@g.com',124);
 

@@ -103,7 +103,17 @@ export class AuthenticationManagementService {
             this.router.navigate(["/Pacientes"])
           }
           else{
-            this.toastr.error("Credenciales incorrectas", "Error")
+            this.http.post(environment.api + "/up_LoginCheck", JSON.parse(JSON.stringify(Admin)),{responseType: "text"}).toPromise().then(res => {
+              if (JSON.parse(res) =="1") {
+                localStorage.setItem("User", Credenciales.user as unknown as string)
+                localStorage.setItem("UserId", Credenciales.cedula as unknown as string)
+                localStorage.setItem("UserType", "admin")
+                this.router.navigate(["/AprobacionProductos"])
+              }
+              else{
+                this.toastr.error("Credenciales incorrectas", "Error")
+              }
+            })
           }
         })
       }

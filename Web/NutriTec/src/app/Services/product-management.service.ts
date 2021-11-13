@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { ProductoVitamina } from '../Models/producto-vitamina.model';
 import { Producto } from '../Models/producto.model';
+import { Productoxreceta } from '../Models/productoxreceta.model';
 
 
 @Injectable({
@@ -14,6 +15,7 @@ export class ProductManagementService {
 
   productos: Producto[] = []
   productoVitaminas: ProductoVitamina[] = []
+    productosXreceta: Productoxreceta[] = []
   newVitamina: ProductoVitamina = {
     codigodbarras: 0,
     vitaminas: ""
@@ -22,6 +24,14 @@ export class ProductManagementService {
   async getProductos() {  //Función que obtiene clientes
     this.productos = []
     await this.http.get(environment.api + "/producto").toPromise().then(res => {
+      this.productos = JSON.parse(res as string) as Producto[]
+    })
+    return this.productos
+  }
+
+  async getProductosPorAprobar() {  //Función que obtiene clientes
+    this.productos = []
+    await this.http.get(environment.api + "/producto/getProductosPorAprobar").toPromise().then(res => {
       this.productos = JSON.parse(res as string) as Producto[]
     })
     return this.productos
@@ -60,16 +70,27 @@ export class ProductManagementService {
     return this.productos
   }
 
-  async aprobarProducto(CodigoDeBarras: Number) {
-    await this.http.put(environment.api + "/producto", Producto).toPromise().then(res => { this.getProductos().then(result => { this.productos = result }) })
+  async aprobarProducto(producto: Producto) {
+    await this.http.put(environment.api + "/producto/AprobarProducto", producto).toPromise().then(res => { this.getProductos().then(result => { this.productos = result }) })
     return this.productos
   }
 
-  async rechazarProducto(CodigoDeBarras: Number) {
-    await this.http.put(environment.api + "/producto", Producto).toPromise().then(res => { this.getProductos().then(result => { this.productos = result }) })
+  async rechazarProducto(producto: Producto) {
+    await this.http.put(environment.api + "/producto/RechazarProducto", producto).toPromise().then(res => { this.getProductos().then(result => { this.productos = result }) })
     return this.productos
   }
-
+  async getProductosByReceta(idReceta: number) {
+    var prods = [] as Producto[]
+    await this.http.get(environment.api + "/productoxreceta/" + idReceta).toPromise().then(res => {
+      this.productosXreceta = JSON.parse(res as string) as Productoxreceta[]
+      this.productosXreceta.forEach(prod => {
+        this.getProductoByCodigo(prod.codigodbarras).then(res2 => {
+          prods.push(res2)
+        })
+      })
+    })
+    return prods
+  }
   async getVitaminas(codigodebarras: number) {
     var vitaminas = ""
     await this.http.get(environment.api + "/producto_vitamina/" + codigodebarras).toPromise().then(res => {

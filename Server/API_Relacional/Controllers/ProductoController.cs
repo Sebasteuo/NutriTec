@@ -33,7 +33,8 @@ namespace API_Relacional.Controllers
             string query = @"
                 SELECT codigodbarras, nombre, descripcion, porcion, energia, grasa, sodio, carbohidratos, proteina, hierro, calcio, aprobado 
                 FROM producto
-                ";
+                WHERE aprobado=1";
+            
 
             return consulta.get(query, _configuration, cadenaDeConexion);
         }
@@ -45,12 +46,26 @@ namespace API_Relacional.Controllers
             string query = @"
                 SELECT codigodbarras, nombre, descripcion, porcion, energia, grasa, sodio, carbohidratos, proteina, hierro, calcio, aprobado 
                 FROM producto
-                WHERE codigodbarras=" + id +
+                WHERE codigodbarras=" + id + "and aprobado=1"+
                 "";
 
             return consulta.get(query, _configuration, cadenaDeConexion);
 
         }
+
+        [HttpGet("[action]")]
+        public JsonResult getProductosPorAprobar()
+        {
+            string query = @"
+                SELECT codigodbarras, nombre, descripcion, porcion, energia, grasa, sodio, carbohidratos, proteina, hierro, calcio, aprobado 
+                FROM producto
+                WHERE aprobado = 2";
+                
+
+            return consulta.get(query, _configuration, cadenaDeConexion);
+
+        }
+
 
         // POST api/<HablaController>
         [HttpPost]
@@ -190,6 +205,72 @@ namespace API_Relacional.Controllers
             return new JsonResult("Actualizado exitosamente");
         }
 
+        [HttpPut("[action]")]
+        public JsonResult AprobarProducto(Producto producto)
+        {
+            string query = @"
+                UPDATE producto
+                SET  
+                    aprobado = 1
+
+                WHERE codigodbarras = @codigodbarras";
+
+            string sqlDataSource = _configuration.GetConnectionString(cadenaDeConexion);//La fuente de los datos se obtiene de la cadena de conexion
+            SqlDataReader reader;
+
+            using (SqlConnection connection = new SqlConnection(sqlDataSource))//Se utiliza la fuente de datos para hacer la conexion
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))//El comando a ejecutar se hace con un query y la conexion
+                {
+                    //Se agregan los valores y el tipo de dato respectivo
+                    cmd.Parameters.Add("@codigodbarras", SqlDbType.Int);
+                    cmd.Parameters["@codigodbarras"].Value = producto.codigodbarras;
+
+                  
+
+                    reader = cmd.ExecuteReader();
+                    reader.Close(); //Se cierra  el lector
+                    connection.Close(); //Se cierra la conexion
+                }
+            }
+            return new JsonResult("Actualizado exitosamente");
+        }
+
+
+        [HttpPut("[action]")]
+        public JsonResult RechazarProducto(Producto producto)
+        {
+            string query = @"
+                UPDATE producto
+                SET  
+                    aprobado = 0
+
+                WHERE codigodbarras = @codigodbarras";
+
+            string sqlDataSource = _configuration.GetConnectionString(cadenaDeConexion);//La fuente de los datos se obtiene de la cadena de conexion
+            SqlDataReader reader;
+
+            using (SqlConnection connection = new SqlConnection(sqlDataSource))//Se utiliza la fuente de datos para hacer la conexion
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))//El comando a ejecutar se hace con un query y la conexion
+                {
+                    //Se agregan los valores y el tipo de dato respectivo
+                    cmd.Parameters.Add("@codigodbarras", SqlDbType.Int);
+                    cmd.Parameters["@codigodbarras"].Value = producto.codigodbarras;
+
+
+
+                    reader = cmd.ExecuteReader();
+                    reader.Close(); //Se cierra  el lector
+                    connection.Close(); //Se cierra la conexion
+                }
+            }
+            return new JsonResult("Actualizado exitosamente");
+        }
         // DELETE api/<HablaController>/5
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)

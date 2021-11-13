@@ -24,7 +24,7 @@ export class ProductosComponent implements OnInit {
     vitaminas: "",
     calcio: 0,
     hierro: 0,
-    aprobado:0,
+    aprobado:2,
     nombre: ""
   }
   selectedProduct: Producto = {
@@ -39,7 +39,7 @@ export class ProductosComponent implements OnInit {
     vitaminas: "",
     calcio: 0,
     hierro: 0,
-    aprobado:0,
+    aprobado:2,
     nombre: ""
   }
 
@@ -65,6 +65,7 @@ export class ProductosComponent implements OnInit {
 
   submit(){
     this.editingID=0
+    this.selectedProduct.aprobado=2
     this.productService.editProducto(this.selectedProduct).then(res=>{this.products=res})
   }
 
@@ -87,7 +88,7 @@ export class ProductosComponent implements OnInit {
       vitaminas: "",
       calcio: 0,
       hierro: 0,
-      aprobado:0,
+      aprobado:2,
       nombre: ""
     }
   }
