@@ -19,8 +19,6 @@ namespace API_Relacional.Controllers
         private string cadenaDeConexion = "SQLServerConnection"; //hace referencia a la cadena de conexion en appsettings.json
         private readonly IConfiguration _configuration;
 
-        Consultas consulta = new Consultas();
-
         //el metodo constructor recibe como parametro una instancia de la interface Iconfiguration que permite la representacion de un conjunto de propiedades clave/valor
         public up_MasterGestorProductoController(IConfiguration configuration)
         {
@@ -33,7 +31,7 @@ namespace API_Relacional.Controllers
         public JsonResult Post(Producto x, string statementtype)
         {
             string query = @"
-                exec dbo.up_MasterGestorNutricionista @codigodbarras, @nombre, @descripcion, @porcion, @energia, @grasa, @sodio, @carbohidratos, @proteina, @hierro, @calcio, @aprobado, @statementtype
+                exec dbo.up_MasterGestorProducto @codigodbarras, @nombre, @descripcion, @porcion, @energia, @grasa, @sodio, @carbohidratos, @proteina, @hierro, @calcio, @aprobado, @statementtype
                 ";
 
             String result;
