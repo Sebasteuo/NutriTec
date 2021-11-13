@@ -11,8 +11,8 @@
 
    Notas: para poder obtner las opcion de insert, select, update y delete la palabras claves son
    -Insert:crea un nuevo Usuario 
-   -SelectListaNutricionista: muestra una lista de todos los Usuario con la infromacion necesaria para el Nutricionista
-   -SelectEspecificoNutricionista: muestra un Usuario con la infromacion necesaria para el Nutricionista
+   -SelectLista: muestra una lista de todos los Usuario con la infromacion necesaria para el Nutricionista
+   -SelectEspecifico: muestra un Usuario con la infromacion necesaria para el Nutricionista
    -Update: actualiza todos los valores del Usuario usando el cedula como llave de busqueda
    -Delete: elimina todos los valores del Usuario usando el cedula como llave de busqueda
 
