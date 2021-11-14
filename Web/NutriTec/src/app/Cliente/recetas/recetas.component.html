@@ -91,6 +91,7 @@
                                                     <th>ID</th>
                                                     <th>Nombre</th>
                                                     <th>Productos</th>
+                                                    <th>Calorias</th>
                                                     <th colspan="2"></th>
                                                 </tr>
                                             </thead>
@@ -109,6 +110,8 @@
                                                     <td *ngIf='editingID != receta.idreceta'><tr *ngFor="let producto of receta.productos">{{producto.nombre}}</tr></td>
                                                     <td *ngIf='editingID == receta.idreceta'><tr *ngFor="let producto of receta.productos">{{producto.nombre}}</tr></td>
 
+                                                    <td *ngIf='editingID != receta.idreceta'>{{receta.calorias}}</td>
+                                                    <td *ngIf='editingID == receta.idreceta'>{{receta.calorias}}</td>
 
                                                     <th scope="row">
                                                         <button *ngIf='editingID != receta.idreceta'

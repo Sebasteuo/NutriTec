@@ -51,7 +51,7 @@ AS
             UPDATE Dbo.ADMINISTRADOR
             SET     AdminID=@AdminID,
                     Correo=@Correo,
-                    Password=@Password,
+                    Password=@Password
             WHERE  AdminID=@AdminID
         END
       ELSE IF @StatementType = 'Delete'

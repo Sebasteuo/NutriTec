@@ -11,6 +11,6 @@ namespace API_NoRelacional.Controllers
     [ApiController]
     public class ChatController : ControllerBase
     {
-        public ChatService ChatService;
+       public ChatService ChatService;
     }
 }

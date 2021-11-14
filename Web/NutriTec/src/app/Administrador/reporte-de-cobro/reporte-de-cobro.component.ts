@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import jsPDF from 'jspdf';
+import { ReporteCobro } from 'src/app/Models/reporte-cobro.model';
+import { ReporteManagementService } from 'src/app/Services/reporte-management.service';
 
 @Component({
   selector: 'app-reporte-de-cobro',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReporteDeCobroComponent implements OnInit {
 
-  constructor() { }
+  reportes: ReporteCobro[]=[]
+  doc = new jsPDF({ putOnlyUsedFonts: true })
+  constructor(private servicioReporte: ReporteManagementService) { }
 
   ngOnInit(): void {
+    this.servicioReporte.getReporte().then(res=>{this.reportes=res})
+    this.servicioReporte.generatePDF().then(res=>{this.doc=res})
+  }
+
+  downloadPDF() {
+    this.doc.save("factura.pdf")
   }
 
 }

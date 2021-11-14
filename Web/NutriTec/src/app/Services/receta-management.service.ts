@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 import { Producto } from '../Models/producto.model';
 import { Receta } from '../Models/receta.model';
+import { TotalNutricional } from '../Models/total-nutricional.model';
 import { ProductManagementService } from './product-management.service';
 
 @Injectable({
@@ -12,6 +13,15 @@ import { ProductManagementService } from './product-management.service';
 export class RecetaManagementService {
 
   recetas: Receta[] = []
+  total : TotalNutricional = {
+    totalCalcio:0,
+    totalCarbohidratos:0,
+    totalEnergia:0,
+    totalGrasa:0,
+    totalHierro:0,
+    totalProteina:0,
+    totalSodio:0
+  }
 
   constructor(private http: HttpClient, private productoService: ProductManagementService, private toastr: ToastrService) { }
 
@@ -40,5 +50,11 @@ export class RecetaManagementService {
     return this.recetas;
   }
 
+  async getTotalNutricional(idreceta : number) {  //Función que obtiene Plans
+    await this.http.get(environment.api + "/udft_TotalNutricional/" + idreceta).toPromise().then(response => {
+      this.total = (JSON.parse(response as string) as TotalNutricional[])[0]
+    })
+    return this.total
+  }
   
 }

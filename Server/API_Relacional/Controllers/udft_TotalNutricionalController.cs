@@ -27,7 +27,7 @@ namespace API_Relacional.Controllers
         }
 
         // Get api/<udft_TotalNutricionalController>
-        [HttpGet]
+        [HttpGet("{numReceta}")]
         public JsonResult Get(int numReceta)
         {
             string query = @"

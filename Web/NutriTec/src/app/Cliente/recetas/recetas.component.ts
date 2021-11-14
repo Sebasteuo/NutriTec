@@ -53,6 +53,7 @@ export class RecetasComponent implements OnInit {
   ngOnInit(): void {
     this.productoService.getProductos().then(res => {
       this.productos = res
+      console.log(this.productos)
       this.productos.forEach(producto => {
         this.productoService.getVitaminas(producto.codigodbarras).then(res2 => {
           producto.vitaminas = res2
@@ -64,11 +65,10 @@ export class RecetasComponent implements OnInit {
       this.recetas = res
       this.recetas.forEach(receta => {
         this.productoService.getProductosByReceta(receta.idreceta).then(res2 => {
-          receta.productos = res2
-          /*receta.productos.forEach(prod => {
-            console.log("nn")
-            console.log(prod.nombre)
-          })*/          
+          receta.productos = res2        
+        })
+        this.recetaservice.getTotalNutricional(receta.idreceta).then(res3 => {
+          receta.calorias = res3.totalEnergia
         })
       })
     })
@@ -89,6 +89,7 @@ export class RecetasComponent implements OnInit {
       calorias:0
     }
     this.selectedProductos = []
+    this.caloriasTotales = 0
   }
 
   edit(receta: Receta) {

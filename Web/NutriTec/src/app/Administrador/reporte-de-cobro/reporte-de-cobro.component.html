@@ -1,1 +1,78 @@
-<p>reporte-de-cobro works!</p>
+
+<div class=" d-flex justify-content-center">
+    <aside class="col-lg" style="margin: 5% 5% 5% 5%;">
+        <div class="card">
+            <article class="card-body">
+                <h4 class="card-title mb-4 mt-1">Reporte de Cobro</h4>
+                <hr>
+                <div class="row">
+                    <div class="col form-group">
+                        <label>Generar PDF</label>
+                    </div>
+                    <div class="col form-group">
+                        <button class="btn btn-primary btn-block" (click)="downloadPDF()">Descargar</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- table -->
+                   
+                    <div class="col-md-12">
+                        <!-- Employee data -->
+                        <div class="card">
+
+                            <div class="card-body">
+                                <div class="table-responsive">
+
+                                    <div class=table-wrapper>
+                                        <table class="table table-hover bike-table">
+                                            <thead>
+                                                <!-- Columnas para los datos mostrados de los clientes-->
+                                                <tr>
+                                                   
+                                                    <th>Código de Nutricionista</th>
+                                                    <th>Tipo de Cobro</th>
+                                                    <th>Correo</th>
+                                                    <th>Nombre Completo</th>
+                                                    <th>Número Tarjeta de Crédito</th>
+                                                    <th>Monto Total</th>
+                                                    <th>Descuento</th>
+                                                    <th>Monto a Cobrar</th>
+                                                    
+                                                    
+                                                   
+                                                    <th colspan="2"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               
+                                                <tr *ngFor="let reporte of this.reportes"> <!-- ngFor repite una sección del código HTML, por cada cliente hace una nueva fila en la tabla-->
+                                                    <td>{{reporte.CodigoNutricionista}}</td>
+                                                    <td>{{reporte.TipoCobro}}</td>
+                                                    <td>{{reporte.Correo}}</td>
+                                                    <td>{{reporte.Nombre1}} {{reporte.Nombre2}} {{reporte.Apellido1}} {{reporte.Apellido2}}</td>
+                                                    <td>{{reporte.NumeroTarjetacredito}}</td>
+                                                    <td>${{reporte.montoTotal}}</td>
+                                                    <td>{{reporte.descuento}}</td>
+                                                    <td>${{reporte.montoACobrar}}</td>
+                                                    
+
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> <!-- card.// -->
+                        <br />
+                        <br />
+                    </div>
+                </div>
+            </article>
+        </div> <!-- card.// -->
+    </aside> <!-- col.// -->
+</div> <!-- row.// -->
+
+<!--container end.//-->
