@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
+import { Chat } from 'src/app/Models/chat.model';
 import { Cliente } from 'src/app/Models/cliente.model';
 import { Consumo } from 'src/app/Models/consumo.model';
 import { Producto } from 'src/app/Models/producto.model';
+import { ChatService } from 'src/app/Services/chat.service';
 import { ClienteManagementService } from 'src/app/Services/cliente-management.service';
 import { ConsumoService } from 'src/app/Services/consumo.service';
 import { ProductManagementService } from 'src/app/Services/product-management.service';
@@ -15,10 +17,16 @@ import { ProductManagementService } from 'src/app/Services/product-management.se
 })
 export class PerfilPacienteComponent implements OnInit {
 
-  constructor(private consumoService: ConsumoService, private productService: ProductManagementService, private route: ActivatedRoute, private clienteService: ClienteManagementService) { }
+  constructor(private consumoService: ConsumoService, private productService: ProductManagementService, private route: ActivatedRoute, private clienteService: ClienteManagementService, private chatService: ChatService) { }
 
   tiempos: string[] = ["Desayuno", "Almuerzo", "Cena", "Merienda"]
   consumos: Consumo[] = []
+  chat: Chat={
+    id:  0,
+    codigonutricionista:  0,
+    cedulausuario: 0,
+    mensaje: ""
+  }
   editingID: number = 0
   selectedTiempo: string = "Desayuno"
   keyword = "Nombre"
@@ -52,12 +60,14 @@ export class PerfilPacienteComponent implements OnInit {
     this.id = this.route.snapshot.params.id;
     this.consumoService.getconsumos().then(res => { this.consumos = res })
     this.productService.getProductos().then(res => { this.productos = res })
-    this.clienteService.getClienteByID(123213).then(res=> {this.cliente = res})
+    this.clienteService.getClienteByID(this.id).then(res=> {this.cliente = res})
     
     
   }
 
   addComment(){
-    
+    this.chat.cedulausuario=this.id
+    this.chat.codigonutricionista=localStorage.getItem("UserId") as unknown as number
+    this.chatService.addComment(this.chat)
   }
 }

@@ -13,10 +13,13 @@ export class ClienteManagementService {
   constructor(private http: HttpClient) { }
 
   medidas: Medidas []=[]
+  reporte: Medidas []=[]
   async getmedidas(cedula:number){  //Función que obtiene clientes
 
     await this.http.get(environment.api+"/registramedidas/"+cedula).toPromise().then(res=>{
       this.medidas=JSON.parse(res as string) as Medidas[]
+     
+     
 
     
     })
@@ -24,7 +27,22 @@ export class ClienteManagementService {
     return this.medidas
     
   }
+  async getReportemedidas(cedula:number, inicio: Date, final: Date){  //Función que obtiene clientes
 
+    await this.http.get(environment.api+"/registramedidas/"+cedula).toPromise().then(res=>{
+      this.medidas=JSON.parse(res as string) as Medidas[]
+      this.medidas.forEach(medida=>{
+        if(medida.fecharegistro<inicio && medida.fecharegistro>final){
+          this.reporte.push(medida)
+        }
+      })
+
+    
+    })
+    
+    return this.reporte
+    
+  }
   async addmedida(medida : Medidas){
 
     const body = {}
@@ -70,7 +88,7 @@ export class ClienteManagementService {
       this.Clientes=JSON.parse(res as string) as Cliente[]
       this.Clientes.forEach(cliente=>{
         cliente.Edad= this.calcAge(cliente.fechanacimiento)
-        cliente.IMC = this.calcIMC(cliente.PesoActual, cliente.altura)
+        cliente.IMC = this.calcIMC(cliente.peso, cliente.altura)
       })
     
     })

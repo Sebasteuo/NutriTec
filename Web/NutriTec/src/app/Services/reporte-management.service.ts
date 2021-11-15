@@ -4,13 +4,14 @@ import { ToastrService } from 'ngx-toastr';
 import { jsPDF } from "jspdf";
 import { environment } from 'src/environments/environment';
 import { ReporteCobro } from '../Models/reporte-cobro.model';
+import autoTable from 'jspdf-autotable'
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReporteManagementService {
 
-  reporte: ReporteCobro[]=[]
+  reporte: ReporteCobro[] = []
   constructor(private http: HttpClient, private toastr: ToastrService) { }
 
   async getReporte() {  //Función que obtiene Plans
@@ -19,7 +20,7 @@ export class ReporteManagementService {
     })
     return this.reporte
   }
-   createHeaders(keys:any) {
+  createHeaders(keys: any) {
     var result = [];
     for (var i = 0; i < keys.length; i += 1) {
       result.push({
@@ -33,52 +34,38 @@ export class ReporteManagementService {
     }
     return result;
   }
-  
+
 
   async generatePDF() {
-    
-    var headers = [
-    
-      "Cod.Nutri",
-      "Correo",
-      "Nombre1",
-      "Nombre2",
-      "Apellido1",
-      "Apellido2",
-      "NumeroTarjetacredito",
-      "Cobro",
-      "montoTotal",
-      "descuento",
-      "montoACobrar"
-    ];
-
-    var doc = new jsPDF({orientation:"landscape"})
+    var doc = new jsPDF({ orientation: "landscape" })
     doc.setFontSize(10)
-    doc.text("Reporte de Cobro", 10, 20);
-    doc.text("NutriTEC S.A", 10, 26);
-    this.getReporte().then(res=> {this.reporte=res
-      var Data: { [key: string]: string; }[]=[]
-      this.reporte.forEach(rep=>{
-        var Line={
-          "Cod.Nutri": rep.CodigoNutricionista as unknown as string,
-      "Correo": rep.Correo as unknown as string,
-      "Nombre1": rep.Nombre1 as unknown as string,
-      "Nombre2": rep.Nombre2 as unknown as string,
-      "Apellido1":rep.Apellido1 as unknown as string,
-      "Apellido2": rep.Apellido2 as unknown as string,
-      "NumeroTarjetacredito": rep.NumeroTarjetacredito as unknown as string,
-      "Cobro": rep.TipoCobro as unknown as string,
-      "montoTotal":rep.montoTotal as unknown as string,
-      "descuento": rep.descuento as unknown as string,
-      "montoACobrar":rep.montoACobrar as unknown as string
-        }
-        Data.push(Line)
+    //doc.text("Reporte de Cobro", 10, 20);
+    //doc.text("NutriTEC S.A", 10, 26);
+    this.getReporte().then(res => {
+      this.reporte = res
+      var dta2: string[][] = []
+      this.reporte.forEach(rep => {
+        var line2 = []
+        line2.push(rep.CodigoNutricionista as unknown as string)
+        line2.push(rep.Correo as unknown as string)
+        line2.push(rep.Nombre1 as unknown as string)
+        line2.push(rep.Nombre2 as unknown as string)
+        line2.push(rep.Apellido1 as unknown as string)
+        line2.push(rep.Apellido2 as unknown as string)
+        line2.push(rep.NumeroTarjetacredito as unknown as string)
+        line2.push(rep.TipoCobro as unknown as string)
+        line2.push("$"+rep.montoTotal as unknown as string)
+        line2.push(rep.descuento as unknown as string)
+        line2.push("$"+rep.montoACobrar as unknown as string)
+        dta2.push(line2)
+
       })
-      doc.table(10, 40, Data, headers, { autoSize: false });
+      autoTable(doc, {
+        head: [['Cod. Nutri', 'Correo', 'Nombre 1', 'Nombre 2', 'Apellido 1', 'Apellido 2',
+          'Número de tarjeta', 'Tipo de cobro', 'Monto total', 'Descuento', 'Monto a cobrar']],
+        body: dta2
+      });
     })
-
-
-    
     return doc
   }
 }

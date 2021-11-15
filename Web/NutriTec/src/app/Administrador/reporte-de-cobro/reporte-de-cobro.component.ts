@@ -20,7 +20,7 @@ export class ReporteDeCobroComponent implements OnInit {
   }
 
   downloadPDF() {
-    this.doc.save("factura.pdf")
+    this.doc.save("Reporte de Cobro.pdf")
   }
 
 }

@@ -1,1 +1,94 @@
-<p>reporte-de-avance works!</p>
+
+<div class=" d-flex justify-content-center">
+    <aside class="col-lg" style="margin: 5% 5% 5% 5%;">
+        <div class="card">
+            <article class="card-body">
+                <h4 class="card-title mb-4 mt-1">Reporte de Avance</h4>
+                <hr>
+                <div class="row">
+                    <div class="col form-group">
+                        <label>Fecha inicial</label>
+                    </div>
+                    <div class="col form-group">
+                        <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="inicio"
+    (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true" 
+    dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Fecha" 
+    [ngModelOptions]="{standalone: true}" />
+                    </div>
+                    <div class="col form-group">
+                        <label>Fecha Final</label>
+                    </div>
+                    <div class="col form-group">
+                        <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="final"
+    (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true" 
+    dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Fecha" 
+    [ngModelOptions]="{standalone: true}" />
+                    </div>
+                    <div class="col form-group">
+                        <button class="btn btn-primary btn-block" (click)="getReporte()">Generar Reporte</button>
+                    </div>
+                    <div class="col form-group">
+                        <label>Generar PDF</label>
+                    </div>
+                    <div class="col form-group">
+                        <button class="btn btn-primary btn-block" (click)="downloadPDF()">Descargar</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- table -->
+                   
+                    <div class="col-md-12">
+                        <!-- Employee data -->
+                        <div class="card">
+
+                            <div class="card-body">
+                                <div class="table-responsive">
+
+                                    <div class=table-wrapper>
+                                        <table class="table table-hover bike-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Zona</th>
+                                                    <th>Medida</th>
+                                                    <th>Fecha de Registro</th>
+                                                    
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let medida of this.reporte">
+                            
+                                                    <td>{{medida.zona}}</td>
+                                                   
+                                                        <td>{{medida.medida}}</td>
+                                                       
+
+
+                                                        <td >{{medida.fecharegistro}}</td>
+                                                   
+
+                                            
+                                                    
+                                                  
+                                    
+                                                 
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> <!-- card.// -->
+                        <br />
+                        <br />
+                    </div>
+                </div>
+            </article>
+        </div> <!-- card.// -->
+    </aside> <!-- col.// -->
+</div> <!-- row.// -->
+
+<!--container end.//-->

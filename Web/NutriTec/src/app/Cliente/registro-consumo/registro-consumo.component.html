@@ -75,7 +75,7 @@
                         </div>
 
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-4">
                         <!-- Employee data -->
                         <div class="card">
 
@@ -91,6 +91,7 @@
                                                     <th>Tiempo de Comida</th>
                                                     <th>Platillo</th>
                                                     <th>Fecha</th>
+                                                    
                                                     
                                                  
                                                     
@@ -150,6 +151,25 @@
                         <br />
                         <br />
                     </div>
+                    <div class="col-md-4">
+                        <div class="card" style="margin-bottom: 10px;">
+                            <article class="card-body">
+                                <h4 class="card-title mb-4 mt-1">Chat</h4>
+                                <hr>
+                        <div class="row" *ngFor="let chat of this.chats">
+                            <div class="col">
+                                <label>Nutricionista: {{chat.codigonutricionista}}</label>
+                            </div>
+                            <div class="col">
+                                <label>Mensaje: </label><p>{{chat.mensaje}}</p>
+                            </div>
+                            
+                           
+                        </div>
+                            </article>
+                        </div>
+                    </div>
+
                 </div>
             </article>
         </div> <!-- card.// -->
