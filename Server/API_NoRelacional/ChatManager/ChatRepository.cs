@@ -14,22 +14,22 @@ namespace API_NoRelacional.ChatManager
 
         public ChatRepository()
         {
-            _mongoClient = new MongoClient("servidor");
-            _database = _mongoClient.GetDatabase("base de datos");
-            _chatTable = _database.GetCollection<Chat>("coleccion");
+            _mongoClient = new MongoClient("mongodb://nutritec:1e9vRqvbScO7B1ZyEBSKQTOfdzBLX98QGMrA4qiO7YBmZN2xmLkvWOOD3M9ETVIel0DCPAJTC9lCLRAbb5Mi8w==@nutritec.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@nutritec@"); 
+            _database = _mongoClient.GetDatabase("nutritecMongo");
+            _chatTable = _database.GetCollection<Chat>("chats");
         }
-        public string Delete(int id)
+        public string _delete(int id)
         {
             _chatTable.DeleteOne(x => x.id == id);
             return "Eliminado";
         }
 
-        public Chat Get(int id)
+        public Chat GetOne(int id)
         {
             return _chatTable.Find(x => x.id == id).FirstOrDefault();
         }
 
-        public List<Chat> Gets()
+        public List<Chat> GetAll()
         {
             return _chatTable.Find(FilterDefinition<Chat>.Empty).ToList();
         }

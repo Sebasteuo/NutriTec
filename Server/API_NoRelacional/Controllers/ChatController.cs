@@ -20,13 +20,15 @@ namespace API_NoRelacional.Controllers
             _chatRep = chatRep;
         }
 
+        [HttpGet]
         public JsonResult GetChats()
         {
-            var chats = _chatRep.Gets();
+            var chats = _chatRep.GetAll();
             //string result = JsonConvert.SerializeObject(chats);
             return new JsonResult(chats);
         }
 
+        [HttpPost]
         public JsonResult SaveChat(Chat chat)
         {
             var cht = _chatRep.Save(chat);
@@ -34,9 +36,10 @@ namespace API_NoRelacional.Controllers
             return new JsonResult(cht);
         }
 
+        [HttpDelete("{id}")]
         public JsonResult DeleteChat(int id)
         {
-            var message = _chatRep.Delete(id);
+            var message = _chatRep._delete(id);
             //string result = JsonConvert.SerializeObject(chats);
             return new JsonResult(message);
         }
