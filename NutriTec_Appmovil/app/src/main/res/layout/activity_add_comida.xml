@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Add_comida">
+
+    <TextView
+        android:id="@+id/tx_cena"
+        android:layout_width="330dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="12dp"
+        android:scrollbars="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.405"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnercafe" />
+
+    <Spinner
+        android:id="@+id/spinnercena"
+        android:layout_width="207dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tx_cena" />
+
+    <Button
+        android:id="@+id/buttoncena"
+        android:layout_width="118dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:onClick="add_cen"
+        android:text="Cena"
+        app:layout_constraintStart_toEndOf="@+id/spinnercena"
+        app:layout_constraintTop_toBottomOf="@+id/tx_cena" />
+
+    <TextView
+        android:id="@+id/tx_cafe"
+        android:layout_width="330dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="24dp"
+        android:scrollbars="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.405"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinneralmuer" />
+
+    <Spinner
+        android:id="@+id/spinnercafe"
+        android:layout_width="207dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tx_cafe" />
+
+    <Button
+        android:id="@+id/buttoncafe"
+        android:layout_width="118dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:onClick="add_cafe"
+        android:text="Cafe"
+        app:layout_constraintStart_toEndOf="@+id/spinnercafe"
+        app:layout_constraintTop_toBottomOf="@+id/tx_cafe" />
+
+    <Spinner
+        android:id="@+id/spinneralmuer"
+        android:layout_width="207dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tx_almue" />
+
+    <TextView
+        android:id="@+id/tx_almue"
+        android:layout_width="330dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="12dp"
+        android:scrollbars="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.405"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnermeri" />
+
+    <Button
+        android:id="@+id/buttonalmuer"
+        android:layout_width="118dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:onClick="add_alm"
+        android:text="Almuerzo"
+        app:layout_constraintStart_toEndOf="@+id/spinneralmuer"
+        app:layout_constraintTop_toBottomOf="@+id/tx_almue" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="197dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="4dp"
+        android:text="Diario de Comida"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerdes"
+        android:layout_width="207dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tx_des" />
+
+    <Spinner
+        android:id="@+id/spinnermeri"
+        android:layout_width="207dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tx_meri" />
+
+    <TextView
+        android:id="@+id/tx_des"
+        android:layout_width="330dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        android:scrollbars="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.407"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/tx_meri"
+        android:layout_width="330dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="16dp"
+        android:scrollbars="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.405"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerdes" />
+
+    <Button
+        android:id="@+id/buttondes"
+        android:layout_width="118dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:onClick="add_des"
+        android:text="Desayuno"
+        app:layout_constraintStart_toEndOf="@+id/spinnerdes"
+        app:layout_constraintTop_toBottomOf="@+id/tx_des" />
+
+    <Button
+        android:id="@+id/buttonmeri"
+        android:layout_width="118dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:onClick="add_mer"
+        android:text="Merienda"
+        app:layout_constraintStart_toEndOf="@+id/spinnermeri"
+        app:layout_constraintTop_toBottomOf="@+id/tx_meri" />
+
+    <Button
+        android:id="@+id/agrg_diario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:onClick="agrgar_diario"
+        android:text="Agregar \n Diario"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
