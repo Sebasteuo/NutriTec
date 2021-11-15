@@ -37,7 +37,7 @@ namespace API_NoRelacional.Controllers
         }
 
         [HttpDelete("{id}")]
-        public JsonResult DeleteChat(int id)
+        public JsonResult DeleteChat(string id)
         {
             var message = _chatRep._delete(id);
             //string result = JsonConvert.SerializeObject(chats);

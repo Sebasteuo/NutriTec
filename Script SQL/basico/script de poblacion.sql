@@ -36,16 +36,23 @@ INSERT INTO Dbo.PRODUCTO(CodigoDBarras,Nombre,Descripcion,Porcion,Energia,Grasa,
 INSERT INTO Dbo.PRODUCTO(CodigoDBarras,Nombre,Descripcion,Porcion,Energia,Grasa,Sodio,Carbohidratos,Proteina,Hierro,Calcio,Aprobado)VALUES(47961,'café','café sin azucar , sin crema',100,1,0,2,0,0,0,0,0);
 INSERT INTO Dbo.PRODUCTO(CodigoDBarras,Nombre,Descripcion,Porcion,Energia,Grasa,Sodio,Carbohidratos,Proteina,Hierro,Calcio,Aprobado)VALUES(865121,'jugo de frutas','Hecho con Fruta o Jugo de Fruta Unicamente',100,62,0,2,16,0,0,0,0);
 
+/*                             poblacion de tiempo de comida                                                 */
+INSERT INTO dbo.TIEMPODCOMIDA(IdTiempo,Nombre)VALUES(1,'desayuno');
+INSERT INTO dbo.TIEMPODCOMIDA(IdTiempo,Nombre)VALUES(2,'almuerzo');
+
+
 /*                             poblacion de Plan de comida                                                 */
-INSERT INTO Dbo.PLANDCOMIDA(IDPlan,Nombre)VALUES(1,'almuerzo tipo1');
+INSERT INTO Dbo.PLANDCOMIDA(IDPlan,Nombre)VALUES(1,'plan tipo1');
+
 
 /*                             poblacion de Receta                                                 */
 INSERT INTO Dbo.RECETA(IDReceta,Nombre)VALUES(1,'casado con pollo');
+INSERT INTO Dbo.RECETA(IDReceta,Nombre)VALUES(2,'pinto');
 
 /*                             poblacion de puede tener                                                 */
-INSERT INTO Dbo.PUEDE_TENER(CodigoNutricionista,Cedula,ChatID)VALUES(0,987654321,1);
-INSERT INTO Dbo.PUEDE_TENER(CodigoNutricionista,Cedula,ChatID)VALUES(0,465166714,2);
-INSERT INTO Dbo.PUEDE_TENER(CodigoNutricionista,Cedula,ChatID)VALUES(0,610654638,3);
+INSERT INTO Dbo.PUEDE_TENER(CodigoNutricionista,Cedula,ChatID)VALUES(3,987654321,1);
+INSERT INTO Dbo.PUEDE_TENER(CodigoNutricionista,Cedula,ChatID)VALUES(3,465166714,2);
+INSERT INTO Dbo.PUEDE_TENER(CodigoNutricionista,Cedula,ChatID)VALUES(3,610654638,3);
 INSERT INTO Dbo.PUEDE_TENER(CodigoNutricionista,Cedula,ChatID)VALUES(1,256183825,4);
 INSERT INTO Dbo.PUEDE_TENER(CodigoNutricionista,Cedula,ChatID)VALUES(1,570175102,5);
 INSERT INTO Dbo.PUEDE_TENER(CodigoNutricionista,Cedula,ChatID)VALUES(1,123592803,6);
@@ -56,24 +63,28 @@ INSERT INTO Dbo.PUEDE_TENER(CodigoNutricionista,Cedula,ChatID)VALUES(2,106644803
 INSERT INTO Dbo.PUEDE_TENER(CodigoNutricionista,Cedula,ChatID)VALUES(2,267563602,11);
 
 /*                             poblacion de registra medidas                                                 */
-INSERT INTO Dbo.REGISTRAMEDIDAS(Cedula,Zona,Medida,FechaRegistro)VALUES(987654321,'admonen',65,'2021-11-20, 11:36:14');
+INSERT INTO Dbo.REGISTRAMEDIDAS(Cedula,Zona,Medida,FechaRegistro)VALUES(987654321,'abdomen',65,'20211120 11:36:14 AM');
 
 /*                             poblacion de Nutricionista_Plan                                                */
 INSERT INTO Dbo.NUTRICIONISTA_PLAN(IDPlan,CodigoNutricionista)VALUES(1,1);
 
+
 /*                             poblacion de ProductoXPlan                                                 */
-INSERT INTO Dbo.PRODUCTOXPLAN(IDPlan,CodigoDBarras)VALUES(1,2147483);
-INSERT INTO Dbo.PRODUCTOXPLAN(IDPlan,CodigoDBarras)VALUES(1,2147484);
-INSERT INTO Dbo.PRODUCTOXPLAN(IDPlan,CodigoDBarras)VALUES(1,8161551);
+INSERT INTO Dbo.PRODUCTOXPLAN(IDPlan,CodigoDBarras,IdTiempo)VALUES(1,5465136,2);
+INSERT INTO Dbo.PRODUCTOXPLAN(IDPlan,CodigoDBarras,IdTiempo)VALUES(1,3488716,2);
+INSERT INTO Dbo.PRODUCTOXPLAN(IDPlan,CodigoDBarras,IdTiempo)VALUES(1,47961,2);
 
 /*                             poblacion de RecetaXPlan                                                 */
-INSERT INTO Dbo.RECETAXPLAN(IDPlan,IDReceta)VALUES(1,1);
+INSERT INTO Dbo.RECETAXPLAN(IDPlan,IDReceta)VALUES(1,2);
+
 
 
 /*                             poblacion de ProductoXReceta                                                 */
 INSERT INTO Dbo.PRODUCTOXRECETA(CodigoDBarras,IDReceta)VALUES(2147483,1);
 INSERT INTO Dbo.PRODUCTOXRECETA(CodigoDBarras,IDReceta)VALUES(2147484,1);
 INSERT INTO Dbo.PRODUCTOXRECETA(CodigoDBarras,IDReceta)VALUES(8161551,1);
+INSERT INTO Dbo.PRODUCTOXRECETA(CodigoDBarras,IDReceta)VALUES(2147483,2);
+INSERT INTO Dbo.PRODUCTOXRECETA(CodigoDBarras,IDReceta)VALUES(2147484,2);
 
 /*                             poblacion de Producto_vitamina                                                 */
 INSERT INTO Dbo.PRODUCTO_VITAMINA(CodigoDBarras,Vitaminas)VALUES(2147483,'vitamina c');
