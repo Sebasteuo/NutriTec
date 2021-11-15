@@ -8,8 +8,8 @@ namespace API_NoRelacional.ChatManager
     public interface IChatRepository
     {
         Chat Save(Chat chat);
-        Chat GetOne(int id);
+        Chat GetOne(string id);
         List<Chat> GetAll();
-        string _delete(int id);
+        string _delete(string id);
     }
 }

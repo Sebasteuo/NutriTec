@@ -14,17 +14,17 @@ namespace API_NoRelacional.ChatManager
 
         public ChatRepository()
         {
-            _mongoClient = new MongoClient("mongodb://nutritec:1e9vRqvbScO7B1ZyEBSKQTOfdzBLX98QGMrA4qiO7YBmZN2xmLkvWOOD3M9ETVIel0DCPAJTC9lCLRAbb5Mi8w==@nutritec.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@nutritec@"); 
-            _database = _mongoClient.GetDatabase("nutritecMongo");
-            _chatTable = _database.GetCollection<Chat>("chats");
+            _mongoClient = new MongoClient("mongodb://nutritec:Vh8wTVKT0pmjoDqY6uuiAM2RKbXQOtgKVTyjtyhXpBrdVh1KKTzgrP0uLFZV9YfEK2jUypitnpJ2mcFYqHT6FA==@nutritec.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@nutritec@"); 
+            _database = _mongoClient.GetDatabase("nutritec");
+            _chatTable = _database.GetCollection<Chat>("Chats");
         }
-        public string _delete(int id)
+        public string _delete(string id)
         {
             _chatTable.DeleteOne(x => x.id == id);
             return "Eliminado";
         }
 
-        public Chat GetOne(int id)
+        public Chat GetOne(string id)
         {
             return _chatTable.Find(x => x.id == id).FirstOrDefault();
         }
@@ -37,7 +37,7 @@ namespace API_NoRelacional.ChatManager
         public Chat Save(Chat chat)
         {
             var empObj = _chatTable.Find(x => x.id == chat.id).FirstOrDefault();
-            if (empObj == null)
+            if (empObj==null)
             {
                 _chatTable.InsertOne(chat);
             }

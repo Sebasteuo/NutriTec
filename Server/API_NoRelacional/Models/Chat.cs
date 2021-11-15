@@ -12,7 +12,9 @@ namespace API_NoRelacional.ChatManager
         //Representacion binaria de JSON
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public int id { get; set; }
+        public string id { get; set; }
+        public int codigonutricionista { get; set; }
+        public int cedulausuario { get; set; }
         public string mensaje { get; set; }
     }
 }
