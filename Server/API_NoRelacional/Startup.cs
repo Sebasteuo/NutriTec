@@ -1,4 +1,4 @@
-using API_NoRelacional.Models;
+using API_NoRelacional.ChatManager;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -7,7 +7,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
@@ -28,18 +27,13 @@ namespace API_NoRelacional
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.Configure<ChatSettings>(
-                Configuration.GetSection(nameof(ChatSettings)));
-
-            services.AddSingleton<IChatSettings>(sp =>
-            sp.GetRequiredService<IOptions<ChatSettings>>().Value);
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API_NoRelacional", Version = "v1" });
+                //c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
+            services.AddScoped<IChatRepository, ChatRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

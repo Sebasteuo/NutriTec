@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GitHub\\NutriTec\\Server\\API_NoRelacional\\API_NoRelacional.csproj": {}
+    "C:\\Users\\Bojorge\\Documents\\BasesDeDatos\\Proyectos\\NutriTec\\NutriTec\\Server\\API_NoRelacional\\API_NoRelacional.csproj": {}
   },
   "projects": {
-    "C:\\GitHub\\NutriTec\\Server\\API_NoRelacional\\API_NoRelacional.csproj": {
+    "C:\\Users\\Bojorge\\Documents\\BasesDeDatos\\Proyectos\\NutriTec\\NutriTec\\Server\\API_NoRelacional\\API_NoRelacional.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitHub\\NutriTec\\Server\\API_NoRelacional\\API_NoRelacional.csproj",
+        "projectUniqueName": "C:\\Users\\Bojorge\\Documents\\BasesDeDatos\\Proyectos\\NutriTec\\NutriTec\\Server\\API_NoRelacional\\API_NoRelacional.csproj",
         "projectName": "API_NoRelacional",
-        "projectPath": "C:\\GitHub\\NutriTec\\Server\\API_NoRelacional\\API_NoRelacional.csproj",
-        "packagesPath": "C:\\Users\\sebastianalba\\.nuget\\packages\\",
-        "outputPath": "C:\\GitHub\\NutriTec\\Server\\API_NoRelacional\\obj\\",
+        "projectPath": "C:\\Users\\Bojorge\\Documents\\BasesDeDatos\\Proyectos\\NutriTec\\NutriTec\\Server\\API_NoRelacional\\API_NoRelacional.csproj",
+        "packagesPath": "C:\\Users\\Bojorge\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bojorge\\Documents\\BasesDeDatos\\Proyectos\\NutriTec\\NutriTec\\Server\\API_NoRelacional\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\sebastianalba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Bojorge\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -48,6 +50,10 @@
               "target": "Package",
               "version": "[2.13.2, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
@@ -71,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

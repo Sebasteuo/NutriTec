@@ -21,7 +21,7 @@ INSERT INTO Dbo.USUARIO(Cedula,Nombre1,Nombre2,Apellido1,Apellido2,FechaNacimien
 INSERT INTO Dbo.USUARIO(Cedula,Nombre1,Nombre2,Apellido1,Apellido2,FechaNacimiento,Peso,Altura,Pais,Correo,Password,PorcentajeMusculo,PorcentajeGrasa)VALUES(267563602,'Heliodoro','Inocencio','Marín','Castillo','2013-02-19','69','1.74','Grenada','peoplesr@icloud.com',1697,60,40);
 
 
-/*                             poblacion de Nutricionista                                                 */
+/*                             poblacion de prooducto                                                 */
 INSERT INTO Dbo.PRODUCTO(CodigoDBarras,Nombre,Descripcion,Porcion,Energia,Grasa,Sodio,Carbohidratos,Proteina,Hierro,Calcio,Aprobado)VALUES(2147483,'arroz','arroz blanco marca indiana',100,130,1,1,6,3,0,10,0);
 INSERT INTO Dbo.PRODUCTO(CodigoDBarras,Nombre,Descripcion,Porcion,Energia,Grasa,Sodio,Carbohidratos,Proteina,Hierro,Calcio,Aprobado)VALUES(2147484,'frijoles','frijol negro marca don frijol',100,91,0,384,16,6,0,0,0);
 INSERT INTO Dbo.PRODUCTO(CodigoDBarras,Nombre,Descripcion,Porcion,Energia,Grasa,Sodio,Carbohidratos,Proteina,Hierro,Calcio,Aprobado)VALUES(8161551,'pollo','pechuga de pollo sin piel a la plancha',100,195,0,393,0,30,0,0,0);
@@ -31,6 +31,10 @@ INSERT INTO Dbo.PRODUCTO(CodigoDBarras,Nombre,Descripcion,Porcion,Energia,Grasa,
 INSERT INTO Dbo.PRODUCTO(CodigoDBarras,Nombre,Descripcion,Porcion,Energia,Grasa,Sodio,Carbohidratos,Proteina,Hierro,Calcio,Aprobado)VALUES(3488716,'jamon','1 tajada de jamon de pavo',28,149,1,316,1,5,0,0,0);
 INSERT INTO Dbo.PRODUCTO(CodigoDBarras,Nombre,Descripcion,Porcion,Energia,Grasa,Sodio,Carbohidratos,Proteina,Hierro,Calcio,Aprobado)VALUES(8745,'queso','estilo turrialba',30,87,7,100,1,5,0,23,0);
 INSERT INTO Dbo.PRODUCTO(CodigoDBarras,Nombre,Descripcion,Porcion,Energia,Grasa,Sodio,Carbohidratos,Proteina,Hierro,Calcio,Aprobado)VALUES(15485,'Carne de Res Molida','95% Magra / 5% de Materia Grasa',100,573,5,66,0,21,0,0,0);
+INSERT INTO Dbo.PRODUCTO(CodigoDBarras,Nombre,Descripcion,Porcion,Energia,Grasa,Sodio,Carbohidratos,Proteina,Hierro,Calcio,Aprobado)VALUES(646455,'tortilla','torilla de maiz',100,218,2,45,44,6,0,0,0);
+INSERT INTO Dbo.PRODUCTO(CodigoDBarras,Nombre,Descripcion,Porcion,Energia,Grasa,Sodio,Carbohidratos,Proteina,Hierro,Calcio,Aprobado)VALUES(6413314,'yogurt','bio defensa marca dos pinos 100 ml',100,159,0,49,6,3,0,96,0);
+INSERT INTO Dbo.PRODUCTO(CodigoDBarras,Nombre,Descripcion,Porcion,Energia,Grasa,Sodio,Carbohidratos,Proteina,Hierro,Calcio,Aprobado)VALUES(47961,'café','café sin azucar , sin crema',100,1,0,2,0,0,0,0,0);
+INSERT INTO Dbo.PRODUCTO(CodigoDBarras,Nombre,Descripcion,Porcion,Energia,Grasa,Sodio,Carbohidratos,Proteina,Hierro,Calcio,Aprobado)VALUES(865121,'jugo de frutas','Hecho con Fruta o Jugo de Fruta Unicamente',100,62,0,2,16,0,0,0,0);
 
 /*                             poblacion de Plan de comida                                                 */
 INSERT INTO Dbo.PLANDCOMIDA(IDPlan,Nombre)VALUES(1,'almuerzo tipo1');

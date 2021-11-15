@@ -1,7 +1,7 @@
 /************************************************************************************************
-   Nombre:   CREATE PROCEDURE up_MasterGestorUsuario (     
+   Nombre:    up_MasterGestorUsuario    
   
-   Proposito:  Crea, muestra (lista), muestra (especifico), modifica, elimina elemento Nutricionista 
+   Proposito:  Crea, muestra (lista), muestra (especifico), modifica, elimina elemento usuario
    
    REVISIONES:
    Ver          Fecha           Autor                       Descripcion

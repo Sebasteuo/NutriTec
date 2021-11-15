@@ -1,7 +1,7 @@
 /************************************************************************************************
    Nombre:   CREATE PROCEDURE up_MasterGestorAdministrador (     
   
-   Proposito:  Crea, muestra (lista), muestra (especifico), modifica, elimina elemento Nutricionista 
+   Proposito:  Crea, muestra (lista), muestra (especifico), modifica, elimina elemento administrador
    
    REVISIONES:
    Ver          Fecha           Autor                       Descripcion
@@ -11,8 +11,8 @@
 
    Notas: para poder obtner las opcion de insert, select, update y delete la palabras claves son
    -Insert:crea un nuevo Administrador 
-   -SelectListaNutricionista: muestra una lista de todos los Administrador 
-   -SelectEspecificoNutricionista: muestra un Administrador 
+   -SelectLista: muestra una lista de todos los Administrador 
+   -SelectEspecifico: muestra un Administrador 
    -Update: actualiza todos los valores del Administrador usando el AdminID como llave de busqueda
    -Delete: elimina todos los valores del Administrador usando el AdminID como llave de busqueda
 
